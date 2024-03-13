@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.trabalhopoo2;
+package viewer;
 
-import com.mycompany.trabalhopoo2.CadastrarQuartos.JPaneLGradient;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import viewer.CadastrarQuartos.JPaneLGradient;
 
 /**
  *
