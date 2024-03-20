@@ -8,8 +8,9 @@ import java.awt.Frame;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import viewer.CadastrarClientes;
 
-import viewer.CadastrarQuartoss;
+import viewer.CadastrarQuartos;
 import viewer.TelaPrincipal;
 
 
@@ -18,7 +19,8 @@ import viewer.TelaPrincipal;
     
     public class uiManeger {
     private TelaPrincipal frmPrinc = null;
-    private CadastrarQuartoss cq = null;
+    private CadastrarQuartos cq = null;
+    private CadastrarClientes cc=null;
     
    
 
@@ -50,11 +52,11 @@ import viewer.TelaPrincipal;
         frmPrinc.setVisible(true);
 }
      public void abrirCadQuarto() {
-        cq = (CadastrarQuartoss) abrirJanela(frmPrinc, cq, CadastrarQuartoss.class  );
+        cq = (CadastrarQuartos) abrirJanela(frmPrinc, cq, CadastrarQuartos.class  );
     }
      
      public void abrirCadCliente(){
-         
+        cc = (CadastrarClientes) abrirJanela(frmPrinc, cc, CadastrarClientes.class  );
      }
     public static void main(String args[]) {
      

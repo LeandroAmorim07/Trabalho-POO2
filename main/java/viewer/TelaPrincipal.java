@@ -10,7 +10,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-import static javax.swing.UIManager.get;
+
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -169,7 +169,7 @@ public class JPaneLGradient extends JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        uiManeger.getInstance().abrirCadCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
