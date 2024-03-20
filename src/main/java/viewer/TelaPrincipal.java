@@ -5,12 +5,8 @@
 package viewer;
 
 import control.uiManeger;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,51 +22,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocation(500,100);
             }
     
-public class JPaneLGradient extends JPanel {
-    protected static JPanel criarPainelDegrade() {
-        return new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g.create();
-
-                int width = getWidth();
-                int height = getHeight();
-
-                Color cor1 = new Color(20, 20, 80);
-                Color cor2 = new Color(86, 180, 211);
-
-                GradientPaint gradientPaint = new GradientPaint(0, 0, cor1, width, height, cor2);
-                g2d.setPaint(gradientPaint);
-                g2d.fillRect(0, 0, width, height);
-
-                g2d.dispose();
-            }
-        };
-    }
-}
 
 
-public class TableUtilidades{
-    protected static void removerLinhaSelecionada(DefaultTableModel model, JTable table) {
-        if (table.getSelectedRowCount() == 1) {
-            model.removeRow(table.getSelectedRow());
-        } else {
-            if (table.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(null, "Tabela está vazia");
-            } else {
-                JOptionPane.showMessageDialog(null, "Você selecionou mais de 1 linha ou nenhuma linha está selecionada");
-            }
-        }
-    }
-}
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         botaoCadastrarQuartos = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -86,8 +46,6 @@ public class TableUtilidades{
 
         jPanel2.setBackground(new java.awt.Color(255, 51, 102,80));
         jPanel2.setOpaque(false);
-
-        jButton3.setText("Ver Quartos Disponíveis");
 
         jButton4.setText("Pedir Serviço de Quarto");
 
@@ -121,7 +79,6 @@ public class TableUtilidades{
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(botaoCadastrarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -135,14 +92,12 @@ public class TableUtilidades{
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(53, 53, 53)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 250, 730));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 250, 550));
 
         jPanel3.setOpaque(false);
 
@@ -197,7 +152,6 @@ public class TableUtilidades{
     private javax.swing.JButton botaoCadastrarQuartos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
