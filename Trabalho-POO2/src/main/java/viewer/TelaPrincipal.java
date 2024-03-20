@@ -4,7 +4,16 @@
  */
 package viewer;
 
-import static javax.swing.UIManager.get;
+import control.uiManeger;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -16,7 +25,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setSize(1000,800);
         setLocation(500,100);
             }
+    
+public class JPaneLGradient extends JPanel {
+    protected static JPanel criarPainelDegrade() {
+        return new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g.create();
 
+                int width = getWidth();
+                int height = getHeight();
+
+                Color cor1 = new Color(20, 20, 80);
+                Color cor2 = new Color(86, 180, 211);
+
+                GradientPaint gradientPaint = new GradientPaint(0, 0, cor1, width, height, cor2);
+                g2d.setPaint(gradientPaint);
+                g2d.fillRect(0, 0, width, height);
+
+                g2d.dispose();
+            }
+        };
+    }
+}
+
+
+public class TableUtilidades{
+    protected static void removerLinhaSelecionada(DefaultTableModel model, JTable table) {
+        if (table.getSelectedRowCount() == 1) {
+            model.removeRow(table.getSelectedRow());
+        } else {
+            if (table.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "Tabela está vazia");
+            } else {
+                JOptionPane.showMessageDialog(null, "Você selecionou mais de 1 linha ou nenhuma linha está selecionada");
+            }
+        }
+    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -132,9 +179,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoCadastrarQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarQuartosActionPerformed
-        CadastrarQuartos qq= new CadastrarQuartos();
-        qq.setVisible(true);
-        this.setVisible(false);
+       uiManeger.getInstance().abrirCadQuarto();
     }//GEN-LAST:event_botaoCadastrarQuartosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -142,9 +187,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  CadastrarCliente qc= new  CadastrarCliente();
-       qc.setVisible(true);
-       this.setVisible(false);
+        uiManeger.getInstance().abrirCadCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
