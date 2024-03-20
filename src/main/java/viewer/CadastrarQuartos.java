@@ -10,8 +10,8 @@ package viewer;
  */
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import  viewer.TelaPrincipal.JPaneLGradient;
-import viewer.TelaPrincipal.TableUtilidades;
+import  control.uiManeger.JPaneLGradient;
+import control.uiManeger.TableUtilidades;
 
 public class CadastrarQuartos extends javax.swing.JDialog {
 
@@ -374,14 +374,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btRemover;
     private javax.swing.JComboBox<String> cmbTipoCama;
     private javax.swing.JComboBox<String> cmbTipoQuarto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lblCadastrarQuartos;
     private javax.swing.JLabel lblCama;
     private javax.swing.JLabel lblDiaria;
