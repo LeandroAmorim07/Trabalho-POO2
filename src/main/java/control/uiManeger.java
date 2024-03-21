@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
+import viewer.ReservarQuartos;
 import viewer.TelaPrincipal;
 
 
@@ -28,6 +29,7 @@ import viewer.TelaPrincipal;
     private TelaPrincipal frmPrinc = null;
     private CadastrarQuartos cq = null;
     private CadastrarClientes cc=null;
+    private ReservarQuartos rq=null;
     
    
 
@@ -41,11 +43,17 @@ public class TableUtilidades{
     public static void removerLinhaSelecionada(DefaultTableModel model, JTable table) {
         if (table.getSelectedRowCount() == 1) {
             model.removeRow(table.getSelectedRow());
-        } else {
+        }
+        else if (table.getSelectedRowCount() >= 1){
+            JOptionPane.showMessageDialog(null, "Selecione apenas uma linha por vez");
+        }
+        else {
             if (table.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Tabela está vazia");
-            } else {
-                JOptionPane.showMessageDialog(null, "Você selecionou mais de 1 linha ou nenhuma linha está selecionada");
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, " nenhuma linha está selecionada");
             }
         }
     }
@@ -108,6 +116,11 @@ public class TableUtilidades{
      
      public void abrirCadCliente(){
         cc = (CadastrarClientes) abrirJanela(frmPrinc, cc, CadastrarClientes.class  );
+     }
+     
+     
+      public void abrirResQuartos(){
+        rq = (ReservarQuartos) abrirJanela(frmPrinc, rq, ReservarQuartos.class  );
      }
     public static void main(String args[]) {
      

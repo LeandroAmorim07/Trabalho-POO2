@@ -35,8 +35,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
         popRemover = new javax.swing.JMenuItem();
         jPanel1 = JPaneLGradient.criarPainelDegrade();
         jPanel2 = new javax.swing.JPanel();
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         txtCelular = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -82,16 +80,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
         jPanel2.setOpaque(false);
 
-        lblID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblID.setForeground(new java.awt.Color(255, 255, 255));
-        lblID.setText("ID");
-
-        txtID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
-            }
-        });
-
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Nome");
@@ -118,7 +106,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCelular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblCPF, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
@@ -126,34 +113,29 @@ public class CadastrarClientes extends javax.swing.JDialog {
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                     .addComponent(txtCelular)
                     .addComponent(txtNome)
-                    .addComponent(txtID)
                     .addComponent(txtCPF))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCelular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCelular)
+                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCPF)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jPanel3.setOpaque(false);
@@ -223,11 +205,11 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Nome", "Celular", "Cpf", "Email"
+                "Nome", "Celular", "Cpf", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -311,7 +293,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -328,14 +310,10 @@ public class CadastrarClientes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-
     private void btAdicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClientesActionPerformed
        DefaultTableModel tblCliente = (DefaultTableModel) tblClientes.getModel();
        Object[] dados ={
-        Integer.parseInt(txtID.getText()),txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText()
+        txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText()
     };
        tblCliente.addRow(dados);
     }//GEN-LAST:event_btAdicionarClientesActionPerformed
@@ -401,7 +379,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
     private javax.swing.JLabel lblClientesCad;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGerenciarClientes;
-    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNome;
     private javax.swing.JMenuItem popAdicionar;
     private javax.swing.JPopupMenu popClientes;
@@ -410,7 +387,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
