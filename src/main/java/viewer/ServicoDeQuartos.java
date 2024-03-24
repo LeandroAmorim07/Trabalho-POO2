@@ -5,6 +5,9 @@
 package viewer;
 import  control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
+import javax.swing.JCheckBox;
+import javax.swing.JSpinner;
+import javax.swing.table.DefaultTableModel;
 
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
@@ -14,7 +17,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(745,540);
+        setSize(900,600);
         setLocation(500,100);
     }
 
@@ -34,42 +37,43 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         lblNum = new javax.swing.JLabel();
         txtNumQuarto = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblRoomService = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jSpinner3 = new javax.swing.JSpinner();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        lblAperitivos = new javax.swing.JLabel();
+        chkHamb = new javax.swing.JCheckBox();
+        spnHamb = new javax.swing.JSpinner();
+        lblQTD = new javax.swing.JLabel();
+        chkXburguer = new javax.swing.JCheckBox();
+        chkBiscoito = new javax.swing.JCheckBox();
+        spnBiscoito = new javax.swing.JSpinner();
+        chkRuffles = new javax.swing.JCheckBox();
+        spnXburguer = new javax.swing.JSpinner();
+        spnRuffles = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jSpinner5 = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jSpinner6 = new javax.swing.JSpinner();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
+        lblBebidas = new javax.swing.JLabel();
+        chkCoca = new javax.swing.JCheckBox();
+        spnCoca = new javax.swing.JSpinner();
+        lblQtdbebida = new javax.swing.JLabel();
+        chkPepsi = new javax.swing.JCheckBox();
+        chkSucoUva = new javax.swing.JCheckBox();
+        spnSucoUva = new javax.swing.JSpinner();
+        chkChampanhe = new javax.swing.JCheckBox();
+        spnPepsi = new javax.swing.JSpinner();
+        spnChampanhe = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jCheckBox10 = new javax.swing.JCheckBox();
+        chkToalha = new javax.swing.JCheckBox();
+        chkKitHigiene = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btAdd = new javax.swing.JButton();
+        btRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(765, 469));
         setMinimumSize(new java.awt.Dimension(765, 469));
+        setResizable(false);
         setSize(new java.awt.Dimension(765, 469));
 
         jPanel2.setOpaque(false);
@@ -111,10 +115,12 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setOpaque(false);
         jPanel3.setRequestFocusEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Servico de Quarto");
+        lblRoomService.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblRoomService.setForeground(new java.awt.Color(255, 255, 255));
+        lblRoomService.setText("Servico de Quarto");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -122,44 +128,73 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(lblRoomService)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+                .addComponent(lblRoomService))
         );
 
         jPanel5.setOpaque(false);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Aperitivos");
+        lblAperitivos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblAperitivos.setForeground(new java.awt.Color(255, 255, 255));
+        lblAperitivos.setText("Aperitivos");
 
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Hamburguer");
-        jCheckBox1.setContentAreaFilled(false);
-
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Qtd.");
-
-        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setText("Salgadinho");
-        jCheckBox2.setContentAreaFilled(false);
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkHamb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkHamb.setForeground(new java.awt.Color(255, 255, 255));
+        chkHamb.setText("Hamburguer");
+        chkHamb.setContentAreaFilled(false);
+        chkHamb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkHambActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox3.setText("Biscoito");
-        jCheckBox3.setContentAreaFilled(false);
+        spnHamb.setEnabled(false);
 
-        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox4.setText("X-Tudo");
-        jCheckBox4.setContentAreaFilled(false);
+        lblQTD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblQTD.setForeground(new java.awt.Color(255, 255, 255));
+        lblQTD.setText("Qtd.");
+
+        chkXburguer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkXburguer.setForeground(new java.awt.Color(255, 255, 255));
+        chkXburguer.setText("X-Burguer");
+        chkXburguer.setContentAreaFilled(false);
+        chkXburguer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkXburguerActionPerformed(evt);
+            }
+        });
+
+        chkBiscoito.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkBiscoito.setForeground(new java.awt.Color(255, 255, 255));
+        chkBiscoito.setText("Biscoito Oreo");
+        chkBiscoito.setContentAreaFilled(false);
+        chkBiscoito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBiscoitoActionPerformed(evt);
+            }
+        });
+
+        spnBiscoito.setEnabled(false);
+
+        chkRuffles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkRuffles.setForeground(new java.awt.Color(255, 255, 255));
+        chkRuffles.setText("Ruffles");
+        chkRuffles.setContentAreaFilled(false);
+        chkRuffles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRufflesActionPerformed(evt);
+            }
+        });
+
+        spnXburguer.setEnabled(false);
+
+        spnRuffles.setEnabled(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -168,94 +203,116 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4))
+                            .addComponent(chkBiscoito)
+                            .addComponent(chkRuffles))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spnBiscoito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnRuffles, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
+                            .addComponent(chkHamb)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addComponent(lblAperitivos))
+                            .addComponent(chkXburguer))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 5, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(lblQTD)
+                                .addGap(0, 25, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(spnHamb, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnXburguer, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))))
+                .addGap(5, 5, 5))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lblAperitivos)
+                    .addComponent(lblQTD))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkHamb)
+                    .addComponent(spnHamb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkXburguer)
+                    .addComponent(spnXburguer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkBiscoito)
+                    .addComponent(spnBiscoito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkRuffles)
+                    .addComponent(spnRuffles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.setOpaque(false);
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Bebidas");
+        lblBebidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblBebidas.setForeground(new java.awt.Color(255, 255, 255));
+        lblBebidas.setText("Bebidas");
 
-        jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox5.setText("Coca-Cola");
-        jCheckBox5.setContentAreaFilled(false);
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        chkCoca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkCoca.setForeground(new java.awt.Color(255, 255, 255));
+        chkCoca.setText("Coca-Cola");
+        chkCoca.setContentAreaFilled(false);
+        chkCoca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                chkCocaActionPerformed(evt);
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Qtd.");
+        spnCoca.setEnabled(false);
 
-        jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox6.setText("Pepsi  ");
-        jCheckBox6.setContentAreaFilled(false);
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        lblQtdbebida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblQtdbebida.setForeground(new java.awt.Color(255, 255, 255));
+        lblQtdbebida.setText("Qtd.");
+
+        chkPepsi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkPepsi.setForeground(new java.awt.Color(255, 255, 255));
+        chkPepsi.setText("Pepsi  ");
+        chkPepsi.setContentAreaFilled(false);
+        chkPepsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                chkPepsiActionPerformed(evt);
             }
         });
 
-        jCheckBox7.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox7.setText("Suco de Uva");
-        jCheckBox7.setContentAreaFilled(false);
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+        chkSucoUva.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkSucoUva.setForeground(new java.awt.Color(255, 255, 255));
+        chkSucoUva.setText("Del Valle Uva");
+        chkSucoUva.setContentAreaFilled(false);
+        chkSucoUva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
+                chkSucoUvaActionPerformed(evt);
             }
         });
 
-        jCheckBox8.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox8.setText("Champanhe");
-        jCheckBox8.setContentAreaFilled(false);
+        spnSucoUva.setEnabled(false);
+
+        chkChampanhe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        chkChampanhe.setForeground(new java.awt.Color(255, 255, 255));
+        chkChampanhe.setText("Champanhe");
+        chkChampanhe.setContentAreaFilled(false);
+        chkChampanhe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkChampanheActionPerformed(evt);
+            }
+        });
+
+        spnPepsi.setEnabled(false);
+
+        spnChampanhe.setEnabled(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -263,31 +320,29 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkCoca)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox5)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel4)))
+                        .addGap(6, 6, 6)
+                        .addComponent(lblBebidas)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(45, 45, 45))
-                            .addComponent(jSpinner5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jCheckBox6)
+                        .addComponent(lblQtdbebida)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox7)
-                            .addComponent(jCheckBox8))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(spnCoca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkSucoUva)
+                    .addComponent(chkChampanhe)
+                    .addComponent(chkPepsi))
+                .addGap(76, 76, 76)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnChampanhe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(spnSucoUva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addComponent(spnPepsi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -295,66 +350,74 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(lblBebidas)
+                    .addComponent(lblQtdbebida))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkCoca)
+                    .addComponent(spnCoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkPepsi)
+                    .addComponent(spnPepsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkSucoUva)
+                    .addComponent(spnSucoUva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox8)
-                    .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkChampanhe)
+                    .addComponent(spnChampanhe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel4.setOpaque(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Aperitivos", "Bebidas", "Extras"
+                "Cliente", "Quarto", "Hamburguer", "X-Burguer", "Oreo", "Ruffles", "Coca-Cola", "Pepsi", "Suco", "Champanhe", "Extras"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
 
-        jCheckBox9.setText("Toalha");
+        chkToalha.setText("Toalha");
 
-        jCheckBox10.setText("Kit Higiene");
+        chkKitHigiene.setText("Kit Higiene");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jCheckBox9)
+                .addComponent(chkToalha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jCheckBox10)
+                .addComponent(chkKitHigiene)
                 .addGap(18, 18, 18))
         );
         jPanel7Layout.setVerticalGroup(
@@ -362,16 +425,21 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox9)
-                    .addComponent(jCheckBox10))
+                    .addComponent(chkToalha)
+                    .addComponent(chkKitHigiene))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel8.setOpaque(false);
 
-        jButton1.setText("Adicionar");
+        btAdd.setText("Adicionar");
+        btAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Remover");
+        btRemover.setText("Remover");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -379,9 +447,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton1)
+                .addComponent(btAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btRemover)
                 .addGap(39, 39, 39))
         );
         jPanel8Layout.setVerticalGroup(
@@ -389,8 +457,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btAdd)
+                    .addComponent(btRemover))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -399,24 +467,23 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(180, 180, 180)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,8 +492,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,25 +519,73 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    private void chkXburguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkXburguerActionPerformed
+        habilitarSpinner(chkXburguer,spnXburguer);
+    }//GEN-LAST:event_chkXburguerActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    private void chkPepsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPepsiActionPerformed
+       habilitarSpinner(chkPepsi,spnPepsi);
+    }//GEN-LAST:event_chkPepsiActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    private void chkCocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCocaActionPerformed
+       habilitarSpinner(chkCoca,spnCoca);
+    }//GEN-LAST:event_chkCocaActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
+    private void chkSucoUvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSucoUvaActionPerformed
+        habilitarSpinner(chkSucoUva,spnSucoUva);
+    }//GEN-LAST:event_chkSucoUvaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void chkHambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHambActionPerformed
+        habilitarSpinner(chkHamb,spnHamb);
+        
+    }//GEN-LAST:event_chkHambActionPerformed
+
+    private void chkBiscoitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBiscoitoActionPerformed
+       habilitarSpinner(chkBiscoito,spnBiscoito );
+    }//GEN-LAST:event_chkBiscoitoActionPerformed
+
+    private void chkRufflesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRufflesActionPerformed
+        habilitarSpinner(chkRuffles,spnRuffles);
+    }//GEN-LAST:event_chkRufflesActionPerformed
+
+    private void chkChampanheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkChampanheActionPerformed
+        habilitarSpinner(chkChampanhe,spnChampanhe);
+    }//GEN-LAST:event_chkChampanheActionPerformed
+
+    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+         DefaultTableModel tblSQ = (DefaultTableModel) tabela.getModel();
+         int hamb  = (int) spnHamb.getValue();
+         int xburguer = (int) spnXburguer.getValue();
+         int biscoito  = (int) spnBiscoito.getValue();
+         int ruffles  = (int) spnRuffles.getValue();
+         int coca  = (int) spnCoca.getValue();
+         int pepsi  = (int) spnPepsi.getValue();
+         int suco  = (int) spnSucoUva.getValue();
+         int champ  = (int) spnChampanhe.getValue();
+         String extras = "";
+         if (chkToalha.isSelected()){
+              extras += chkToalha.getText();
+         }
+         if (chkKitHigiene.isSelected()){
+             extras+=",";
+             extras += chkKitHigiene.getText();
+         }
+          
+         Object[] dados ={
+             txtCliente.getText(),Integer.valueOf(txtNumQuarto.getText()),hamb,xburguer,biscoito,ruffles,coca,pepsi,suco,champ,extras
+             
+         };
+         tblSQ.addRow(dados);
+    }//GEN-LAST:event_btAddActionPerformed
+
+    private void habilitarSpinner( JCheckBox chk, JSpinner spn ) {
+        if ( chk.isSelected()  ) {
+            spn.setEnabled(true);
+        } else {
+            spn.setEnabled(false);
+            spn.setValue(0);
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -512,23 +627,18 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btAdd;
+    private javax.swing.JButton btRemover;
+    private javax.swing.JCheckBox chkBiscoito;
+    private javax.swing.JCheckBox chkChampanhe;
+    private javax.swing.JCheckBox chkCoca;
+    private javax.swing.JCheckBox chkHamb;
+    private javax.swing.JCheckBox chkKitHigiene;
+    private javax.swing.JCheckBox chkPepsi;
+    private javax.swing.JCheckBox chkRuffles;
+    private javax.swing.JCheckBox chkSucoUva;
+    private javax.swing.JCheckBox chkToalha;
+    private javax.swing.JCheckBox chkXburguer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -538,17 +648,22 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAperitivos;
+    private javax.swing.JLabel lblBebidas;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblQTD;
+    private javax.swing.JLabel lblQtdbebida;
+    private javax.swing.JLabel lblRoomService;
+    private javax.swing.JSpinner spnBiscoito;
+    private javax.swing.JSpinner spnChampanhe;
+    private javax.swing.JSpinner spnCoca;
+    private javax.swing.JSpinner spnHamb;
+    private javax.swing.JSpinner spnPepsi;
+    private javax.swing.JSpinner spnRuffles;
+    private javax.swing.JSpinner spnSucoUva;
+    private javax.swing.JSpinner spnXburguer;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtNumQuarto;
     // End of variables declaration//GEN-END:variables
