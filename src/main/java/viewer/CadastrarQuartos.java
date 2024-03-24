@@ -25,6 +25,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         setSize(765,400);
         setLocation(500,100);
         
+        
     }
 
     /**
@@ -90,7 +91,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(0, 51, 255));
         jLabel7.setText("Quartos Cadastrados");
 
         javax.swing.GroupLayout pnlQuartosCadastradosLayout = new javax.swing.GroupLayout(pnlQuartosCadastrados);
@@ -105,9 +106,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         pnlQuartosCadastradosLayout.setVerticalGroup(
             pnlQuartosCadastradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlQuartosCadastradosLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         pnlPrincipal.setBackground(new java.awt.Color(204, 255, 255));
@@ -115,7 +115,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         lblNumQuartos.setBackground(new java.awt.Color(255, 255, 255));
         lblNumQuartos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNumQuartos.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumQuartos.setForeground(new java.awt.Color(0, 0, 0));
         lblNumQuartos.setText("Núm. Quarto");
 
         txtNumQuarto.addActionListener(new java.awt.event.ActionListener() {
@@ -128,12 +128,12 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         lblTipoQuarto.setBackground(new java.awt.Color(255, 255, 255));
         lblTipoQuarto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTipoQuarto.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipoQuarto.setForeground(new java.awt.Color(0, 0, 0));
         lblTipoQuarto.setText("Tipo do Quarto");
 
         lblDiaria.setBackground(new java.awt.Color(255, 255, 255));
         lblDiaria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblDiaria.setForeground(new java.awt.Color(255, 255, 255));
+        lblDiaria.setForeground(new java.awt.Color(0, 0, 0));
         lblDiaria.setText("Preço Diária");
 
         txtDiaria.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         lblCama.setBackground(new java.awt.Color(255, 255, 255));
         lblCama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCama.setForeground(new java.awt.Color(255, 255, 255));
+        lblCama.setForeground(new java.awt.Color(0, 0, 0));
         lblCama.setText("Cama");
 
         cmbTipoCama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Casal", "King" }));
@@ -186,6 +186,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         pnlAdicionarRemover.setOpaque(false);
 
+        btAdicionar.setForeground(new java.awt.Color(0, 0, 0));
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +194,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             }
         });
 
+        btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
         btRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +281,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         pnlCadastrarQuartos.setOpaque(false);
 
         lblCadastrarQuartos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCadastrarQuartos.setForeground(new java.awt.Color(255, 255, 255));
+        lblCadastrarQuartos.setForeground(new java.awt.Color(0, 51, 255));
         lblCadastrarQuartos.setText("Cadastrar Quartos");
 
         javax.swing.GroupLayout pnlCadastrarQuartosLayout = new javax.swing.GroupLayout(pnlCadastrarQuartos);
@@ -293,10 +295,9 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         );
         pnlCadastrarQuartosLayout.setVerticalGroup(
             pnlCadastrarQuartosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCadastrarQuartosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlCadastrarQuartosLayout.createSequentialGroup()
                 .addComponent(lblCadastrarQuartos)
-                .addGap(19, 19, 19))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -319,8 +320,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlCadastrarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlQuartosCadastrados, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlCadastrarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlQuartosCadastrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))

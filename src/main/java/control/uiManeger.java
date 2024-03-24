@@ -76,8 +76,8 @@ public class TableUtilidades{
                 int width = getWidth();
                 int height = getHeight();
 
-                Color cor1 = new Color(20, 20, 80);
-                Color cor2 = new Color(86, 180, 211);
+                Color cor1 = new Color(135, 135, 180);
+                Color cor2 = new Color(176, 224, 230);
 
                 GradientPaint gradientPaint = new GradientPaint(0, 0, cor1, width, height, cor2);
                 g2d.setPaint(gradientPaint);

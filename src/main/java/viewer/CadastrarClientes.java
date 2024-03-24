@@ -70,6 +70,8 @@ public class CadastrarClientes extends javax.swing.JDialog {
         });
         popClientes.add(popRemover);
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Clientes");
         setMaximumSize(new java.awt.Dimension(765, 469));
         setMinimumSize(new java.awt.Dimension(765, 469));
         setResizable(false);
@@ -81,20 +83,20 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel2.setOpaque(false);
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
 
         lblCelular.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCelular.setForeground(new java.awt.Color(255, 255, 255));
+        lblCelular.setForeground(new java.awt.Color(0, 0, 0));
         lblCelular.setText("Celular");
 
         lblCPF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCPF.setForeground(new java.awt.Color(255, 255, 255));
+        lblCPF.setForeground(new java.awt.Color(0, 0, 0));
         lblCPF.setText("CPF");
 
         lblEmail.setBackground(new java.awt.Color(255, 255, 255));
         lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("Email");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -141,7 +143,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel3.setOpaque(false);
 
         lblGerenciarClientes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblGerenciarClientes.setForeground(new java.awt.Color(255, 255, 255));
+        lblGerenciarClientes.setForeground(new java.awt.Color(0, 51, 204));
         lblGerenciarClientes.setText("Gerenciar Clientes ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -163,6 +165,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
         jPanel4.setOpaque(false);
 
+        btAdicionarClientes.setForeground(new java.awt.Color(0, 0, 0));
         btAdicionarClientes.setText("Adicionar");
         btAdicionarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +173,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
             }
         });
 
+        btRemoverClientes.setForeground(new java.awt.Color(0, 0, 0));
         btRemoverClientes.setText("Remover");
         btRemoverClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,7 +243,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel6.setOpaque(false);
 
         lblClientesCad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblClientesCad.setForeground(new java.awt.Color(255, 255, 255));
+        lblClientesCad.setForeground(new java.awt.Color(0, 51, 204));
         lblClientesCad.setText("Clientes Cadastrados");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);

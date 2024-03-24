@@ -70,7 +70,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         btAdd = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(765, 469));
         setMinimumSize(new java.awt.Dimension(765, 469));
         setResizable(false);
@@ -79,11 +78,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel2.setOpaque(false);
 
         lblCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCliente.setForeground(new java.awt.Color(255, 255, 255));
+        lblCliente.setForeground(new java.awt.Color(0, 0, 0));
         lblCliente.setText("Cliente");
 
         lblNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblNum.setForeground(new java.awt.Color(0, 0, 0));
         lblNum.setText("Núm. Quarto");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -119,7 +118,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel3.setRequestFocusEnabled(false);
 
         lblRoomService.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblRoomService.setForeground(new java.awt.Color(255, 255, 255));
+        lblRoomService.setForeground(new java.awt.Color(0, 51, 204));
         lblRoomService.setText("Servico de Quarto");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -141,11 +140,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel5.setOpaque(false);
 
         lblAperitivos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblAperitivos.setForeground(new java.awt.Color(255, 255, 255));
+        lblAperitivos.setForeground(new java.awt.Color(0, 51, 204));
         lblAperitivos.setText("Aperitivos");
 
         chkHamb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkHamb.setForeground(new java.awt.Color(255, 255, 255));
+        chkHamb.setForeground(new java.awt.Color(0, 0, 0));
         chkHamb.setText("Hamburguer");
         chkHamb.setContentAreaFilled(false);
         chkHamb.addActionListener(new java.awt.event.ActionListener() {
@@ -157,11 +156,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         spnHamb.setEnabled(false);
 
         lblQTD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQTD.setForeground(new java.awt.Color(255, 255, 255));
+        lblQTD.setForeground(new java.awt.Color(0, 51, 204));
         lblQTD.setText("Qtd.");
 
         chkXburguer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkXburguer.setForeground(new java.awt.Color(255, 255, 255));
+        chkXburguer.setForeground(new java.awt.Color(0, 0, 0));
         chkXburguer.setText("X-Burguer");
         chkXburguer.setContentAreaFilled(false);
         chkXburguer.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +170,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         });
 
         chkBiscoito.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkBiscoito.setForeground(new java.awt.Color(255, 255, 255));
+        chkBiscoito.setForeground(new java.awt.Color(0, 0, 0));
         chkBiscoito.setText("Biscoito Oreo");
         chkBiscoito.setContentAreaFilled(false);
         chkBiscoito.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +182,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         spnBiscoito.setEnabled(false);
 
         chkRuffles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkRuffles.setForeground(new java.awt.Color(255, 255, 255));
+        chkRuffles.setForeground(new java.awt.Color(0, 0, 0));
         chkRuffles.setText("Ruffles");
         chkRuffles.setContentAreaFilled(false);
         chkRuffles.addActionListener(new java.awt.event.ActionListener() {
@@ -259,11 +258,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel6.setOpaque(false);
 
         lblBebidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblBebidas.setForeground(new java.awt.Color(255, 255, 255));
+        lblBebidas.setForeground(new java.awt.Color(0, 51, 204));
         lblBebidas.setText("Bebidas");
 
         chkCoca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkCoca.setForeground(new java.awt.Color(255, 255, 255));
+        chkCoca.setForeground(new java.awt.Color(0, 0, 0));
         chkCoca.setText("Coca-Cola");
         chkCoca.setContentAreaFilled(false);
         chkCoca.addActionListener(new java.awt.event.ActionListener() {
@@ -275,11 +274,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         spnCoca.setEnabled(false);
 
         lblQtdbebida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQtdbebida.setForeground(new java.awt.Color(255, 255, 255));
+        lblQtdbebida.setForeground(new java.awt.Color(0, 51, 204));
         lblQtdbebida.setText("Qtd.");
 
         chkPepsi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkPepsi.setForeground(new java.awt.Color(255, 255, 255));
+        chkPepsi.setForeground(new java.awt.Color(0, 0, 0));
         chkPepsi.setText("Pepsi  ");
         chkPepsi.setContentAreaFilled(false);
         chkPepsi.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +288,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         });
 
         chkSucoUva.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkSucoUva.setForeground(new java.awt.Color(255, 255, 255));
+        chkSucoUva.setForeground(new java.awt.Color(0, 0, 0));
         chkSucoUva.setText("Del Valle Uva");
         chkSucoUva.setContentAreaFilled(false);
         chkSucoUva.addActionListener(new java.awt.event.ActionListener() {
@@ -301,7 +300,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         spnSucoUva.setEnabled(false);
 
         chkChampanhe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkChampanhe.setForeground(new java.awt.Color(255, 255, 255));
+        chkChampanhe.setForeground(new java.awt.Color(0, 0, 0));
         chkChampanhe.setText("Champanhe");
         chkChampanhe.setContentAreaFilled(false);
         chkChampanhe.addActionListener(new java.awt.event.ActionListener() {
@@ -405,9 +404,12 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
+        jPanel7.setForeground(new java.awt.Color(0, 0, 0));
 
+        chkToalha.setForeground(new java.awt.Color(0, 0, 0));
         chkToalha.setText("Toalha");
 
+        chkKitHigiene.setForeground(new java.awt.Color(0, 0, 0));
         chkKitHigiene.setText("Kit Higiene");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -432,6 +434,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
         jPanel8.setOpaque(false);
 
+        btAdd.setForeground(new java.awt.Color(0, 0, 0));
         btAdd.setText("Adicionar");
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,6 +442,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
+        btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);

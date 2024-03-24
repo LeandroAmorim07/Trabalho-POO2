@@ -71,7 +71,6 @@ public class ReservarQuartos extends javax.swing.JDialog {
         });
         popReserva.add(popRemove);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reservar Quartos");
         setMaximumSize(new java.awt.Dimension(765, 469));
         setMinimumSize(new java.awt.Dimension(765, 469));
@@ -83,19 +82,19 @@ public class ReservarQuartos extends javax.swing.JDialog {
         jPanel2.setOpaque(false);
 
         lblCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblCliente.setForeground(new java.awt.Color(255, 255, 255));
+        lblCliente.setForeground(new java.awt.Color(0, 0, 0));
         lblCliente.setText("Cliente");
 
         lblNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblNum.setForeground(new java.awt.Color(0, 0, 0));
         lblNum.setText("Núm. Quarto");
 
         lblIN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblIN.setForeground(new java.awt.Color(255, 255, 255));
+        lblIN.setForeground(new java.awt.Color(0, 0, 0));
         lblIN.setText("Check-In");
 
         lblOut.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblOut.setForeground(new java.awt.Color(255, 255, 255));
+        lblOut.setForeground(new java.awt.Color(0, 0, 0));
         lblOut.setText("Check-Out");
 
         dateCheckIn.setDateFormatString("dd/MM/yyyy");
@@ -196,7 +195,7 @@ public class ReservarQuartos extends javax.swing.JDialog {
         jPanel4.setOpaque(false);
 
         lblRerserva.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblRerserva.setForeground(new java.awt.Color(255, 255, 255));
+        lblRerserva.setForeground(new java.awt.Color(0, 51, 255));
         lblRerserva.setText("Resevar Quartos");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -219,7 +218,7 @@ public class ReservarQuartos extends javax.swing.JDialog {
         jPanel5.setOpaque(false);
 
         lblTbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTbl.setForeground(new java.awt.Color(255, 255, 255));
+        lblTbl.setForeground(new java.awt.Color(0, 51, 255));
         lblTbl.setText("Quartos Reservados");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -241,6 +240,7 @@ public class ReservarQuartos extends javax.swing.JDialog {
 
         jPanel6.setOpaque(false);
 
+        btAdd.setForeground(new java.awt.Color(0, 0, 0));
         btAdd.setText("Adicionar");
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +248,7 @@ public class ReservarQuartos extends javax.swing.JDialog {
             }
         });
 
+        btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
         btRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
