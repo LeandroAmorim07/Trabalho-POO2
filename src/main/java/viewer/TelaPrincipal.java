@@ -48,6 +48,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
 
         jButton4.setText("Pedir Serviço de Quarto");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         botaoCadastrarQuartos.setText("Cadastrar Quartos");
         botaoCadastrarQuartos.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +149,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         uiManeger.getInstance().abrirCadCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        uiManeger.getInstance().abrirServQuartos();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     

@@ -19,6 +19,7 @@ import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
 import viewer.ReservarQuartos;
+import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
 
@@ -30,6 +31,7 @@ import viewer.TelaPrincipal;
     private CadastrarQuartos cq = null;
     private CadastrarClientes cc=null;
     private ReservarQuartos rq=null;
+    private ServicoDeQuartos sq=null;
     
    
 
@@ -39,6 +41,8 @@ import viewer.TelaPrincipal;
     public static uiManeger getInstance() {
         return myInstance;       
     }
+    
+    
 public class TableUtilidades{
     public static void removerLinhaSelecionada(DefaultTableModel model, JTable table) {
         if (table.getSelectedRowCount() == 1) {
@@ -122,6 +126,12 @@ public class TableUtilidades{
       public void abrirResQuartos(){
         rq = (ReservarQuartos) abrirJanela(frmPrinc, rq, ReservarQuartos.class  );
      }
+      
+       public void abrirServQuartos(){
+        sq = (ServicoDeQuartos) abrirJanela(frmPrinc, sq, ServicoDeQuartos.class  );
+     }
+      
+      
     public static void main(String args[]) {
      
         try {
