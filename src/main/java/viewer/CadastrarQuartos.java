@@ -78,6 +78,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         });
         popTblQuartos.add(popRemover);
 
+        setTitle("Gerenciar Quartos");
         setMaximumSize(new java.awt.Dimension(765, 400));
         setMinimumSize(new java.awt.Dimension(765, 400));
         setPreferredSize(new java.awt.Dimension(765, 400));
@@ -282,7 +283,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         lblCadastrarQuartos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCadastrarQuartos.setForeground(new java.awt.Color(0, 51, 255));
-        lblCadastrarQuartos.setText("Cadastrar Quartos");
+        lblCadastrarQuartos.setText("Gerenciar Quartos");
 
         javax.swing.GroupLayout pnlCadastrarQuartosLayout = new javax.swing.GroupLayout(pnlCadastrarQuartos);
         pnlCadastrarQuartos.setLayout(pnlCadastrarQuartosLayout);

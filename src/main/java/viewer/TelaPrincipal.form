@@ -84,7 +84,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="botaoCadastrarQuartos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Quartos"/>
+            <Property name="text" type="java.lang.String" value="Gerenciar Quartos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCadastrarQuartosActionPerformed"/>
@@ -92,7 +92,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Cliente"/>
+            <Property name="text" type="java.lang.String" value="Gerenciar Clientes"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

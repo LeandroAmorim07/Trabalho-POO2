@@ -53,14 +53,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botaoCadastrarQuartos.setText("Cadastrar Quartos");
+        botaoCadastrarQuartos.setText("Gerenciar Quartos");
         botaoCadastrarQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarQuartosActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cadastrar Cliente");
+        jButton1.setText("Gerenciar Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

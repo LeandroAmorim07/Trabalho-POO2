@@ -30,6 +30,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popMenuRS = new javax.swing.JPopupMenu();
+        popADD = new javax.swing.JMenuItem();
+        popRemover = new javax.swing.JMenuItem();
         jPanel1 = JPaneLGradient.criarPainelDegrade();
         jPanel2 = new javax.swing.JPanel();
         lblCliente = new javax.swing.JLabel();
@@ -70,6 +73,23 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         btAdd = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
 
+        popADD.setText("Adicionar");
+        popADD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
+        popMenuRS.add(popADD);
+
+        popRemover.setText("Remover");
+        popRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
+        popMenuRS.add(popRemover);
+
+        setTitle("Serviço de Quarto");
         setMaximumSize(new java.awt.Dimension(765, 469));
         setMinimumSize(new java.awt.Dimension(765, 469));
         setResizable(false);
@@ -388,6 +408,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        tabela.setComponentPopupMenu(popMenuRS);
         jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -444,6 +465,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
         btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -582,6 +608,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
          tblSQ.addRow(dados);
     }//GEN-LAST:event_btAddActionPerformed
 
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+       TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tabela.getModel(), tabela);
+    }//GEN-LAST:event_btRemoverActionPerformed
+
     private void habilitarSpinner( JCheckBox chk, JSpinner spn ) {
         if ( chk.isSelected()  ) {
             spn.setEnabled(true);
@@ -659,6 +689,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JLabel lblQTD;
     private javax.swing.JLabel lblQtdbebida;
     private javax.swing.JLabel lblRoomService;
+    private javax.swing.JMenuItem popADD;
+    private javax.swing.JPopupMenu popMenuRS;
+    private javax.swing.JMenuItem popRemover;
     private javax.swing.JSpinner spnBiscoito;
     private javax.swing.JSpinner spnChampanhe;
     private javax.swing.JSpinner spnCoca;
