@@ -240,16 +240,20 @@ public class ReservarQuartos extends javax.swing.JDialog {
 
         jPanel6.setOpaque(false);
 
+        btAdd.setBackground(new java.awt.Color(102, 255, 102));
         btAdd.setForeground(new java.awt.Color(0, 0, 0));
         btAdd.setText("Adicionar");
+        btAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddActionPerformed(evt);
             }
         });
 
+        btRemover.setBackground(new java.awt.Color(255, 51, 51));
         btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
+        btRemover.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRemoverActionPerformed(evt);

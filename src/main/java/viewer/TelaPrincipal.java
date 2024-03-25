@@ -46,6 +46,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 51, 102,80));
         jPanel2.setOpaque(false);
 
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Pedir Serviço de Quarto");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +54,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botaoCadastrarQuartos.setForeground(new java.awt.Color(0, 0, 0));
         botaoCadastrarQuartos.setText("Gerenciar Quartos");
         botaoCadastrarQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Gerenciar Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Reservar Quarto");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -187,16 +187,20 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         pnlAdicionarRemover.setOpaque(false);
 
+        btAdicionar.setBackground(new java.awt.Color(102, 255, 102));
         btAdicionar.setForeground(new java.awt.Color(0, 0, 0));
         btAdicionar.setText("Adicionar");
+        btAdicionar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAdicionarActionPerformed(evt);
             }
         });
 
+        btRemover.setBackground(new java.awt.Color(255, 51, 51));
         btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
+        btRemover.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRemoverActionPerformed(evt);

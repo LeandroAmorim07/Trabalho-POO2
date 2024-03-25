@@ -157,8 +157,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addComponent(lblRoomService))
         );
 
-        jPanel5.setOpaque(false);
-
         lblAperitivos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAperitivos.setForeground(new java.awt.Color(0, 51, 204));
         lblAperitivos.setText("Aperitivos");
@@ -273,9 +271,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                     .addComponent(spnRuffles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
-
-        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.setOpaque(false);
 
         lblBebidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblBebidas.setForeground(new java.awt.Color(0, 51, 204));
@@ -455,16 +450,20 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
         jPanel8.setOpaque(false);
 
+        btAdd.setBackground(new java.awt.Color(153, 255, 153));
         btAdd.setForeground(new java.awt.Color(0, 0, 0));
         btAdd.setText("Adicionar");
+        btAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddActionPerformed(evt);
             }
         });
 
+        btRemover.setBackground(new java.awt.Color(255, 51, 51));
         btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
+        btRemover.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRemoverActionPerformed(evt);
