@@ -36,13 +36,13 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel1 = JPaneLGradient.criarPainelDegrade();
         jPanel2 = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
-        txtCelular = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         lblCelular = new javax.swing.JLabel();
         lblCPF = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JFormattedTextField();
+        txtCelular = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         lblGerenciarClientes = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -99,6 +99,18 @@ public class CadastrarClientes extends javax.swing.JDialog {
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("Email");
 
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -113,9 +125,9 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(txtCelular)
                     .addComponent(txtNome)
-                    .addComponent(txtCPF))
+                    .addComponent(txtCPF)
+                    .addComponent(txtCelular))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -392,8 +404,8 @@ public class CadastrarClientes extends javax.swing.JDialog {
     private javax.swing.JPopupMenu popClientes;
     private javax.swing.JMenuItem popRemover;
     private javax.swing.JTable tblClientes;
-    private javax.swing.JTextField txtCPF;
-    private javax.swing.JTextField txtCelular;
+    private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JFormattedTextField txtCelular;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
