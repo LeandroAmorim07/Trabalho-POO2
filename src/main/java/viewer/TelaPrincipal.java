@@ -31,10 +31,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        botaoCadastrarQuartos = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btServicoQuarto = new javax.swing.JButton();
+        btGerenciarQuartos = new javax.swing.JButton();
+        btGerenciarCliente = new javax.swing.JButton();
+        btReserva = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,35 +46,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 51, 102,80));
         jPanel2.setOpaque(false);
 
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Pedir Serviço de Quarto");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btServicoQuarto.setBackground(new java.awt.Color(249,249,241));
+        btServicoQuarto.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btServicoQuarto.setForeground(new java.awt.Color(71, 111, 85));
+        btServicoQuarto.setText("Pedir Serviço de Quarto");
+        btServicoQuarto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btServicoQuartoActionPerformed(evt);
             }
         });
 
-        botaoCadastrarQuartos.setForeground(new java.awt.Color(0, 0, 0));
-        botaoCadastrarQuartos.setText("Gerenciar Quartos");
-        botaoCadastrarQuartos.addActionListener(new java.awt.event.ActionListener() {
+        btGerenciarQuartos.setBackground(new java.awt.Color(249, 249, 241));
+        btGerenciarQuartos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btGerenciarQuartos.setForeground(new java.awt.Color(71, 111, 85));
+        btGerenciarQuartos.setText("Gerenciar Quartos");
+        btGerenciarQuartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastrarQuartosActionPerformed(evt);
+                btGerenciarQuartosActionPerformed(evt);
             }
         });
 
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Gerenciar Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btGerenciarCliente.setBackground(new java.awt.Color(249, 249, 241));
+        btGerenciarCliente.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btGerenciarCliente.setForeground(new java.awt.Color(71, 111, 85));
+        btGerenciarCliente.setText("Gerenciar Clientes");
+        btGerenciarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btGerenciarClienteActionPerformed(evt);
             }
         });
 
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Reservar Quarto");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btReserva.setBackground(new java.awt.Color(249, 249, 241));
+        btReserva.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btReserva.setForeground(new java.awt.Color(71, 111, 85));
+        btReserva.setText("Reservar Quarto");
+        btReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btReservaActionPerformed(evt);
             }
         });
 
@@ -83,29 +91,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoCadastrarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(btGerenciarQuartos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btGerenciarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btServicoQuarto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(botaoCadastrarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(btGerenciarQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btGerenciarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btServicoQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 250, 550));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 250, 550));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/_8d79d9c7-7bb0-41d8-8bec-4f3af2d6b24c.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
@@ -119,30 +127,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoCadastrarQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarQuartosActionPerformed
+    private void btGerenciarQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGerenciarQuartosActionPerformed
        uiManeger.getInstance().abrirCadQuarto();
-    }//GEN-LAST:event_botaoCadastrarQuartosActionPerformed
+    }//GEN-LAST:event_btGerenciarQuartosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservaActionPerformed
       uiManeger.getInstance().abrirResQuartos();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btReservaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btGerenciarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGerenciarClienteActionPerformed
         uiManeger.getInstance().abrirCadCliente();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btGerenciarClienteActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btServicoQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btServicoQuartoActionPerformed
         uiManeger.getInstance().abrirServQuartos();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btServicoQuartoActionPerformed
 
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoCadastrarQuartos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btGerenciarCliente;
+    private javax.swing.JButton btGerenciarQuartos;
+    private javax.swing.JButton btReserva;
+    private javax.swing.JButton btServicoQuarto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;

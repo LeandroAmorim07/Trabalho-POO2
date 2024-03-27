@@ -38,7 +38,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="30" width="250" height="550"/>
+          <AbsoluteConstraints x="50" y="110" width="250" height="550"/>
         </Constraint>
       </Constraints>
 
@@ -46,14 +46,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="botaoCadastrarQuartos" pref="190" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
-                      <Component id="jButton4" max="32767" attributes="0"/>
-                      <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btGerenciarQuartos" max="32767" attributes="0"/>
+                      <Component id="btGerenciarCliente" max="32767" attributes="0"/>
+                      <Component id="btServicoQuarto" max="32767" attributes="0"/>
+                      <Component id="btReserva" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -61,61 +61,85 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="botaoCadastrarQuartos" min="-2" pref="94" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="95" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="96" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <Component id="btGerenciarQuartos" min="-2" pref="94" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btGerenciarCliente" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btReserva" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="btServicoQuarto" min="-2" pref="96" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btServicoQuarto">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(249,249,241)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(71, 111, 85)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pedir Servi&#xe7;o de Quarto"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btServicoQuartoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botaoCadastrarQuartos">
+        <Component class="javax.swing.JButton" name="btGerenciarQuartos">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(249, 249, 241)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(71, 111, 85)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gerenciar Quartos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoCadastrarQuartosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btGerenciarQuartosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btGerenciarCliente">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(249, 249, 241)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(71, 111, 85)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gerenciar Clientes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btGerenciarClienteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btReserva">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(249, 249, 241)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(71, 111, 85)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Reservar Quarto"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btReservaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
