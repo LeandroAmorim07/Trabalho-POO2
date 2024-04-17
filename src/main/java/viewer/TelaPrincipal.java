@@ -79,7 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btReserva.setBackground(new java.awt.Color(249, 249, 241));
         btReserva.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btReserva.setForeground(new java.awt.Color(71, 111, 85));
-        btReserva.setText("Reservar Quarto");
+        btReserva.setText("Gerenciar Estadia");
         btReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btReservaActionPerformed(evt);

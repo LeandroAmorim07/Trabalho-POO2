@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
-import viewer.ReservarQuartos;
+import viewer.GerenciarEstadia;
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
@@ -30,7 +30,7 @@ import viewer.TelaPrincipal;
     private TelaPrincipal frmPrinc = null;
     private CadastrarQuartos cq = null;
     private CadastrarClientes cc=null;
-    private ReservarQuartos rq=null;
+    private GerenciarEstadia rq=null;
     private ServicoDeQuartos sq=null;
     
    
@@ -124,7 +124,7 @@ public class TableUtilidades{
      
      
       public void abrirResQuartos(){
-        rq = (ReservarQuartos) abrirJanela(frmPrinc, rq, ReservarQuartos.class  );
+        rq = (GerenciarEstadia) abrirJanela(frmPrinc, rq, GerenciarEstadia.class  );
      }
       
        public void abrirServQuartos(){
