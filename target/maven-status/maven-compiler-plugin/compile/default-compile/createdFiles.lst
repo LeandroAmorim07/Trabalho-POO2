@@ -5,8 +5,10 @@ viewer\ServicoDeQuartos$12.class
 viewer\ServicoDeQuartos$6.class
 viewer\GerenciarEstadia$2.class
 viewer\ServicoDeQuartos$3.class
+model\Quarto.class
 viewer\GerenciarEstadia$6.class
 viewer\CadastrarClientes.class
+model\Cliente.class
 viewer\CadastrarQuartos$1.class
 viewer\TelaPrincipal$3.class
 viewer\CadastrarClientes$5.class
@@ -17,6 +19,9 @@ viewer\TelaPrincipal$4.class
 viewer\TelaPrincipal$1.class
 viewer\ServicoDeQuartos.class
 viewer\CadastrarClientes$2.class
+model\ItemPedido.class
+model\Item.class
+model\Estadia.class
 viewer\CadastrarClientes$6$1.class
 viewer\GerenciarEstadia$3.class
 control\uiManeger$JPaneLGradient$1.class
@@ -36,6 +41,7 @@ viewer\CadastrarClientes$1.class
 viewer\CadastrarQuartos$4.class
 viewer\ServicoDeQuartos$14$1.class
 viewer\CadastrarClientes$4.class
+model\PedidoSQ.class
 viewer\TelaPrincipal.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
