@@ -4,17 +4,35 @@
  */
 package model;
 
-/**
- *
- * @author 2022122760117
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Cliente {
+    @Id
+    @GeneratedValue (strategy =GenerationType.IDENTITY)
     private int idCliente;
+    
+    @Column(nullable = false)
     private String nomeCliente;
+     @Column(nullable = false)
     private int telefoneCliente;
+     @Column(nullable = false)
     private String email;
+     @Column(nullable = false, unique=true)
     private String cpf;
 
+     
+     
+     
+     
+     
+     
+     
     public Cliente(int idCliente, String nomeCliente, int telefoneCliente, String email, String cpf) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;

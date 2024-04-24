@@ -1,0 +1,20 @@
+
+                                                                                             
+<hibernate-configuration>
+  <session-factory>
+   <property name="connection.url">jdbc:postgresql:localhost:5432/HotelLotus</property> 
+   <property name="connection.driver_class">org.postgresql.Driver</property> 
+   <property name="connection.username">postgres</property> 
+   <property name="connection.password">postgres</property> 
+   <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> 
+    
+    <property name="hibernate.hbm2ddl.auto">create</property>   
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    
+    <mapping class="model.Cliente"></mapping>
+   
+        
+    
+  </session-factory>
+</hibernate-configuration>

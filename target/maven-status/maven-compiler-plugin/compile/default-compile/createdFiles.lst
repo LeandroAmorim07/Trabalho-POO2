@@ -29,6 +29,7 @@ viewer\ServicoDeQuartos$9.class
 viewer\GerenciarEstadia.class
 viewer\GerenciarEstadia$4.class
 viewer\ServicoDeQuartos$1.class
+control\DomainManeger.class
 viewer\ServicoDeQuartos$8.class
 viewer\CadastrarQuartos$7.class
 viewer\CadastrarQuartos$3.class
@@ -43,6 +44,7 @@ viewer\ServicoDeQuartos$14$1.class
 viewer\CadastrarClientes$4.class
 model\PedidoSQ.class
 viewer\TelaPrincipal.class
+dao\ConexaoHibernate.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
 viewer\ServicoDeQuartos$7.class

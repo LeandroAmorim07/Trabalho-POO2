@@ -10,6 +10,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,9 +38,27 @@ import viewer.TelaPrincipal;
 
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
+    private DomainManeger gerDom;    
      
     public static uiManeger getInstance() {
         return myInstance;       
+    }
+      
+      
+        // Construtor PRIVADO
+    private uiManeger() {
+        //JOptionPane.showMessageDialog(frmPrinc, "Construtor de IG" );
+        try {
+            gerDom = new DomainManeger();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(frmPrinc, "Erro de classe. " + ex.getMessage() );
+            System.exit(0);
+                    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(frmPrinc, "Erro de SQL. " + ex.getMessage() );
+            System.exit(0);
+        }
+       
     }
     
     
@@ -131,6 +150,10 @@ public class TableUtilidades{
         sq = (ServicoDeQuartos) abrirJanela(frmPrinc, sq, ServicoDeQuartos.class  );
      }
       
+       
+       public DomainManeger getDomainManeger() {
+        return gerDom;       
+    }
       
     public static void main(String args[]) {
      
