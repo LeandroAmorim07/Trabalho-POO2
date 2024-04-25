@@ -4,8 +4,8 @@
  */
 package model;
 
-import java.awt.List;
-import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -14,14 +14,20 @@ import java.util.ArrayList;
 public class Item {
     private int idItem;
     private double valor;
-    private List comida;
+    private List<ItemPedido> itensPedido;
 
-    public Item(int idItem, double valor, List comida) {
+    public Item(int idItem, double valor, List<ItemPedido> itensPedido) {
         this.idItem = idItem;
         this.valor = valor;
-        this.comida = comida;
+        this.itensPedido = itensPedido;
     }
 
+   
+
+    public Item() {
+    }
+
+    
     
     
 }
