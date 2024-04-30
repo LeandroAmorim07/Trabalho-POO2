@@ -4,11 +4,16 @@
  */
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author 2022122760117
  */
+@Entity
 public class Quarto {
+    @Id
     private int numQuarto;
     private String tipoQuarto;
     private String cama;

@@ -5,8 +5,12 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 /**
@@ -21,10 +25,15 @@ public class Estadia {
     private Date checkOut;
     private double valortotalSQ;
     private double valorTotalEstadia;
-    @Transient
+    @ManyToOne
+    @JoinColumn(name="idCliente")
     private Cliente cliente;
-    @Transient
+    
+    @ManyToOne
+    @JoinColumn(name="idQuarto")
     private Quarto quarto;
+   
+    
 
     public Estadia(int idEstadia, Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
         this.idEstadia = idEstadia;

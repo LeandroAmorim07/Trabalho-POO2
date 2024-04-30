@@ -4,42 +4,46 @@
  */
 package model;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.OneToMany;
 
-/**
- *
- * @author 2022122760117
- */
+
+
 @Entity
 public class PedidoSQ {
     @Id
    private int idPedidoSQ;
-   private int valorTotal;
-   @Transient
-   private Estadia estadia;
+   private double valorTotal;
    @ManyToOne
+   @JoinColumn (name="idEstadia")
+   private Estadia estadia;
+   @OneToMany
    @JoinColumn(name="idItemPedido")
-   private ItemPedido itemPedido;
+   private  List <ItemPedido> itemPedido;
 
-    public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia, ItemPedido itemPedido) {
+    public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia, List<ItemPedido> itemPedido) {
         this.idPedidoSQ = idPedidoSQ;
         this.valorTotal = valorTotal;
         this.estadia = estadia;
         this.itemPedido = itemPedido;
     }
 
-    public ItemPedido getItemPedido() {
+    public List<ItemPedido> getItemPedido() {
         return itemPedido;
     }
 
-    public void setItemPedido(ItemPedido itemPedido) {
-        this.itemPedido = itemPedido;
+    public double getValorTotal() {
+        return valorTotal;
     }
    
+  
+
+  
+  
 
 
     public PedidoSQ() {
@@ -53,9 +57,7 @@ public class PedidoSQ {
         this.idPedidoSQ = idPedidoSQ;
     }
 
-    public int getValorTotal() {
-        return valorTotal;
-    }
+ 
 
     public void setValorTotal(int valorTotal) {
         this.valorTotal = valorTotal;

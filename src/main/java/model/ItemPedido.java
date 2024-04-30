@@ -28,7 +28,9 @@ public class ItemPedido {
     private int qtdPepsi;
     private int qtdDelValle;
     private int qtdChampanhe;
-    @Transient
+    
+    @ManyToOne
+    @JoinColumn(name="idPedidoSQ")
     private PedidoSQ pedidosq;
     
     @ManyToOne
