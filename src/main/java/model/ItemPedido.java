@@ -4,12 +4,22 @@
  */
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
 /**
  *
  * @author 2022122760117
  */
+
+@Entity
 public class ItemPedido {
-    private int idPedido;
+    @Id
+    private int idItemPedido;
     private int qtdHamb;
     private int qtdXburguer;
     private int qtdOreo;
@@ -18,9 +28,15 @@ public class ItemPedido {
     private int qtdPepsi;
     private int qtdDelValle;
     private int qtdChampanhe;
+    @Transient
     private PedidoSQ pedidosq;
+    
+    @ManyToOne
+    @JoinColumn(name="idItem")
     private Item item;
 
+    
+    
     public PedidoSQ getPedidosq() {
         return pedidosq;
     }
@@ -30,7 +46,7 @@ public class ItemPedido {
     }
 
     public ItemPedido(int idPedido, int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, PedidoSQ pedidosq, Item item) {
-        this.idPedido = idPedido;
+        this.idItemPedido = idPedido;
         this.qtdHamb = qtdHamb;
         this.qtdXburguer = qtdXburguer;
         this.qtdOreo = qtdOreo;
@@ -49,11 +65,11 @@ public class ItemPedido {
     }
 
     public int getIdPedido() {
-        return idPedido;
+        return idItemPedido;
     }
 
     public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
+        this.idItemPedido = idPedido;
     }
 
     public int getQtdHamb() {

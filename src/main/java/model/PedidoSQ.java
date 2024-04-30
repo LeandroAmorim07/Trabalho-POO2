@@ -4,20 +4,43 @@
  */
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
 /**
  *
  * @author 2022122760117
  */
+@Entity
 public class PedidoSQ {
+    @Id
    private int idPedidoSQ;
    private int valorTotal;
+   @Transient
    private Estadia estadia;
+   @ManyToOne
+   @JoinColumn(name="idItemPedido")
+   private ItemPedido itemPedido;
 
-    public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia) {
+    public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia, ItemPedido itemPedido) {
         this.idPedidoSQ = idPedidoSQ;
         this.valorTotal = valorTotal;
         this.estadia = estadia;
+        this.itemPedido = itemPedido;
     }
+
+    public ItemPedido getItemPedido() {
+        return itemPedido;
+    }
+
+    public void setItemPedido(ItemPedido itemPedido) {
+        this.itemPedido = itemPedido;
+    }
+   
+
 
     public PedidoSQ() {
     }

@@ -5,18 +5,25 @@
 package model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
  * @author 2022122760117
  */
+@Entity
 public class Estadia {
+    @Id
     private int idEstadia;
     private Date checkin;
     private Date checkOut;
     private double valortotalSQ;
     private double valorTotalEstadia;
+    @Transient
     private Cliente cliente;
+    @Transient
     private Quarto quarto;
 
     public Estadia(int idEstadia, Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
