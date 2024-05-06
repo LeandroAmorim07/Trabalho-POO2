@@ -4,11 +4,14 @@
  */
 package model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -25,22 +28,31 @@ public class Cliente {
     private String email;
      @Column(nullable = false, unique=true, length=60)
     private String cpf;
+     @OneToMany
+     @JoinColumn (name="idEstadia")
+    private List<Estadia> estadia;
 
-     
-     
-     
-     
-     
-     
-     
-    public Cliente(int idCliente, String nomeCliente, int telefoneCliente, String email, String cpf) {
+    public Cliente(int idCliente, String nomeCliente, int telefoneCliente, String email, String cpf, List<Estadia> estadia) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
         this.email = email;
         this.cpf = cpf;
+        this.estadia = estadia;
     }
 
+    public List<Estadia> getEstadia() {
+        return estadia;
+    }
+    
+     
+     
+     
+     
+     
+     
+     
+    
     public Cliente() {
     }
 
