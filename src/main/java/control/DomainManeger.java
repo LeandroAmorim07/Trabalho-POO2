@@ -16,6 +16,7 @@ public class DomainManeger {
     private GenericDao genDao;
     
    public DomainManeger() throws ClassNotFoundException, SQLException {
+       genDao= new GenericDao();
         
         ConexaoHibernate.getSessionFactory().openSession();
         //swxo
@@ -25,7 +26,7 @@ public class DomainManeger {
    public List<Cliente> ListarCliente(){
        return genDao.listar(Cliente.class);   }
 
-  public int inserirCliente(String nome, int telefone, String email,String cpf, List<Estadia> estadia){
+  public int inserirCliente(String nome, String telefone, String email,String cpf, List<Estadia> estadia){
       Cliente cli = new Cliente(nome,telefone,email,cpf,estadia);
       genDao.inserir(cli);
       return cli.getIdCliente();

@@ -22,8 +22,8 @@ public class Cliente {
     
     @Column(nullable = false, length = 40)
     private String nomeCliente;
-     @Column(nullable = false)
-    private int telefoneCliente;
+     @Column(nullable = false, length =15)
+    private String telefoneCliente;
      @Column(nullable = false, length = 60)
     private String email;
      @Column(nullable = false, unique=true, length=60)
@@ -32,7 +32,7 @@ public class Cliente {
      @JoinColumn (name="idEstadia")
     private List<Estadia> estadia;
 //com id
-    public Cliente(int idCliente, String nomeCliente, int telefoneCliente, String email, String cpf, List<Estadia> estadia) {
+    public Cliente(int idCliente, String nomeCliente, String telefoneCliente, String email, String cpf, List<Estadia> estadia) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
@@ -41,7 +41,7 @@ public class Cliente {
         this.estadia = estadia;
     }
 //sem id
-    public Cliente(String nomeCliente, int telefoneCliente, String email, String cpf, List<Estadia> estadia) {
+    public Cliente(String nomeCliente, String telefoneCliente, String email, String cpf, List<Estadia> estadia) {
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
         this.email = email;
@@ -80,13 +80,17 @@ public class Cliente {
         this.nomeCliente = nomeCliente;
     }
 
-    public int getTelefoneCliente() {
+    public String getTelefoneCliente() {
         return telefoneCliente;
     }
 
-    public void setTelefoneCliente(int telefoneCliente) {
+    public void setTelefoneCliente(String telefoneCliente) {
         this.telefoneCliente = telefoneCliente;
     }
+
+   
+
+    
 
     public String getEmail() {
         return email;

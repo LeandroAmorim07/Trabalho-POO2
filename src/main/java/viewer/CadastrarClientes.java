@@ -5,9 +5,11 @@
 package viewer;
 
 
+import control.uiManeger;
 import javax.swing.table.DefaultTableModel;
 import  control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
+import static java.lang.Integer.parseInt;
 
 public class CadastrarClientes extends javax.swing.JDialog {
 
@@ -350,12 +352,13 @@ public class CadastrarClientes extends javax.swing.JDialog {
        Object[] dados ={
         txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText()
     };
+       uiManeger.getInstance().getDomainManeger().inserirCliente(txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText(),null);
        tblCliente.addRow(dados);
        
     }//GEN-LAST:event_btAdicionarClientesActionPerformed
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
-        TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tblClientes.getModel(), tblClientes);
+       uiManeger.TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tblClientes.getModel(), tblClientes);
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
