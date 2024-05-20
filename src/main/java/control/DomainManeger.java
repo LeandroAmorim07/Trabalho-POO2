@@ -9,6 +9,7 @@ import dao.GenericDao;
 import java.sql.SQLException;
 import java.util.List;
 import model.Cliente;
+import model.Estadia;
 
 
 public class DomainManeger {
@@ -24,5 +25,10 @@ public class DomainManeger {
    public List<Cliente> ListarCliente(){
        return genDao.listar(Cliente.class);   }
 
-  
+  public int inserirCliente(String nome, int telefone, String email,String cpf, List<Estadia> estadia){
+      Cliente cli = new Cliente(nome,telefone,email,cpf,estadia);
+      genDao.inserir(cli);
+      return cli.getIdCliente();
+      
+  }
 }
