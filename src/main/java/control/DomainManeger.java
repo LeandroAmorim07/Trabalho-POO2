@@ -5,17 +5,24 @@
 package control;
 
 import dao.ConexaoHibernate;
+import dao.GenericDao;
 import java.sql.SQLException;
+import java.util.List;
+import model.Cliente;
 
 
 public class DomainManeger {
-    
+    private GenericDao genDao;
     
    public DomainManeger() throws ClassNotFoundException, SQLException {
-        // TESTE
-        // ConexaoMySQL.getConexao();
+        
         ConexaoHibernate.getSessionFactory().openSession();
+        //swxo
+        
    }
+   
+   public List<Cliente> ListarCliente(){
+       return genDao.listar(Cliente.class);   }
 
   
 }

@@ -31,9 +31,17 @@ public class Cliente {
      @OneToMany
      @JoinColumn (name="idEstadia")
     private List<Estadia> estadia;
-
+//com id
     public Cliente(int idCliente, String nomeCliente, int telefoneCliente, String email, String cpf, List<Estadia> estadia) {
         this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
+        this.telefoneCliente = telefoneCliente;
+        this.email = email;
+        this.cpf = cpf;
+        this.estadia = estadia;
+    }
+//sem id
+    public Cliente(String nomeCliente, int telefoneCliente, String email, String cpf, List<Estadia> estadia) {
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
         this.email = email;
