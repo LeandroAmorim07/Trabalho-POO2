@@ -11,7 +11,7 @@ import java.util.List;
 import model.Cliente;
 import model.Estadia;
 
-
+//sexo com robos
 public class DomainManeger {
     private GenericDao genDao;
     
