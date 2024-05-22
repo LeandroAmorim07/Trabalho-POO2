@@ -45,8 +45,8 @@ public class ClienteAbstractTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0: return item.getNomeCliente();
             case 1: return item.getTelefoneCliente();
-            case 2: return item.getCpf();
-            case 3: return item.getEmail();
+            case 2: return item.getEmail();
+            case 3: return item.getCpf();
             
             default: return null;
         }

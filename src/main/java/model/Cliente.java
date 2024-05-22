@@ -32,21 +32,26 @@ public class Cliente {
      @JoinColumn (name="idEstadia")
     private List<Estadia> estadia;
 //com id
-    public Cliente(int idCliente, String nomeCliente, String telefoneCliente, String email, String cpf, List<Estadia> estadia) {
+   
+
+    public Cliente(int idCliente, String nomeCliente, String telefoneCliente, String email, String cpf) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
         this.email = email;
         this.cpf = cpf;
-        this.estadia = estadia;
     }
+    
+    
+    
 //sem id
-    public Cliente(String nomeCliente, String telefoneCliente, String email, String cpf, List<Estadia> estadia) {
+   
+
+    public Cliente(String nomeCliente, String telefoneCliente, String email, String cpf) {
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
         this.email = email;
         this.cpf = cpf;
-        this.estadia = estadia;
     }
 
     public List<Estadia> getEstadia() {

@@ -216,6 +216,11 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Alterar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarClientesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -392,59 +397,69 @@ public class CadastrarClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClientesActionPerformed
-         String nome =txtNome.getText();
-        String celular=txtCelular.getText();
+        String nome = txtNome.getText();
+        String celular = txtCelular.getText();
         String cpf = txtCPF.getText();
-        String email=txtEmail.getText();
-        
+        String email = txtEmail.getText();
+
         Cliente cli = new Cliente();
         cli.setNomeCliente(nome);
         cli.setTelefoneCliente(celular);
-         cli.setCpf(cpf);
+        cli.setCpf(cpf);
         cli.setEmail(email);
-       
 
-        uiManeger.getInstance().getDomainManeger().inserirCliente(txtNome.getText(), txtCelular.getText(),txtEmail.getText(), txtCPF.getText(), null);
-        cliTableModel.adicionar(cli);
+        if (cliSelecionado != null) {
+            try {
+                uiManeger.getInstance().getDomainManeger().alterarCliente(cliSelecionado.getIdCliente(), nome, celular, email, cpf);
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "Cliente " + cliSelecionado.getIdCliente() + " alterado com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
+            atualizarTabelaClientes();
+            limparCampos();
+        } else {
+            uiManeger.getInstance().getDomainManeger().inserirCliente(txtNome.getText(), txtCelular.getText(), txtEmail.getText(), txtCPF.getText());
+            cliTableModel.adicionar(cli);
+            limparCampos();
+            JOptionPane.showMessageDialog(this, "Cliente " + cli.getIdCliente() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_btAdicionarClientesActionPerformed
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
-    int index =tblClientes.getSelectedRow();
-    cliTableModel.remover(index);
-        
+        int index = tblClientes.getSelectedRow();
+        cliTableModel.remover(index);
+
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         ClienteAbstractTableModel model = (ClienteAbstractTableModel) tblClientes.getModel();
-    
-  
-    int selectedRowIndex = tblClientes.getSelectedRow();
-    
-   
-    if (selectedRowIndex != -1) {
-        
-        String nome = model.getValueAt(selectedRowIndex, 0).toString();
-        String celular= model.getValueAt(selectedRowIndex, 1).toString();
-        String cpf = model.getValueAt(selectedRowIndex, 3).toString();
-        String email = model.getValueAt(selectedRowIndex, 2).toString();
-        
 
-        
-        Cliente cliente = new Cliente();
-        cliente.setNomeCliente(nome);
-        cliente.setTelefoneCliente(celular);
-        cliente.setCpf(cpf);
-        cliente.setEmail(email);
-        
+        int linha = tblClientes.getSelectedRow();
+        if (linha >= 0) {
 
-      
-        preencherCampos(cliente);
-    } else {
-        // Opcional: Mostrar uma mensagem de erro se nenhuma linha estiver selecionada
-        JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
-    }     
+            cliSelecionado = cliTableModel.getCliente(linha);
+        }
+
+        if (linha != -1) {
+
+            String nome = model.getValueAt(linha, 0).toString();
+            String celular = model.getValueAt(linha, 1).toString();
+            String cpf = model.getValueAt(linha, 3).toString();
+            String email = model.getValueAt(linha, 2).toString();
+
+            Cliente cliente = new Cliente();
+            cliente.setNomeCliente(nome);
+            cliente.setTelefoneCliente(celular);
+            cliente.setCpf(cpf);
+            cliente.setEmail(email);
+
+            preencherCampos(cliente);
+        } else {
+            // Opcional: Mostrar uma mensagem de erro se nenhuma linha estiver selecionada
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
+        }
 
     }//GEN-LAST:event_btSelecionarActionPerformed
 
@@ -455,6 +470,20 @@ public class CadastrarClientes extends javax.swing.JDialog {
             txtCPF.setText(cliente.getCpf());
             txtEmail.setText(cliente.getEmail());
         }
+    }
+    
+    private void limparCampos() {
+        txtNome.setText("");
+        txtCelular.setText("");
+        txtCPF.setText("");
+        txtEmail.setText("");
+        cliSelecionado = null; // Reset the selected client
+    }
+
+    private void atualizarTabelaClientes() {
+        List<Cliente> lista = uiManeger.getInstance().getDomainManeger().ListarCliente();
+        cliTableModel.setLista(lista);
+        cliTableModel.fireTableDataChanged(); // Notifica a tabela que os dados foram atualizados
     }
 
     /**

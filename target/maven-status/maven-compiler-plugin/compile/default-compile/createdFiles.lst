@@ -1,7 +1,6 @@
 viewer\CadastrarQuartos.class
 viewer\CadastrarClientes$6.class
 control\uiManeger$TableUtilidades.class
-viewer\CadastrarClientes$7$1.class
 viewer\ServicoDeQuartos$12.class
 viewer\ServicoDeQuartos$6.class
 viewer\GerenciarEstadia$2.class
@@ -21,6 +20,7 @@ viewer\TelaPrincipal$1.class
 viewer\ServicoDeQuartos.class
 viewer\CadastrarClientes$2.class
 model\ItemPedido.class
+viewer\CadastrarClientes$8.class
 model\Item.class
 model\Estadia.class
 viewer\GerenciarEstadia$3.class
@@ -32,6 +32,7 @@ viewer\ServicoDeQuartos$1.class
 control\DomainManeger.class
 viewer\ServicoDeQuartos$8.class
 viewer\CadastrarQuartos$7.class
+viewer\CadastrarClientes$8$1.class
 viewer\CadastrarQuartos$3.class
 viewer\GerenciarEstadia$7.class
 viewer\GerenciarEstadia$1.class
