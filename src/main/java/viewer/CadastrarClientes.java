@@ -4,42 +4,40 @@
  */
 package viewer;
 
-
+import control.ClienteAbstractTableModel;
 import control.uiManeger;
 import javax.swing.table.DefaultTableModel;
-import  control.uiManeger.JPaneLGradient;
+import control.uiManeger.JPaneLGradient;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Cliente;
-
 
 public class CadastrarClientes extends javax.swing.JDialog {
 
-    /**
-     * Creates new form CadastrarClientes
-     */
+    private Cliente cliSelecionado = null;
+
+    private ClienteAbstractTableModel cliTableModel;
+
     public CadastrarClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         setSize(765,400);
-        setLocation(500,100);
-        List<Cliente> lista = null;
-        lista=uiManeger.getInstance().getDomainManeger().ListarCliente();
-                   DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
-        model.setRowCount(0);
-    // Adiciona os resultados da pesquisa à tabela
-        for (Cliente autom : lista) {
-            Object[] rowData = {autom.getNomeCliente(),autom.getTelefoneCliente(),autom.getCpf(),autom.getEmail()};
-            model.addRow(rowData);
-            
-        }
-       
+        setSize(765, 400);
+        setLocation(500, 100);
+
+        cliTableModel = new ClienteAbstractTableModel();
+        tblClientes.setModel(cliTableModel);
+
+        List<Cliente> lista = uiManeger.getInstance().getDomainManeger().ListarCliente();
+
+        ClienteAbstractTableModel clienteTableModel = (ClienteAbstractTableModel) tblClientes.getModel();
+        clienteTableModel.setLista(lista);
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,12 +60,14 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         btAdicionarClientes = new javax.swing.JButton();
         btRemoverClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         lblClientesCad = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        btSelecionar = new javax.swing.JButton();
 
         popAdicionar.setText("Adicionar");
         popAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,6 +212,11 @@ public class CadastrarClientes extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 153, 51));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Alterar");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -221,16 +226,19 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addComponent(btAdicionarClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btRemoverClientes)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAdicionarClientes)
-                    .addComponent(btRemoverClientes))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btRemoverClientes)
+                    .addComponent(jButton1))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel5.setOpaque(false);
@@ -294,12 +302,34 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setOpaque(false);
+
+        btSelecionar.setBackground(new java.awt.Color(204, 255, 255));
+        btSelecionar.setForeground(new java.awt.Color(0, 0, 0));
+        btSelecionar.setText("Selecionar");
+        btSelecionar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btSelecionarActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(btSelecionar)
+                .addGap(50, 50, 50))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btSelecionar)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -311,17 +341,21 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(166, 166, 166))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
@@ -334,15 +368,13 @@ public class CadastrarClientes extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -360,24 +392,70 @@ public class CadastrarClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClientesActionPerformed
-       DefaultTableModel tblCliente = (DefaultTableModel) tblClientes.getModel();
-       Object[] dados ={
-        txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText()
-    };
+         String nome =txtNome.getText();
+        String celular=txtCelular.getText();
+        String cpf = txtCPF.getText();
+        String email=txtEmail.getText();
+        
+        Cliente cli = new Cliente();
+        cli.setNomeCliente(nome);
+        cli.setTelefoneCliente(celular);
+         cli.setCpf(cpf);
+        cli.setEmail(email);
        
-       uiManeger.getInstance().getDomainManeger().inserirCliente(txtNome.getText(),txtCelular.getText(),txtCPF.getText(),txtEmail.getText(),null);
-       tblCliente.addRow(dados);
-       
-       
+
+        uiManeger.getInstance().getDomainManeger().inserirCliente(txtNome.getText(), txtCelular.getText(),txtEmail.getText(), txtCPF.getText(), null);
+        cliTableModel.adicionar(cli);
+
+
     }//GEN-LAST:event_btAdicionarClientesActionPerformed
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
-       uiManeger.TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tblClientes.getModel(), tblClientes);
+    int index =tblClientes.getSelectedRow();
+    cliTableModel.remover(index);
+        
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-       
-    }//GEN-LAST:event_btnPesquisarActionPerformed
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        ClienteAbstractTableModel model = (ClienteAbstractTableModel) tblClientes.getModel();
+    
+  
+    int selectedRowIndex = tblClientes.getSelectedRow();
+    
+   
+    if (selectedRowIndex != -1) {
+        
+        String nome = model.getValueAt(selectedRowIndex, 0).toString();
+        String celular= model.getValueAt(selectedRowIndex, 1).toString();
+        String cpf = model.getValueAt(selectedRowIndex, 3).toString();
+        String email = model.getValueAt(selectedRowIndex, 2).toString();
+        
+
+        
+        Cliente cliente = new Cliente();
+        cliente.setNomeCliente(nome);
+        cliente.setTelefoneCliente(celular);
+        cliente.setCpf(cpf);
+        cliente.setEmail(email);
+        
+
+      
+        preencherCampos(cliente);
+    } else {
+        // Opcional: Mostrar uma mensagem de erro se nenhuma linha estiver selecionada
+        JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
+    }     
+
+    }//GEN-LAST:event_btSelecionarActionPerformed
+
+    private void preencherCampos(Cliente cliente) {
+        if (cliente != null) {
+            txtNome.setText(cliente.getNomeCliente());
+            txtCelular.setText(cliente.getTelefoneCliente());
+            txtCPF.setText(cliente.getCpf());
+            txtEmail.setText(cliente.getEmail());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -424,13 +502,15 @@ public class CadastrarClientes extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionarClientes;
     private javax.swing.JButton btRemoverClientes;
-    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btSelecionar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCelular;

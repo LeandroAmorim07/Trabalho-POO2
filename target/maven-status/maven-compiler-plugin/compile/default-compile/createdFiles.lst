@@ -1,6 +1,7 @@
 viewer\CadastrarQuartos.class
 viewer\CadastrarClientes$6.class
 control\uiManeger$TableUtilidades.class
+viewer\CadastrarClientes$7$1.class
 viewer\ServicoDeQuartos$12.class
 viewer\ServicoDeQuartos$6.class
 viewer\GerenciarEstadia$2.class
@@ -22,7 +23,6 @@ viewer\CadastrarClientes$2.class
 model\ItemPedido.class
 model\Item.class
 model\Estadia.class
-viewer\CadastrarClientes$6$1.class
 viewer\GerenciarEstadia$3.class
 control\uiManeger$JPaneLGradient$1.class
 viewer\ServicoDeQuartos$9.class
@@ -48,10 +48,13 @@ dao\ConexaoHibernate.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
 viewer\ServicoDeQuartos$7.class
+viewer\CadastrarClientes$7.class
 control\uiManeger.class
+dao\GenericDao.class
 viewer\TelaPrincipal$2.class
 viewer\ServicoDeQuartos$13.class
 viewer\CadastrarQuartos$2.class
 viewer\ServicoDeQuartos$4.class
 viewer\CadastrarQuartos$5.class
 viewer\ServicoDeQuartos$10.class
+control\ClienteAbstractTableModel.class
