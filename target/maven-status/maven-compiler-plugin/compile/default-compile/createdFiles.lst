@@ -5,11 +5,16 @@ viewer\ServicoDeQuartos$12.class
 viewer\ServicoDeQuartos$6.class
 viewer\GerenciarEstadia$2.class
 viewer\ServicoDeQuartos$3.class
+viewer\PesquisarClientes.class
 model\Quarto.class
 viewer\GerenciarEstadia$6.class
 viewer\CadastrarClientes.class
+viewer\PesquisarClientes$5.class
 model\Cliente.class
 viewer\CadastrarQuartos$1.class
+viewer\CadastrarClientes$10$1.class
+viewer\CadastrarClientes$9.class
+viewer\CadastrarClientes$10.class
 viewer\TelaPrincipal$3.class
 viewer\CadastrarClientes$5.class
 viewer\CadastrarQuartos$6.class
@@ -20,11 +25,13 @@ viewer\TelaPrincipal$1.class
 viewer\ServicoDeQuartos.class
 viewer\CadastrarClientes$2.class
 model\ItemPedido.class
+viewer\PesquisarClientes$4.class
 viewer\CadastrarClientes$8.class
 model\Item.class
 model\Estadia.class
 viewer\GerenciarEstadia$3.class
 control\uiManeger$JPaneLGradient$1.class
+viewer\PesquisarClientes$1.class
 viewer\ServicoDeQuartos$9.class
 viewer\GerenciarEstadia.class
 viewer\GerenciarEstadia$4.class
@@ -32,8 +39,8 @@ viewer\ServicoDeQuartos$1.class
 control\DomainManeger.class
 viewer\ServicoDeQuartos$8.class
 viewer\CadastrarQuartos$7.class
-viewer\CadastrarClientes$8$1.class
 viewer\CadastrarQuartos$3.class
+viewer\PesquisarClientes$3.class
 viewer\GerenciarEstadia$7.class
 viewer\GerenciarEstadia$1.class
 viewer\ServicoDeQuartos$5.class
@@ -45,6 +52,7 @@ viewer\ServicoDeQuartos$14$1.class
 viewer\CadastrarClientes$4.class
 model\PedidoSQ.class
 viewer\TelaPrincipal.class
+viewer\PesquisarClientes$2.class
 dao\ConexaoHibernate.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
@@ -56,6 +64,7 @@ viewer\TelaPrincipal$2.class
 viewer\ServicoDeQuartos$13.class
 viewer\CadastrarQuartos$2.class
 viewer\ServicoDeQuartos$4.class
+viewer\PesquisarClientes$6.class
 viewer\CadastrarQuartos$5.class
 viewer\ServicoDeQuartos$10.class
 control\ClienteAbstractTableModel.class

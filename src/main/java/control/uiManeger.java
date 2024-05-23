@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
 import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
 import viewer.GerenciarEstadia;
+import viewer.PesquisarClientes;
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
@@ -30,7 +32,7 @@ import viewer.TelaPrincipal;
     private CadastrarClientes cc=null;
     private GerenciarEstadia rq=null;
     private ServicoDeQuartos sq=null;
-    
+    private PesquisarClientes pc=null;
    
 
     // ########  SINGLETON  ####
@@ -137,7 +139,11 @@ public class TableUtilidades{
      public void abrirCadCliente(){
         cc = (CadastrarClientes) abrirJanela(frmPrinc, cc, CadastrarClientes.class  );
      }
-     
+      public Cliente abrirPesqCliente() {
+        pc = (PesquisarClientes) abrirJanela(frmPrinc, pc, PesquisarClientes.class  );
+        return pc.getCliSelecionado();
+
+    }
      
       public void abrirResQuartos(){
         rq = (GerenciarEstadia) abrirJanela(frmPrinc, rq, GerenciarEstadia.class  );
