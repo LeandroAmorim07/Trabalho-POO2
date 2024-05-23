@@ -66,5 +66,6 @@ viewer\CadastrarQuartos$2.class
 viewer\ServicoDeQuartos$4.class
 viewer\PesquisarClientes$6.class
 viewer\CadastrarQuartos$5.class
+viewer\GerenciarEstadia$8.class
 viewer\ServicoDeQuartos$10.class
 control\ClienteAbstractTableModel.class
