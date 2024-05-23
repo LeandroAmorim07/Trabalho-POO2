@@ -40,4 +40,8 @@ public class DomainManeger {
         Cliente cli = new Cliente(idCliente, nome,telefone,email,cpf);
         genDao.alterar(cli);        
     }
+  
+   public void excluir(Object cli) throws SQLException, ClassNotFoundException {
+        genDao.excluir(cli);
+    }
 }

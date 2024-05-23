@@ -358,7 +358,6 @@ public class CadastrarClientes extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
@@ -429,7 +428,16 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
         int index = tblClientes.getSelectedRow();
+        cliSelecionado=cliTableModel.getCliente(index);
+        
         cliTableModel.remover(index);
+        try {
+            uiManeger.getInstance().getDomainManeger().excluir(cliSelecionado);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
