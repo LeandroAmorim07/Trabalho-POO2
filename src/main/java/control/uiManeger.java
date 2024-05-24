@@ -14,11 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.Quarto;
 import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
 import viewer.GerenciarEstadia;
 import viewer.PesquisarClientes;
+import viewer.PesquisarQuarto;
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
@@ -33,6 +35,7 @@ import viewer.TelaPrincipal;
     private GerenciarEstadia rq=null;
     private ServicoDeQuartos sq=null;
     private PesquisarClientes pc=null;
+    private PesquisarQuarto pq=null;
    
 
     // ########  SINGLETON  ####
@@ -46,7 +49,7 @@ import viewer.TelaPrincipal;
       
         // Construtor PRIVADO
     private uiManeger() {
-        //JOptionPane.showMessageDialog(frmPrinc, "Construtor de IG" );
+       
         try {
             gerDom = new DomainManeger();
         } catch (ClassNotFoundException ex) {
@@ -142,6 +145,12 @@ public class TableUtilidades{
       public Cliente abrirPesqCliente() {
         pc = (PesquisarClientes) abrirJanela(frmPrinc, pc, PesquisarClientes.class  );
         return pc.getCliSelecionado();
+
+    }
+      
+      public Quarto abrirPesqQuarto() {
+        pq = (PesquisarQuarto) abrirJanela(frmPrinc, pq, PesquisarQuarto.class  );
+        return pq.getQuartoSelecionado();
 
     }
      

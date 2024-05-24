@@ -34,7 +34,10 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         setLocation(500,100);
         quartoTblModel = new QuartoAbstractTableModel();
         tabelaQuartos.setModel(quartoTblModel);
-        
+         List<Quarto> lista = uiManeger.getInstance().getDomainManeger().ListarQuarto();
+
+        QuartoAbstractTableModel clienteTableModel = (QuartoAbstractTableModel) tabelaQuartos.getModel();
+        clienteTableModel.setLista(lista);
     }
 
     /**
@@ -70,6 +73,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         btRemover = new javax.swing.JButton();
         btAlterar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         pnlCadastrarQuartos = new javax.swing.JPanel();
         lblCadastrarQuartos = new javax.swing.JLabel();
 
@@ -130,12 +135,6 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         lblNumQuartos.setForeground(new java.awt.Color(0, 0, 0));
         lblNumQuartos.setText("Núm. Quarto");
 
-        txtNumQuarto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumQuartoActionPerformed(evt);
-            }
-        });
-
         cmbTipoQuarto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Suite", "Casal", "Solteiro" }));
 
         lblTipoQuarto.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,12 +146,6 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         lblDiaria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDiaria.setForeground(new java.awt.Color(0, 0, 0));
         lblDiaria.setText("Preço Diária");
-
-        txtDiaria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDiariaActionPerformed(evt);
-            }
-        });
 
         lblCama.setBackground(new java.awt.Color(255, 255, 255));
         lblCama.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -265,11 +258,39 @@ public class CadastrarQuartos extends javax.swing.JDialog {
                 .addGap(15, 15, 15))
         );
 
+        jButton1.setBackground(new java.awt.Color(204, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Selecionar");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jButton1)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
@@ -288,7 +309,11 @@ public class CadastrarQuartos extends javax.swing.JDialog {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(pnlAdicionarRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(pnlTblQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTblQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -317,6 +342,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
                         .addGap(106, 106, 106))
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(pnlTblQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -386,39 +413,29 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tabelaQuartos.getModel(), tabelaQuartos);
+
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-         DefaultTableModel tblQuartos = (DefaultTableModel) tabelaQuartos.getModel();
-    Object[] dados = {
-        Integer.parseInt(txtNumQuarto.getText()),
-        cmbTipoQuarto.getSelectedItem().toString(),
-        cmbTipoCama.getSelectedItem().toString(),
-        Double.parseDouble(txtDiaria.getText())
-    };
-    tblQuartos.addRow(dados);
+         
     }//GEN-LAST:event_btAdicionarActionPerformed
-
-    private void txtDiariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiariaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiariaActionPerformed
-
-    private void txtNumQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumQuartoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumQuartoActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         limparCampos();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btAlterarbtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarbtAdicionarActionPerformed
+        try {
         int numQuarto = Integer.parseInt(txtNumQuarto.getText());
         String tipoQuarto = cmbTipoQuarto.getSelectedItem().toString();
         String cama = cmbTipoCama.getSelectedItem().toString();
         double valorDiaria = Double.parseDouble(txtDiaria.getText());
 
-        
+        // Verifica se algum campo está vazio
+        if (txtNumQuarto.getText().isEmpty() || tipoQuarto.isEmpty() || cama.isEmpty() || txtDiaria.getText().isEmpty()) {
+            throw new IllegalArgumentException("Por favor, preencha todos os campos.");
+        }
+
         Quarto quarto = new Quarto();
         quarto.setNumQuarto(numQuarto);
         quarto.setTipoQuarto(tipoQuarto);
@@ -426,18 +443,61 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         quarto.setValorDiaria(valorDiaria);
 
         if (quartoSelecionado != null) {
+            // Verifica se o número do quarto foi alterado
+            if (numQuarto != quartoSelecionado.getNumQuarto()) {
+                throw new IllegalArgumentException("Não é permitido alterar o número do quarto.");
+            }
+
+            // Altera o quarto no gerenciador de domínio
             uiManeger.getInstance().getDomainManeger().alterarQuarto(numQuarto, tipoQuarto, cama, valorDiaria);
+
+            // Exibe mensagem de sucesso
             JOptionPane.showMessageDialog(this, "Quarto " + quartoSelecionado.getNumQuarto() + " alterado com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
+
+            // Atualiza a tabela de quartos
             atualizarTabelaQuartos();
+        } else {
+            uiManeger.getInstance().getDomainManeger().inserirQuarto(numQuarto, tipoQuarto, cama, valorDiaria);
+            quartoTblModel.adicionar(quarto);
+            JOptionPane.showMessageDialog(this, "Quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Por favor, insira um número válido para o número do quarto e um valor válido para a diária.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } catch (IllegalArgumentException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+    }//GEN-LAST:event_btAlterarbtAdicionarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         QuartoAbstractTableModel model = (QuartoAbstractTableModel) tabelaQuartos.getModel();
+
+        int linha = tabelaQuartos.getSelectedRow();
+        
+        if (linha >= 0) {
+
+            quartoSelecionado = quartoTblModel.getQuarto(linha);
+        }
+
+        if (linha != -1) {
+
+            String numQuarto = model.getValueAt(linha, 0).toString();
+            String tipoQuarto = model.getValueAt(linha, 1).toString();
+            String cama= model.getValueAt(linha, 2).toString();
+            String diaria = model.getValueAt(linha, 3).toString();
+
+            Quarto quarto = new Quarto();
             
+            quarto.setNumQuarto(Integer.parseInt(numQuarto));
+            quarto.setTipoQuarto(tipoQuarto);
+            quarto.setCama(cama);
+            quarto.setValorDiaria(Double.parseDouble(diaria));
+
+            preencherCampos(quarto);
         } else {
             
-           uiManeger.getInstance().getDomainManeger().inserirQuarto(numQuarto, tipoQuarto, cama, valorDiaria);
-            quartoTblModel.adicionar(quarto);
-            JOptionPane.showMessageDialog(this, "Quarto" + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
         }
-    }//GEN-LAST:event_btAlterarbtAdicionarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
   private void atualizarTabelaQuartos() {
         List<Quarto> lista = uiManeger.getInstance().getDomainManeger().ListarQuarto();
@@ -450,7 +510,15 @@ public class CadastrarQuartos extends javax.swing.JDialog {
        txtDiaria.setText("");
        cmbTipoCama.setSelectedIndex(0);
        cmbTipoQuarto.setSelectedIndex(0);
-   }       
+   }  
+   
+  private void preencherCampos(Quarto quarto) {
+    txtNumQuarto.setText(String.valueOf(quarto.getNumQuarto()));
+    cmbTipoQuarto.setSelectedItem(quarto.getTipoQuarto());
+    cmbTipoCama.setSelectedItem(quarto.getCama());
+    txtDiaria.setText(String.valueOf(quarto.getValorDiaria()));
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
@@ -459,7 +527,9 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btRemover;
     private javax.swing.JComboBox<String> cmbTipoCama;
     private javax.swing.JComboBox<String> cmbTipoQuarto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblCadastrarQuartos;
     private javax.swing.JLabel lblCama;

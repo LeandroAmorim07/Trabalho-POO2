@@ -3,6 +3,7 @@ package control;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+
 import model.Quarto;
 
 /**
@@ -67,4 +68,6 @@ public class QuartoAbstractTableModel extends AbstractTableModel {
             fireTableRowsInserted(0, listaItens.size() - 1);
         }
     }
+    
+   
 }

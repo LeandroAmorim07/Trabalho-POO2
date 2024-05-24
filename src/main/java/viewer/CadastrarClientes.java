@@ -499,7 +499,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
             preencherCampos(cliente);
         } else {
-            // Opcional: Mostrar uma mensagem de erro se nenhuma linha estiver selecionada
+            
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
         }
 
