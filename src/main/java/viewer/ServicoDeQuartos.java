@@ -3,17 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package viewer;
+import control.uiManeger;
 import  control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+import model.Quarto;
 
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ServicoDeQuarto
-     */
+    private Cliente cliSelecionado =null;
+    private Quarto quartoSelecionado = null;
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -39,6 +41,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         txtCliente = new javax.swing.JTextField();
         lblNum = new javax.swing.JLabel();
         txtNumQuarto = new javax.swing.JTextField();
+        btPesquisarCliente1 = new javax.swing.JButton();
+        btPesquisarQuarto = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblRoomService = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -105,6 +109,20 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         lblNum.setForeground(new java.awt.Color(0, 0, 0));
         lblNum.setText("Núm. Quarto");
 
+        btPesquisarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btPesquisarCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarCliente1ActionPerformed(evt);
+            }
+        });
+
+        btPesquisarQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btPesquisarQuarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarQuartoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -118,19 +136,27 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtNumQuarto, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btPesquisarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btPesquisarQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCliente)
-                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCliente)
+                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisarCliente1))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNum)
-                    .addComponent(txtNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNum)
+                        .addComponent(txtNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisarQuarto))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -501,7 +527,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
+                        .addGap(59, 59, 59)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -611,6 +637,16 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
        TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tabela.getModel(), tabela);
     }//GEN-LAST:event_btRemoverActionPerformed
 
+    private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed
+        cliSelecionado = uiManeger.getInstance().abrirPesqCliente();
+        txtCliente.setText(String.valueOf(cliSelecionado.getIdCliente()));
+    }//GEN-LAST:event_btPesquisarCliente1ActionPerformed
+
+    private void btPesquisarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarQuartoActionPerformed
+        quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
+        txtNumQuarto.setText(String.valueOf(quartoSelecionado.getNumQuarto()));
+    }//GEN-LAST:event_btPesquisarQuartoActionPerformed
+
     private void habilitarSpinner( JCheckBox chk, JSpinner spn ) {
         if ( chk.isSelected()  ) {
             spn.setEnabled(true);
@@ -661,6 +697,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
+    private javax.swing.JButton btPesquisarCliente1;
+    private javax.swing.JButton btPesquisarQuarto;
     private javax.swing.JButton btRemover;
     private javax.swing.JCheckBox chkBiscoito;
     private javax.swing.JCheckBox chkChampanhe;
