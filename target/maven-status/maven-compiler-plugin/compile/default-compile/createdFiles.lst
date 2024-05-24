@@ -11,7 +11,9 @@ model\Quarto.class
 viewer\GerenciarEstadia$6.class
 viewer\CadastrarClientes.class
 viewer\PesquisarClientes$5.class
+viewer\CadastrarQuartos$9.class
 model\Cliente.class
+control\QuartoAbstractTableModel.class
 viewer\CadastrarQuartos$1.class
 viewer\CadastrarClientes$10$1.class
 viewer\CadastrarClientes$9.class
@@ -58,6 +60,7 @@ viewer\PesquisarClientes$2.class
 dao\ConexaoHibernate.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
+viewer\CadastrarQuartos$8.class
 viewer\ServicoDeQuartos$7.class
 viewer\CadastrarClientes$7.class
 control\uiManeger.class

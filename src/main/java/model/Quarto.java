@@ -26,6 +26,10 @@ public class Quarto {
         this.valorDiaria = valorDiaria;
     }
 
+    public Quarto() {
+        
+    }
+
     public int getNumQuarto() {
         return numQuarto;
     }
