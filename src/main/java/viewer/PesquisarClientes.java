@@ -34,10 +34,7 @@ public class PesquisarClientes extends javax.swing.JDialog {
         setLocation(500, 100);
         cliTableModel = new ClienteAbstractTableModel();
         tblClientes.setModel(cliTableModel);
-         List<Cliente> lista = uiManeger.getInstance().getDomainManeger().ListarCliente();
-
-        ClienteAbstractTableModel clienteTableModel = (ClienteAbstractTableModel) tblClientes.getModel();
-        clienteTableModel.setLista(lista);
+         
     }
 
     @SuppressWarnings("unchecked")
@@ -56,8 +53,12 @@ public class PesquisarClientes extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         btSelecionar = new javax.swing.JButton();
         btRemoverClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Pesquisar Clientes");
+        setResizable(false);
 
         jPanel2.setOpaque(false);
 
@@ -142,13 +143,33 @@ public class PesquisarClientes extends javax.swing.JDialog {
             }
         });
 
-        btRemoverClientes.setBackground(new java.awt.Color(255, 51, 51));
+        btRemoverClientes.setBackground(new java.awt.Color(255, 102, 102));
         btRemoverClientes.setForeground(new java.awt.Color(0, 0, 0));
         btRemoverClientes.setText("Remover");
         btRemoverClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btRemoverClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btRemoverClientesActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Cancelar");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(153, 255, 153));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Listar Todos");
+        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -161,6 +182,10 @@ public class PesquisarClientes extends javax.swing.JDialog {
                 .addComponent(btSelecionar)
                 .addGap(18, 18, 18)
                 .addComponent(btRemoverClientes)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -169,7 +194,9 @@ public class PesquisarClientes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSelecionar)
-                    .addComponent(btRemoverClientes))
+                    .addComponent(btRemoverClientes)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -249,23 +276,17 @@ public class PesquisarClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesqActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
-
-    }//GEN-LAST:event_btSelecionarActionPerformed
-
-    private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
-        int index = tblClientes.getSelectedRow();
-        cliSelecionado=cliTableModel.getCliente(index);
-        
-        cliTableModel.remover(index);
-        try {
-            uiManeger.getInstance().getDomainManeger().excluir(cliSelecionado);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+         int linha = tblClientes.getSelectedRow();
+        if ( linha >= 0 ) {
+            
+            cliSelecionado = cliTableModel.getCliente(linha);
+            this.setVisible(false);
+        } else {
+            // Mensagem de erro
+            JOptionPane.showMessageDialog(this,"Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
+            
         }
-
-    }//GEN-LAST:event_btRemoverClientesActionPerformed
+    }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
@@ -281,6 +302,32 @@ public class PesquisarClientes extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
+        int index = tblClientes.getSelectedRow();
+        cliSelecionado=cliTableModel.getCliente(index);
+
+        cliTableModel.remover(index);
+        try {
+            uiManeger.getInstance().getDomainManeger().excluir(cliSelecionado);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btRemoverClientesActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        List<Cliente> lista = uiManeger.getInstance().getDomainManeger().ListarCliente();
+
+        ClienteAbstractTableModel clienteTableModel = (ClienteAbstractTableModel) tblClientes.getModel();
+        clienteTableModel.setLista(lista);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cliSelecionado = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +337,8 @@ public class PesquisarClientes extends javax.swing.JDialog {
     private javax.swing.JButton btSelecionar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JComboBox<String> cmbTipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

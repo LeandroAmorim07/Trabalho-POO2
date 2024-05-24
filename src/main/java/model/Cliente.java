@@ -65,7 +65,7 @@ public class Cliente {
      
      
      
-    
+    //hibernate
     public Cliente() {
     }
 

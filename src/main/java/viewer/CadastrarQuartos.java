@@ -79,9 +79,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         popTblQuartos.add(popRemover);
 
         setTitle("Gerenciar Quartos");
-        setMaximumSize(new java.awt.Dimension(765, 400));
         setMinimumSize(new java.awt.Dimension(765, 400));
-        setPreferredSize(new java.awt.Dimension(765, 400));
         setResizable(false);
 
         jPanel6.setMaximumSize(new java.awt.Dimension(765, 400));

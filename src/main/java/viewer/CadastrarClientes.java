@@ -195,7 +195,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
 
         jPanel4.setOpaque(false);
 
-        btAdicionarClientes.setBackground(new java.awt.Color(102, 255, 102));
+        btAdicionarClientes.setBackground(new java.awt.Color(153, 255, 153));
         btAdicionarClientes.setForeground(new java.awt.Color(0, 0, 0));
         btAdicionarClientes.setText("Adicionar");
         btAdicionarClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -205,7 +205,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
             }
         });
 
-        btRemoverClientes.setBackground(new java.awt.Color(255, 51, 51));
+        btRemoverClientes.setBackground(new java.awt.Color(255, 102, 102));
         btRemoverClientes.setForeground(new java.awt.Color(0, 0, 0));
         btRemoverClientes.setText("Remover");
         btRemoverClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -215,7 +215,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 51));
+        jButton1.setBackground(new java.awt.Color(255, 204, 102));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Alterar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -225,7 +225,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Limpar");
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -326,6 +326,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
         jPanel7.setOpaque(false);
 
         btSelecionar.setBackground(new java.awt.Color(204, 255, 255));
+        btSelecionar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btSelecionar.setForeground(new java.awt.Color(0, 0, 0));
         btSelecionar.setText("Selecionar");
         btSelecionar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -341,8 +342,8 @@ public class CadastrarClientes extends javax.swing.JDialog {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(btSelecionar)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +411,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -1,3 +1,4 @@
+viewer\PesquisarClientes$8.class
 viewer\CadastrarQuartos.class
 viewer\CadastrarClientes$6.class
 control\uiManeger$TableUtilidades.class
@@ -21,6 +22,7 @@ viewer\CadastrarQuartos$6.class
 viewer\ServicoDeQuartos$2.class
 viewer\ServicoDeQuartos$11.class
 viewer\TelaPrincipal$4.class
+viewer\PesquisarClientes$7.class
 viewer\TelaPrincipal$1.class
 viewer\ServicoDeQuartos.class
 viewer\CadastrarClientes$2.class
