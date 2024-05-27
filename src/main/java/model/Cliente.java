@@ -32,6 +32,8 @@ public class Cliente {
      @JoinColumn (name="idEstadia")
     private List<Estadia> estadia;
 //com id
+
+ 
    
 
     public Cliente(int idCliente, String nomeCliente, String telefoneCliente, String email, String cpf) {

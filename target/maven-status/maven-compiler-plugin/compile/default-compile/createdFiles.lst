@@ -63,6 +63,7 @@ viewer\CadastrarClientes$1.class
 viewer\CadastrarQuartos$4.class
 viewer\CadastrarClientes$4.class
 model\PedidoSQ.class
+control\FuncoesUteis.class
 viewer\TelaPrincipal.class
 viewer\PesquisarClientes$2.class
 dao\ConexaoHibernate.class

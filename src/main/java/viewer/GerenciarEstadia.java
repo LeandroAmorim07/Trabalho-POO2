@@ -9,10 +9,13 @@ import control.QuartoAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
@@ -29,12 +32,12 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     public GerenciarEstadia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-       
+
         setLocation(500, 100);
         setSize(782, 469);
-        estadiaTblModel= new EstadiaAbstractTableModel();
+        estadiaTblModel = new EstadiaAbstractTableModel();
         tabelaReserva.setModel(estadiaTblModel);
-         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
+        List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
         EstadiaAbstractTableModel clienteTableModel = (EstadiaAbstractTableModel) tabelaReserva.getModel();
         clienteTableModel.setLista(lista);
     }
@@ -438,33 +441,35 @@ public class GerenciarEstadia extends javax.swing.JDialog {
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         // Obtendo o Cliente selecionado
-    Cliente cliente = cliSelecionado;
-    if (cliente == null) {
-        // Se nenhum cliente foi selecionado, exiba uma mensagem de erro e retorne
-        JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente.");
-        return;
-    }
-
-    // Obtendo o Quarto selecionado
-    Quarto quarto = quartoSelecionado;
-    if (quarto == null) {
-        // Se nenhum quarto foi selecionado, exiba uma mensagem de erro e retorne
-        JOptionPane.showMessageDialog(this, "Por favor, selecione um quarto.");
-        return;
-    }
-
+        Cliente cliente = cliSelecionado;
         
-    
-    // Criando a Estadia com o Cliente, Quarto e datas selecionados
-    Estadia estadia = new Estadia();
-    estadia.setCliente(cliente);
-    estadia.setQuarto(quarto);
-    estadia.setCheckin(dateCheckIn.getDate());
-    estadia.setCheckOut(dateCheckOut.getDate());
+        
+        if (cliente == null) {
+            // Se nenhum cliente foi selecionado, exiba uma mensagem de erro e retorne
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente.");
+            return;
+        }
 
-     uiManeger.getInstance().getDomainManeger().inserirEstadia(cliente,quarto, dateCheckIn.getDate(),dateCheckOut.getDate());
-     estadiaTblModel.adicionar(estadia);
-     JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
+   
+        Quarto quarto = quartoSelecionado;
+        if (quarto == null) {
+            // Se nenhum quarto foi selecionado, exiba uma mensagem de erro e retorne
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um quarto.");
+            return;
+        }
+
+      
+        Estadia estadia = new Estadia();
+        estadia.setCliente(cliente);
+        estadia.setQuarto(quarto);
+        estadia.setCheckin(dateCheckIn.getDate());
+        estadia.setCheckOut(dateCheckOut.getDate());
+
+       int novoId= uiManeger.getInstance().getDomainManeger().inserirEstadia(cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate());
+       estadia.setIdEstadia(novoId);
+      
+           estadiaTblModel.adicionar(estadia);
+        JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
@@ -490,9 +495,58 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        EstadiaAbstractTableModel model = (EstadiaAbstractTableModel) tabelaReserva.getModel();
 
+        int linha = tabelaReserva.getSelectedRow();
+
+        if (linha >= 0) {
+
+            estadiaSelecionada = estadiaTblModel.getEstadia(linha);
+        }
+
+        if (linha != -1) {
+
+            String idCliente = model.getValueAt(linha, 0).toString();
+            String numQuarto = model.getValueAt(linha, 1).toString();
+            String checkInString = model.getValueAt(linha, 2).toString(); // Obtendo a data de check-in como uma string da tabela
+            String checkOutString = model.getValueAt(linha, 3).toString(); // Obtendo a data de check-out como uma string da tabela
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            
+                
+                Date checkInDate = null;
+            try {
+                checkInDate = dateFormat.parse(checkInString);
+            } catch (ParseException ex) {
+                Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                Date checkOutDate = null;
+            try {
+                checkOutDate = dateFormat.parse(checkOutString);
+            } catch (ParseException ex) {
+                Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+               
+            // tenho que arranjar um jeito de pegar esse id e falar que o cliente selecionado 
+            // recebe o cliente com esse ID
+            
+           
+            
+            preencherCampos(idCliente,numQuarto,checkInDate,checkOutDate);
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void preencherCampos(String idCliente, String numQuarto,Date checkIn, Date checkOut) {
+        txtCliente.setText(String.valueOf(idCliente));
+        txtNumQuarto.setText(String.valueOf(numQuarto));
+        dateCheckIn.setDate(checkIn);
+        dateCheckOut.setDate(checkOut);
 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
