@@ -49,10 +49,10 @@ public class DomainManeger {
         genDao.alterar(cli);
     }
 
-    public int inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
+    public void inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
         Quarto qt = new Quarto(numQuarto, tipoQuarto, cama, valorDiaria);
         genDao.inserir(qt);
-        return qt.getNumQuarto();
+       
 
     }
 
@@ -61,9 +61,11 @@ public class DomainManeger {
         genDao.alterar(qt);
     }
     
-    public void inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
+    public int inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
         Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
         genDao.inserir(es);
+        
+        return es.getIdEstadia();
     }
 
     
