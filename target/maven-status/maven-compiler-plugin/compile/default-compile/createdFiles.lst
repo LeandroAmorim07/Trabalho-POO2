@@ -29,6 +29,7 @@ viewer\PesquisarQuarto$7.class
 viewer\TelaPrincipal$4.class
 viewer\PesquisarClientes$7.class
 viewer\TelaPrincipal$1.class
+viewer\GerenciarEstadia$11.class
 viewer\ServicoDeQuartos.class
 viewer\CadastrarClientes$2.class
 model\ItemPedido.class
@@ -47,6 +48,7 @@ viewer\ServicoDeQuartos$16$1.class
 viewer\GerenciarEstadia$4.class
 viewer\ServicoDeQuartos$1.class
 control\DomainManeger.class
+viewer\GerenciarEstadia$10.class
 viewer\ServicoDeQuartos$8.class
 viewer\PesquisarQuarto$4.class
 viewer\CadastrarQuartos$7.class

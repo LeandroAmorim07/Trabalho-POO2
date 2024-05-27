@@ -8,18 +8,16 @@ package viewer;
  *
  * @author 2022122760117
  */
-import control.ClienteAbstractTableModel;
 import control.QuartoAbstractTableModel;
 import control.uiManeger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import  control.uiManeger.JPaneLGradient;
-import control.uiManeger.TableUtilidades;
 import java.sql.SQLException;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Cliente;
+
 import model.Quarto;
 
 public class CadastrarQuartos extends javax.swing.JDialog {
@@ -191,7 +189,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
 
         pnlAdicionarRemover.setOpaque(false);
 
-        btAdicionar.setBackground(new java.awt.Color(102, 255, 102));
+        btAdicionar.setBackground(new java.awt.Color(153, 255, 153));
         btAdicionar.setForeground(new java.awt.Color(0, 0, 0));
         btAdicionar.setText("Adicionar");
         btAdicionar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -201,7 +199,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             }
         });
 
-        btRemover.setBackground(new java.awt.Color(255, 51, 51));
+        btRemover.setBackground(new java.awt.Color(255, 102, 102));
         btRemover.setForeground(new java.awt.Color(0, 0, 0));
         btRemover.setText("Remover");
         btRemover.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -415,7 +413,14 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-
+        int index = tabelaQuartos.getSelectedRow();
+        quartoSelecionado= quartoTblModel.getQuarto(index);
+        quartoTblModel.remover(index);
+       try {
+           uiManeger.getInstance().getDomainManeger().excluir(quartoSelecionado);
+       } catch (SQLException | ClassNotFoundException ex) {
+           Logger.getLogger(CadastrarQuartos.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
@@ -512,6 +517,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
        txtDiaria.setText("");
        cmbTipoCama.setSelectedIndex(0);
        cmbTipoQuarto.setSelectedIndex(0);
+       quartoSelecionado=null;
    }  
    
   private void preencherCampos(Quarto quarto) {
