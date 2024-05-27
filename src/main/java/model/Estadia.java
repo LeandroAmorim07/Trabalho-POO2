@@ -7,6 +7,8 @@ package model;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +22,7 @@ import javax.persistence.Transient;
 @Entity
 public class Estadia {
     @Id
+    @GeneratedValue (strategy =GenerationType.IDENTITY)
     private int idEstadia;
     private Date checkin;
     private Date checkOut;
@@ -32,6 +35,15 @@ public class Estadia {
     @ManyToOne
     @JoinColumn(name="idQuarto")
     private Quarto quarto;
+
+    public Estadia(Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
+        this.checkin = checkin;
+        this.checkOut = checkOut;
+        this.valortotalSQ = valortotalSQ;
+        this.valorTotalEstadia = valorTotalEstadia;
+        this.cliente = cliente;
+        this.quarto = quarto;
+    }
    
     
 
@@ -45,9 +57,17 @@ public class Estadia {
         this.quarto = quarto;
     }
 
+    
+    
+    
+    
+
     public Estadia() {
     }
 
+    
+    
+    
     public int getIdEstadia() {
         return idEstadia;
     }

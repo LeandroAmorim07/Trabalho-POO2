@@ -32,12 +32,21 @@ public class DomainManeger {
     public List<Quarto> ListarQuarto() {
         return genDao.listar(Quarto.class);
     }
+       public List<Estadia> ListarEstadia() {
+        return genDao.listar(Estadia.class);
+    }
+    
 
     public int inserirCliente(String nome, String telefone, String email, String cpf) {
         Cliente cli = new Cliente(nome, telefone, email, cpf);
         genDao.inserir(cli);
         return cli.getIdCliente();
 
+    }
+    public void alterarCliente(int idCliente, String nome, String telefone, String email, String cpf) throws ClassNotFoundException, SQLException {
+
+        Cliente cli = new Cliente(idCliente, nome, telefone, email, cpf);
+        genDao.alterar(cli);
     }
 
     public int inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
@@ -51,12 +60,13 @@ public class DomainManeger {
         Quarto qt = new Quarto(numQuarto, tipoQuarto, cama, valorDiaria);
         genDao.alterar(qt);
     }
-
-    public void alterarCliente(int idCliente, String nome, String telefone, String email, String cpf) throws ClassNotFoundException, SQLException {
-
-        Cliente cli = new Cliente(idCliente, nome, telefone, email, cpf);
-        genDao.alterar(cli);
+    
+    public void inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
+        Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
+        genDao.inserir(es);
     }
+
+    
 
     public void excluir(Object cli) throws SQLException, ClassNotFoundException {
         genDao.excluir(cli);

@@ -3,27 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package viewer;
+
+import control.EstadiaAbstractTableModel;
+import control.QuartoAbstractTableModel;
 import control.uiManeger;
-import  control.uiManeger.JPaneLGradient;
+import control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.Estadia;
 import model.Quarto;
+
 public class GerenciarEstadia extends javax.swing.JDialog {
 
     private Cliente cliSelecionado = null;
-    private Quarto quartoSelecionado=null;
+    private Quarto quartoSelecionado = null;
+    private EstadiaAbstractTableModel estadiaTblModel = null;
+    private Estadia estadiaSelecionada = null;
 
     public GerenciarEstadia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
        
-         setLocation(500,100);
-        setSize(782,469);
+        setLocation(500, 100);
+        setSize(782, 469);
+        estadiaTblModel= new EstadiaAbstractTableModel();
+        tabelaReserva.setModel(estadiaTblModel);
+         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
+        EstadiaAbstractTableModel clienteTableModel = (EstadiaAbstractTableModel) tabelaReserva.getModel();
+        clienteTableModel.setLista(lista);
     }
 
     /**
@@ -405,8 +418,8 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dateCheckInPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateCheckInPropertyChange
-         Date checkInDate = dateCheckIn.getDateEditor().getDate();
-        
+        Date checkInDate = dateCheckIn.getDateEditor().getDate();
+
         // Verifica se a data de check-in não é nula
         if (checkInDate != null) {
             // Obtém o calendário atual
@@ -417,31 +430,49 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             // Obtém a nova data após adicionar um dia
             Date nextDay = calendar.getTime();
-            
+
             // Define o mínimo permitido para o check-out DateChooser como o próximo dia
             dateCheckOut.setMinSelectableDate(nextDay);
         }
     }//GEN-LAST:event_dateCheckInPropertyChange
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-       DefaultTableModel tblRs = (DefaultTableModel) tabelaReserva.getModel();
-       // Formatando as datas
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    String checkInFormatado = dateFormat.format(dateCheckIn.getDate());
-    String checkOutFormatado = dateFormat.format(dateCheckOut.getDate());
+        // Obtendo o Cliente selecionado
+    Cliente cliente = cliSelecionado;
+    if (cliente == null) {
+        // Se nenhum cliente foi selecionado, exiba uma mensagem de erro e retorne
+        JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente.");
+        return;
+    }
+
+    // Obtendo o Quarto selecionado
+    Quarto quarto = quartoSelecionado;
+    if (quarto == null) {
+        // Se nenhum quarto foi selecionado, exiba uma mensagem de erro e retorne
+        JOptionPane.showMessageDialog(this, "Por favor, selecione um quarto.");
+        return;
+    }
+
+        
     
-    Object[] dados ={
-        txtCliente.getText(), Integer.valueOf(txtNumQuarto.getText()), checkInFormatado, checkOutFormatado
-    };
-    tblRs.addRow(dados);
+    // Criando a Estadia com o Cliente, Quarto e datas selecionados
+    Estadia estadia = new Estadia();
+    estadia.setCliente(cliente);
+    estadia.setQuarto(quarto);
+    estadia.setCheckin(dateCheckIn.getDate());
+    estadia.setCheckOut(dateCheckOut.getDate());
+
+     uiManeger.getInstance().getDomainManeger().inserirEstadia(cliente,quarto, dateCheckIn.getDate(),dateCheckOut.getDate());
+     estadiaTblModel.adicionar(estadia);
+     JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-       
+
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void dateCheckOutPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateCheckOutPropertyChange
-      
+
     }//GEN-LAST:event_dateCheckOutPropertyChange
 
     private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed
@@ -450,19 +481,18 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_btPesquisarCliente1ActionPerformed
 
     private void btPesquisarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarQuartoActionPerformed
-       quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
+        quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
         txtNumQuarto.setText(String.valueOf(quartoSelecionado.getNumQuarto()));
     }//GEN-LAST:event_btPesquisarQuartoActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-       
+
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;

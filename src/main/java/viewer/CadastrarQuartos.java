@@ -34,8 +34,8 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         tabelaQuartos.setModel(quartoTblModel);
          List<Quarto> lista = uiManeger.getInstance().getDomainManeger().ListarQuarto();
 
-        QuartoAbstractTableModel clienteTableModel = (QuartoAbstractTableModel) tabelaQuartos.getModel();
-        clienteTableModel.setLista(lista);
+        QuartoAbstractTableModel TableModel = (QuartoAbstractTableModel) tabelaQuartos.getModel();
+        TableModel.setLista(lista);
     }
 
     /**
