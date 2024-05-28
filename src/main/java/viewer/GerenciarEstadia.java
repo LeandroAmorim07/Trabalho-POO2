@@ -4,11 +4,13 @@
  */
 package viewer;
 
+import com.toedter.calendar.JDateChooser;
 import control.EstadiaAbstractTableModel;
 import control.QuartoAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -130,11 +132,6 @@ public class GerenciarEstadia extends javax.swing.JDialog {
 
         dateCheckOut.setDateFormatString("dd/MM/yyyy");
         dateCheckOut.setName("dateCheckOut"); // NOI18N
-        dateCheckOut.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                dateCheckOutPropertyChange(evt);
-            }
-        });
 
         btPesquisarQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         btPesquisarQuarto.addActionListener(new java.awt.event.ActionListener() {
@@ -446,15 +443,13 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         // Obtendo o Cliente selecionado
         Cliente cliente = cliSelecionado;
-        
-        
+
         if (cliente == null) {
             // Se nenhum cliente foi selecionado, exiba uma mensagem de erro e retorne
             JOptionPane.showMessageDialog(this, "Por favor, selecione um cliente.");
             return;
         }
 
-   
         Quarto quarto = quartoSelecionado;
         if (quarto == null) {
             // Se nenhum quarto foi selecionado, exiba uma mensagem de erro e retorne
@@ -462,39 +457,40 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             return;
         }
 
-      
         Estadia estadia = new Estadia();
         estadia.setCliente(cliSelecionado);
         estadia.setQuarto(quartoSelecionado);
         estadia.setCheckin(dateCheckIn.getDate());
         estadia.setCheckOut(dateCheckOut.getDate());
-        
-        if (estadiaSelecionada!=null){
+
+        if (estadiaSelecionada != null) {
             uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate());
-        JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " alterada com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
-        atualizarTabelaEstadia();
+            JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " alterada com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
+            atualizarTabelaEstadia();
+
+        } else {
+            //adicionar
+            uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado, quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate());
+
+            estadiaTblModel.adicionar(estadia);
+            JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
+
         }
-        else{
-             //adicionar
-       uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado,quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate());
-      
-        
-      
-           estadiaTblModel.adicionar(estadia);
-        JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        
-       
+
+        limparCampos();
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-
+        int index = tabelaReserva.getSelectedRow();
+        estadiaSelecionada = estadiaTblModel.getEstadia(index);
+        estadiaTblModel.remover(index);
+        try {
+            uiManeger.getInstance().getDomainManeger().excluir(estadiaSelecionada);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(CadastrarQuartos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        limparCampos();
     }//GEN-LAST:event_btRemoverActionPerformed
-
-    private void dateCheckOutPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateCheckOutPropertyChange
-
-    }//GEN-LAST:event_dateCheckOutPropertyChange
 
     private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed
         cliSelecionado = uiManeger.getInstance().abrirPesqCliente();
@@ -507,7 +503,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_btPesquisarQuartoActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-
+        limparCampos();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -530,46 +526,51 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             Cliente cliente = uiManeger.getInstance().getDomainManeger().buscarClientePorId(Integer.parseInt(idCliente));
-        Quarto quarto = uiManeger.getInstance().getDomainManeger().buscarQuartoPorId(Integer.parseInt(numQuarto));
-                
-                Date checkInDate = null;
+            Quarto quarto = uiManeger.getInstance().getDomainManeger().buscarQuartoPorId(Integer.parseInt(numQuarto));
+
+            Date checkInDate = null;
             try {
                 checkInDate = dateFormat.parse(checkInString);
             } catch (ParseException ex) {
                 Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
             }
-                Date checkOutDate = null;
+            Date checkOutDate = null;
             try {
                 checkOutDate = dateFormat.parse(checkOutString);
             } catch (ParseException ex) {
                 Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-               
             // tenho que arranjar um jeito de pegar esse id e falar que o cliente selecionado 
             // recebe o cliente com esse ID
-            
-           
-            cliSelecionado=cliente;
-            quartoSelecionado=quarto;
-            preencherCampos(cliente,quarto,checkInDate,checkOutDate);
+            cliSelecionado = cliente;
+            quartoSelecionado = quarto;
+            preencherCampos(cliente, quarto, checkInDate, checkOutDate);
         } else {
 
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    private void preencherCampos(Cliente cliente, Quarto quarto,Date checkIn, Date checkOut) {
-        txtCliente.setText( String.valueOf(cliente.getIdCliente()));
+    private void preencherCampos(Cliente cliente, Quarto quarto, Date checkIn, Date checkOut) {
+        txtCliente.setText(String.valueOf(cliente.getIdCliente()));
         txtNumQuarto.setText(String.valueOf(quarto.getNumQuarto()));
         dateCheckIn.setDate(checkIn);
         dateCheckOut.setDate(checkOut);
 
     }
-    
-     private void atualizarTabelaEstadia() {
+
+    private void atualizarTabelaEstadia() {
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
         estadiaTblModel.setLista(lista);
-       estadiaTblModel.fireTableDataChanged(); 
+        estadiaTblModel.fireTableDataChanged();
+    }
+
+    private void limparCampos() {
+        txtCliente.setText("");
+        txtNumQuarto.setText("");
+        dateCheckIn.setDate(null);
+        dateCheckOut.setDate(null);
+        estadiaSelecionada = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
