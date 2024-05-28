@@ -63,8 +63,9 @@ public class DomainManeger {
     
     public int inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
         Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
-        genDao.inserir(es);
         
+        genDao.inserir(es);
+       
         return es.getIdEstadia();
     }
 

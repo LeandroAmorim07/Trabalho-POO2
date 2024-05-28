@@ -460,13 +460,14 @@ public class GerenciarEstadia extends javax.swing.JDialog {
 
       
         Estadia estadia = new Estadia();
-        estadia.setCliente(cliente);
-        estadia.setQuarto(quarto);
+        estadia.setCliente(cliSelecionado);
+        estadia.setQuarto(quartoSelecionado);
         estadia.setCheckin(dateCheckIn.getDate());
         estadia.setCheckOut(dateCheckOut.getDate());
 
-       int novoId= uiManeger.getInstance().getDomainManeger().inserirEstadia(cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate());
-       estadia.setIdEstadia(novoId);
+       uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado,quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate());
+      
+        
       
            estadiaTblModel.adicionar(estadia);
         JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
