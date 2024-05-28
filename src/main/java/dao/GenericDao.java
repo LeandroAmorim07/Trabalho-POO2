@@ -1,6 +1,7 @@
 
 package dao;
 
+import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -91,4 +92,27 @@ public class GenericDao {
         return lista;
     }
 
+    
+    public Object buscarPorId(Class<?> classe, Serializable id) {
+        Session sessao = null;
+        Object objeto = null;
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.getTransaction().begin();
+
+            objeto = sessao.get(classe, id);
+
+            sessao.getTransaction().commit();
+        } catch (HibernateException ex) {
+            if (sessao != null && sessao.getTransaction() != null && sessao.getTransaction().isActive()) {
+                sessao.getTransaction().rollback();
+            }
+            throw new HibernateException(ex);
+        } finally {
+            if (sessao != null && sessao.isOpen()) {
+                sessao.close();
+            }
+        }
+        return objeto;
+    }
 }

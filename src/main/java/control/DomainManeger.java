@@ -69,7 +69,12 @@ public class DomainManeger {
         return es.getIdEstadia();
     }
 
-    
+    public Cliente buscarClientePorId(int idCliente) {
+    return (Cliente) genDao.buscarPorId(Cliente.class, idCliente);
+}
+    public Quarto buscarQuartoPorId(int numQuarto) {
+    return (Quarto) genDao.buscarPorId(Quarto.class,numQuarto );
+}
 
     public void excluir(Object cli) throws SQLException, ClassNotFoundException {
         genDao.excluir(cli);

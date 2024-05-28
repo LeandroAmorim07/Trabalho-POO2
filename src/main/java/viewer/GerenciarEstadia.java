@@ -185,10 +185,9 @@ public class GerenciarEstadia extends javax.swing.JDialog {
                         .addComponent(lblCliente)
                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNum)
-                        .addComponent(txtNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNum)
+                    .addComponent(txtNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btPesquisarQuarto))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +513,8 @@ public class GerenciarEstadia extends javax.swing.JDialog {
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-            
+            Cliente cliente = uiManeger.getInstance().getDomainManeger().buscarClientePorId(Integer.parseInt(idCliente));
+        Quarto quarto = uiManeger.getInstance().getDomainManeger().buscarQuartoPorId(Integer.parseInt(numQuarto));
                 
                 Date checkInDate = null;
             try {
@@ -534,16 +534,17 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             // recebe o cliente com esse ID
             
            
-            
-            preencherCampos(idCliente,numQuarto,checkInDate,checkOutDate);
+            cliSelecionado=cliente;
+            quartoSelecionado=quarto;
+            preencherCampos(cliente,quarto,checkInDate,checkOutDate);
         } else {
 
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    private void preencherCampos(String idCliente, String numQuarto,Date checkIn, Date checkOut) {
-        txtCliente.setText(String.valueOf(idCliente));
-        txtNumQuarto.setText(String.valueOf(numQuarto));
+    private void preencherCampos(Cliente cliente, Quarto quarto,Date checkIn, Date checkOut) {
+        txtCliente.setText( String.valueOf(cliente.getIdCliente()));
+        txtNumQuarto.setText(String.valueOf(quarto.getNumQuarto()));
         dateCheckIn.setDate(checkIn);
         dateCheckOut.setDate(checkOut);
 
