@@ -293,6 +293,11 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         btAlterar.setForeground(new java.awt.Color(0, 0, 0));
         btAlterar.setText("Alterar");
         btAlterar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -463,13 +468,24 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         estadia.setQuarto(quartoSelecionado);
         estadia.setCheckin(dateCheckIn.getDate());
         estadia.setCheckOut(dateCheckOut.getDate());
-
+        
+        if (estadiaSelecionada!=null){
+            uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate());
+        JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " alterada com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
+        atualizarTabelaEstadia();
+        }
+        else{
+             //adicionar
        uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado,quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate());
       
         
       
            estadiaTblModel.adicionar(estadia);
         JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+       
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
@@ -548,6 +564,12 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         dateCheckIn.setDate(checkIn);
         dateCheckOut.setDate(checkOut);
 
+    }
+    
+     private void atualizarTabelaEstadia() {
+        List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
+        estadiaTblModel.setLista(lista);
+       estadiaTblModel.fireTableDataChanged(); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

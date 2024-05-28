@@ -61,6 +61,8 @@ public class DomainManeger {
         genDao.alterar(qt);
     }
     
+    
+    
     public int inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
         Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
         
@@ -68,7 +70,13 @@ public class DomainManeger {
        
         return es.getIdEstadia();
     }
+     public void alterarEstadia(int idEstadia,Cliente cli, Quarto qt, Date checkin, Date checkout) {
+       Estadia es = new Estadia(idEstadia,checkin, checkout, 0, 0, cli, qt);
+        genDao.alterar(es);
+    }
+    
 
+    // buscas 
     public Cliente buscarClientePorId(int idCliente) {
     return (Cliente) genDao.buscarPorId(Cliente.class, idCliente);
 }
