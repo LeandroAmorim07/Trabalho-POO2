@@ -5,6 +5,8 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +20,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ItemPedido {
     @Id
+    @GeneratedValue (strategy =GenerationType.IDENTITY)
     private int idItemPedido;
     private int qtdHamb;
     private int qtdXburguer;
@@ -27,6 +30,16 @@ public class ItemPedido {
     private int qtdPepsi;
     private int qtdDelValle;
     private int qtdChampanhe;
+    private String extras;
+
+    public String getExtras() {
+        return extras;
+    }
+
+    public void setExtras(String extras) {
+        this.extras = extras;
+    }
+    
     
     @ManyToOne
     @JoinColumn(name="idPedidoSQ")
@@ -46,8 +59,7 @@ public class ItemPedido {
         return item;
     }
 
-    public ItemPedido(int idPedido, int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, PedidoSQ pedidosq, Item item) {
-        this.idItemPedido = idPedido;
+    public ItemPedido(int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {//sem id
         this.qtdHamb = qtdHamb;
         this.qtdXburguer = qtdXburguer;
         this.qtdOreo = qtdOreo;
@@ -56,6 +68,24 @@ public class ItemPedido {
         this.qtdPepsi = qtdPepsi;
         this.qtdDelValle = qtdDelValle;
         this.qtdChampanhe = qtdChampanhe;
+        this.extras = extras;
+        this.pedidosq = pedidosq;
+        this.item = item;
+    }
+
+
+
+    public ItemPedido(int idItemPedido, int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {
+        this.idItemPedido = idItemPedido;
+        this.qtdHamb = qtdHamb;
+        this.qtdXburguer = qtdXburguer;
+        this.qtdOreo = qtdOreo;
+        this.qtdRuffles = qtdRuffles;
+        this.qtdCoca = qtdCoca;
+        this.qtdPepsi = qtdPepsi;
+        this.qtdDelValle = qtdDelValle;
+        this.qtdChampanhe = qtdChampanhe;
+        this.extras = extras;
         this.pedidosq = pedidosq;
         this.item = item;
     }
@@ -135,6 +165,10 @@ public class ItemPedido {
 
     public void setQtdChampanhe(int qtdChampanhe) {
         this.qtdChampanhe = qtdChampanhe;
+    }
+
+    public int getIdItemPedido() {
+        return idItemPedido;
     }
     
 
