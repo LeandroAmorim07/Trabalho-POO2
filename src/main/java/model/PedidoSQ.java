@@ -6,6 +6,8 @@ package model;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +18,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class PedidoSQ {
     @Id
+    @GeneratedValue (strategy =GenerationType.IDENTITY)
    private int idPedidoSQ;
    private double valorTotal;
    @ManyToOne
@@ -23,22 +26,28 @@ public class PedidoSQ {
    private Estadia estadia;
    @OneToMany
    @JoinColumn(name="idItemPedido")
-   private  List <ItemPedido> itemPedido;
+   private  List <ItemPedido> itemPedidos;
+   
+  
+   
+   
 
     public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia, List<ItemPedido> itemPedido) {
         this.idPedidoSQ = idPedidoSQ;
         this.valorTotal = valorTotal;
         this.estadia = estadia;
-        this.itemPedido = itemPedido;
+        this.itemPedidos = itemPedido;
     }
 
     public List<ItemPedido> getItemPedido() {
-        return itemPedido;
+        return itemPedidos;
     }
 
     public double getValorTotal() {
         return valorTotal;
     }
+
+   
    
   
 
