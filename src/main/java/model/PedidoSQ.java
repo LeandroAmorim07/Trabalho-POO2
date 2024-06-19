@@ -22,6 +22,7 @@ public class PedidoSQ {
     @Id
     @GeneratedValue (strategy =GenerationType.IDENTITY)
    private int idPedidoSQ;
+    
    private double valorTotal;
    
    @ManyToOne

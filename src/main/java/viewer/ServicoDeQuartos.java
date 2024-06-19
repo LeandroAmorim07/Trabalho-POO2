@@ -28,7 +28,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(900, 600);
+        
         setLocation(500, 100);
     }
 
@@ -320,10 +320,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }//GEN-LAST:event_btPesquisarCliente1ActionPerformed
 
     private void btPesquisarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarItemActionPerformed
-        if (itemSelecionado != null) {
+         
             itemSelecionado = uiManeger.getInstance().abrirPesqItem();
             txtItem.setText(String.valueOf(itemSelecionado.getNomeItem()));
-        }
+        
 
     }//GEN-LAST:event_btPesquisarItemActionPerformed
 
@@ -332,7 +332,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }//GEN-LAST:event_btlLimparActionPerformed
 
     private void btPesquisarQuarto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarQuarto1ActionPerformed
-        // TODO add your handling code here:
+        quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
+        txtNumQuarto.setText(String.valueOf(quartoSelecionado.getNumQuarto()));
+       
     }//GEN-LAST:event_btPesquisarQuarto1ActionPerformed
 
   
