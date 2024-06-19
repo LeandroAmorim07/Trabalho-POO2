@@ -5,6 +5,7 @@
 package model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,9 +25,8 @@ public class PedidoSQ {
    @ManyToOne
    @JoinColumn (name="idEstadia")
    private Estadia estadia;
-   @OneToMany
-   @JoinColumn(name="idItemPedido")
-   private  List <ItemPedido> itemPedidos;
+   @OneToMany(mappedBy = "pedidosq", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemPedido> itemPedidos;
    
   
    
