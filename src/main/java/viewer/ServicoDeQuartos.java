@@ -51,7 +51,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         lblNum = new javax.swing.JLabel();
         txtNumQuarto = new javax.swing.JTextField();
         btPesquisarCliente1 = new javax.swing.JButton();
-        btPesquisarQuarto = new javax.swing.JButton();
+        btPesquisarItem = new javax.swing.JButton();
         lblNum1 = new javax.swing.JLabel();
         txtNumQuarto1 = new javax.swing.JTextField();
         btPesquisarQuarto1 = new javax.swing.JButton();
@@ -102,16 +102,16 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
-        btPesquisarQuarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        btPesquisarQuarto.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btPesquisarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btPesquisarQuartoActionPerformed(evt);
+                btPesquisarItemActionPerformed(evt);
             }
         });
 
         lblNum1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNum1.setForeground(new java.awt.Color(0, 0, 0));
-        lblNum1.setText("Produto");
+        lblNum1.setText("Item");
 
         btPesquisarQuarto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         btPesquisarQuarto1.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btPesquisarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btPesquisarQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btPesquisarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btPesquisarQuarto1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -162,7 +162,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNum1)
                         .addComponent(txtNumQuarto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btPesquisarQuarto))
+                    .addComponent(btPesquisarItem))
                 .addContainerGap())
         );
 
@@ -320,10 +320,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         txtCliente.setText(String.valueOf(cliSelecionado.getIdCliente()));
     }//GEN-LAST:event_btPesquisarCliente1ActionPerformed
 
-    private void btPesquisarQuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarQuartoActionPerformed
+    private void btPesquisarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarItemActionPerformed
         quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
         txtNumQuarto.setText(String.valueOf(quartoSelecionado.getNumQuarto()));
-    }//GEN-LAST:event_btPesquisarQuartoActionPerformed
+    }//GEN-LAST:event_btPesquisarItemActionPerformed
 
     private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
       
@@ -384,7 +384,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btPesquisarCliente1;
-    private javax.swing.JButton btPesquisarQuarto;
+    private javax.swing.JButton btPesquisarItem;
     private javax.swing.JButton btPesquisarQuarto1;
     private javax.swing.JButton btRemover;
     private javax.swing.JButton btlLimpar;

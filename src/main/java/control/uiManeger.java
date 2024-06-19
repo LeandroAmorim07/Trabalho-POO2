@@ -14,13 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.Item;
 import model.Quarto;
 import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
 import viewer.GerenciarEstadia;
-import viewer.GerenciarProdutos;
+import viewer.GerenciarItens;
 import viewer.PesquisarClientes;
+import viewer.PesquisarItem;
 import viewer.PesquisarQuarto;
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
@@ -37,7 +39,8 @@ import viewer.TelaPrincipal;
     private ServicoDeQuartos sq=null;
     private PesquisarClientes pc=null;
     private PesquisarQuarto pq=null;
-    private GerenciarProdutos cp=null;
+    private GerenciarItens cp=null;
+    private PesquisarItem pi=null;
 
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
@@ -163,9 +166,13 @@ public class TableUtilidades{
         sq = (ServicoDeQuartos) abrirJanela(frmPrinc, sq, ServicoDeQuartos.class  );
      }
       public void abrirGerProd() {
-        cp = (GerenciarProdutos) abrirJanela(frmPrinc, cp, GerenciarProdutos.class  );
+        cp = (GerenciarItens) abrirJanela(frmPrinc, cp, GerenciarItens.class  );
     }
-       
+       public Item abrirPesqItem() {
+        pq = (PesquisarQuarto) abrirJanela(frmPrinc, pi, PesquisarItem.class  );
+        return pi.getItemSelecionado();
+
+    } 
        public DomainManeger getDomainManeger() {
         return gerDom;       
     }

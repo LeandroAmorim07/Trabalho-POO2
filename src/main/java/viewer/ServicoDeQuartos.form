@@ -140,7 +140,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btPesquisarCliente1" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="btPesquisarQuarto" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="btPesquisarItem" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="btPesquisarQuarto1" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -172,7 +172,7 @@
                               <Component id="lblNum1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNumQuarto1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btPesquisarQuarto" min="-2" max="-2" attributes="0"/>
+                          <Component id="btPesquisarItem" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -216,14 +216,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPesquisarCliente1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btPesquisarQuarto">
+            <Component class="javax.swing.JButton" name="btPesquisarItem">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/search.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPesquisarQuartoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPesquisarItemActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNum1">
@@ -234,7 +234,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Produto"/>
+                <Property name="text" type="java.lang.String" value="Item"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumQuarto1">

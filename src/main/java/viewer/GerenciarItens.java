@@ -22,12 +22,12 @@ import model.Quarto;
  *
  * @author Programe-SE 11
  */
-public class GerenciarProdutos extends javax.swing.JDialog {
+public class GerenciarItens extends javax.swing.JDialog {
 
     private Item itemSelecionado = null;
     private ItemAbstractTableModel itemTblModel = null;
 
-    public GerenciarProdutos(java.awt.Frame parent, boolean modal) {
+    public GerenciarItens(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         itemTblModel = new ItemAbstractTableModel();
@@ -334,7 +334,7 @@ public class GerenciarProdutos extends javax.swing.JDialog {
             uiManeger.getInstance().getDomainManeger().excluir(itemSelecionado);
            
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(GerenciarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GerenciarItens.class.getName()).log(Level.SEVERE, null, ex);
         }
          itemSelecionado=null;
     }//GEN-LAST:event_btRemoverActionPerformed
@@ -367,20 +367,21 @@ public class GerenciarProdutos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciarItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciarItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciarItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GerenciarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GerenciarItens.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GerenciarProdutos dialog = new GerenciarProdutos(new javax.swing.JFrame(), true);
+                GerenciarItens dialog = new GerenciarItens(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
