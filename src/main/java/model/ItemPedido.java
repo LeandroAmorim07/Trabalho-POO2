@@ -9,20 +9,12 @@ package model;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-
-/**
- *
- * @author 2022122760117
- */
-
 @Entity
 public class ItemPedido {
    
     
     @EmbeddedId
     private ItemPedidoPK chComposta;
-
-   
     private int qtd;
  
 
