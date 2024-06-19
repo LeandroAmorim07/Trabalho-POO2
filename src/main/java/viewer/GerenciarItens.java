@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Item;
+import model.ItemPedido;
 import model.Quarto;
 
 /**
@@ -301,6 +302,7 @@ public class GerenciarItens extends javax.swing.JDialog {
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         String nome = txtNome.getText();
         double valor = parseDouble(txtValor.getText());
+        
         Item produto = new Item();
         produto.setNomeItem(nome);
         produto.setValor(valor);
@@ -315,6 +317,7 @@ public class GerenciarItens extends javax.swing.JDialog {
             int novoid = uiManeger.getInstance().getDomainManeger().inserirProduto(nome, valor);
             produto.setIdItem(novoid);
             itemTblModel.adicionar(produto);
+           
             limparCampos();
         }
 

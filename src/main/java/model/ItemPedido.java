@@ -27,6 +27,16 @@ public class ItemPedido {
     public ItemPedidoPK getChComposta() {
         return chComposta;
     }
+    
+    public Item getItem(){
+        return chComposta.getItem();
+    }
+    
+    public PedidoSQ getPedido(){
+        return chComposta.getPedido();
+    }
+    
+   
 
     public ItemPedido() {
     }

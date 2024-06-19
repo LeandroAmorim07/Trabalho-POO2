@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.Estadia;
 import model.Item;
 import model.Quarto;
 import viewer.CadastrarClientes;
@@ -22,6 +23,7 @@ import viewer.CadastrarQuartos;
 import viewer.GerenciarEstadia;
 import viewer.GerenciarItens;
 import viewer.PesquisarClientes;
+import viewer.PesquisarEstadia;
 import viewer.PesquisarItem;
 import viewer.PesquisarQuarto;
 import viewer.ServicoDeQuartos;
@@ -41,6 +43,7 @@ import viewer.TelaPrincipal;
     private PesquisarQuarto pq=null;
     private GerenciarItens cp=null;
     private PesquisarItem pi=null;
+    private PesquisarEstadia pe=null;
 
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
@@ -173,6 +176,12 @@ public class TableUtilidades{
         return pi.getItemSelecionado();
 
     } 
+       
+        public Estadia abrirPesqEstadia() {
+        pe = (PesquisarEstadia) abrirJanela(frmPrinc, pe, PesquisarEstadia.class  );
+        return pe.getEstadiaSelecionado();
+
+    }
        public DomainManeger getDomainManeger() {
         return gerDom;       
     }
