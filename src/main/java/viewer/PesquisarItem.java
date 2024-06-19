@@ -30,7 +30,7 @@ public class PesquisarItem extends javax.swing.JDialog {
     public PesquisarItem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(525,452);
+        setSize(550,500);
         itemTblModel = new ItemAbstractTableModel();
         tblitens.setModel(itemTblModel);
     }
@@ -104,6 +104,10 @@ public class PesquisarItem extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel17.setOpaque(false);
+
+        jPanel19.setOpaque(false);
 
         btSelecionar7.setBackground(new java.awt.Color(204, 255, 255));
         btSelecionar7.setForeground(new java.awt.Color(0, 0, 0));
@@ -340,35 +344,7 @@ public class PesquisarItem extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelar;
-    private javax.swing.JButton btCancelar1;
-    private javax.swing.JButton btCancelar2;
-    private javax.swing.JButton btCancelar3;
-    private javax.swing.JButton btCancelar4;
-    private javax.swing.JButton btCancelar5;
-    private javax.swing.JButton btCancelar6;
-    private javax.swing.JButton btListar;
-    private javax.swing.JButton btListar1;
-    private javax.swing.JButton btListar2;
-    private javax.swing.JButton btListar3;
-    private javax.swing.JButton btListar4;
-    private javax.swing.JButton btListar5;
-    private javax.swing.JButton btListar6;
     private javax.swing.JButton btRemoverClientes;
-    private javax.swing.JButton btRemoverQuartos;
-    private javax.swing.JButton btRemoverQuartos1;
-    private javax.swing.JButton btRemoverQuartos2;
-    private javax.swing.JButton btRemoverQuartos3;
-    private javax.swing.JButton btRemoverQuartos4;
-    private javax.swing.JButton btRemoverQuartos5;
-    private javax.swing.JButton btRemoverQuartos6;
-    private javax.swing.JButton btSelecionar;
-    private javax.swing.JButton btSelecionar1;
-    private javax.swing.JButton btSelecionar2;
-    private javax.swing.JButton btSelecionar3;
-    private javax.swing.JButton btSelecionar4;
-    private javax.swing.JButton btSelecionar5;
-    private javax.swing.JButton btSelecionar6;
     private javax.swing.JButton btSelecionar7;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton jButton1;
@@ -376,31 +352,10 @@ public class PesquisarItem extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblClientesCad;
-    private javax.swing.JLabel lblClientesCad1;
-    private javax.swing.JLabel lblClientesCad2;
-    private javax.swing.JLabel lblClientesCad3;
-    private javax.swing.JLabel lblClientesCad4;
-    private javax.swing.JLabel lblClientesCad5;
-    private javax.swing.JLabel lblClientesCad6;
     private javax.swing.JTable tblitens;
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables

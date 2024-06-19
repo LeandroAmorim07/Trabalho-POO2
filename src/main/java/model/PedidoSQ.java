@@ -7,6 +7,7 @@ package model;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,10 +23,11 @@ public class PedidoSQ {
     @GeneratedValue (strategy =GenerationType.IDENTITY)
    private int idPedidoSQ;
    private double valorTotal;
+   
    @ManyToOne
    @JoinColumn (name="idEstadia")
    private Estadia estadia;
-   @OneToMany(mappedBy = "pedidosq", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany ( mappedBy = "chComposta.pedido" , fetch = FetchType.LAZY, cascade = CascadeType.ALL )
     private List<ItemPedido> itemPedidos;
    
   
@@ -37,6 +39,12 @@ public class PedidoSQ {
         this.valorTotal = valorTotal;
         this.estadia = estadia;
         this.itemPedidos = itemPedido;
+    }
+
+    public PedidoSQ(double valorTotal, Estadia estadia, List<ItemPedido> itemPedidos) {
+        this.valorTotal = valorTotal;
+        this.estadia = estadia;
+        this.itemPedidos = itemPedidos;
     }
 
     public List<ItemPedido> getItemPedido() {

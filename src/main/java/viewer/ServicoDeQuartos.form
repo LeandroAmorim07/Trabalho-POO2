@@ -133,7 +133,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtNumQuarto1" pref="116" max="32767" attributes="0"/>
+                          <Component id="txtItem" pref="116" max="32767" attributes="0"/>
                           <Component id="txtNumQuarto" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtCliente" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -170,7 +170,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblNum1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNumQuarto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtItem" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="btPesquisarItem" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -237,7 +237,7 @@
                 <Property name="text" type="java.lang.String" value="Item"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNumQuarto1">
+            <Component class="javax.swing.JTextField" name="txtItem">
             </Component>
             <Component class="javax.swing.JButton" name="btPesquisarQuarto1">
               <Properties>

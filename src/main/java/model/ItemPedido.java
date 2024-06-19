@@ -4,12 +4,10 @@
  */
 package model;
 
+
+
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 
 /**
@@ -19,158 +17,49 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemPedido {
-    @Id
-    @GeneratedValue (strategy =GenerationType.IDENTITY)
-    private int idItemPedido;
-    private int qtdHamb;
-    private int qtdXburguer;
-    private int qtdOreo;
-    private int qtdRuffles;
-    private int qtdCoca;
-    private int qtdPepsi;
-    private int qtdDelValle;
-    private int qtdChampanhe;
-    private String extras;
+   
+    
+    @EmbeddedId
+    private ItemPedidoPK chComposta;
 
-    public String getExtras() {
-        return extras;
-    }
-
-    public void setExtras(String extras) {
-        this.extras = extras;
-    }
-    
-    
-    @ManyToOne
-    @JoinColumn(name="idPedidoSQ")
-    private PedidoSQ pedidosq;
-    
-    @ManyToOne
-    @JoinColumn(name="idItem")
-    private Item item;
+   
+    private int qtd;
+ 
 
     
-    
-    public PedidoSQ getPedidosq() {
-        return pedidosq;
+     public ItemPedido(Item item, PedidoSQ pedidosq, int qtd) {
+        this.qtd = qtd;
+        this.chComposta = new ItemPedidoPK(pedidosq, item);
+        
     }
-
-    public Item getItem() {
-        return item;
+    public ItemPedidoPK getChComposta() {
+        return chComposta;
     }
-
-    public ItemPedido(int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {//sem id
-        this.qtdHamb = qtdHamb;
-        this.qtdXburguer = qtdXburguer;
-        this.qtdOreo = qtdOreo;
-        this.qtdRuffles = qtdRuffles;
-        this.qtdCoca = qtdCoca;
-        this.qtdPepsi = qtdPepsi;
-        this.qtdDelValle = qtdDelValle;
-        this.qtdChampanhe = qtdChampanhe;
-        this.extras = extras;
-        this.pedidosq = pedidosq;
-        this.item = item;
-    }
-
-
-
-    public ItemPedido(int idItemPedido, int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {
-        this.idItemPedido = idItemPedido;
-        this.qtdHamb = qtdHamb;
-        this.qtdXburguer = qtdXburguer;
-        this.qtdOreo = qtdOreo;
-        this.qtdRuffles = qtdRuffles;
-        this.qtdCoca = qtdCoca;
-        this.qtdPepsi = qtdPepsi;
-        this.qtdDelValle = qtdDelValle;
-        this.qtdChampanhe = qtdChampanhe;
-        this.extras = extras;
-        this.pedidosq = pedidosq;
-        this.item = item;
-    }
-
-    
 
     public ItemPedido() {
     }
 
-    public int getIdPedido() {
-        return idItemPedido;
+    public void setChComposta(ItemPedidoPK chComposta) {
+        this.chComposta = chComposta;
     }
 
-    public void setIdPedido(int idPedido) {
-        this.idItemPedido = idPedido;
+  
+
+    public int getQtd() {
+        return qtd;
     }
 
-    public int getQtdHamb() {
-        return qtdHamb;
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
     }
-
-    public void setQtdHamb(int qtdHamb) {
-        this.qtdHamb = qtdHamb;
-    }
-
-    public int getQtdXburguer() {
-        return qtdXburguer;
-    }
-
-    public void setQtdXburguer(int qtdXburguer) {
-        this.qtdXburguer = qtdXburguer;
-    }
-
-    public int getQtdOreo() {
-        return qtdOreo;
-    }
-
-    public void setQtdOreo(int qtdOreo) {
-        this.qtdOreo = qtdOreo;
-    }
-
-    public int getQtdRuffles() {
-        return qtdRuffles;
-    }
-
-    public void setQtdRuffles(int qtdRuffles) {
-        this.qtdRuffles = qtdRuffles;
-    }
-
-    public int getQtdCoca() {
-        return qtdCoca;
-    }
-
-    public void setQtdCoca(int qtdCoca) {
-        this.qtdCoca = qtdCoca;
-    }
-
-    public int getQtdPepsi() {
-        return qtdPepsi;
-    }
-
-    public void setQtdPepsi(int qtdPepsi) {
-        this.qtdPepsi = qtdPepsi;
-    }
-
-    public int getQtdDelValle() {
-        return qtdDelValle;
-    }
-
-    public void setQtdDelValle(int qtdDelValle) {
-        this.qtdDelValle = qtdDelValle;
-    }
-
-    public int getQtdChampanhe() {
-        return qtdChampanhe;
-    }
-
-    public void setQtdChampanhe(int qtdChampanhe) {
-        this.qtdChampanhe = qtdChampanhe;
-    }
-
-    public int getIdItemPedido() {
-        return idItemPedido;
-    }
-    
 
     
 }
+
+
+   
+    
+    
+
+    
+

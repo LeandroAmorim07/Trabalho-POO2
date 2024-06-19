@@ -85,12 +85,7 @@ public class DomainManeger {
         genDao.alterar(es);
     }
 
-    public int inserirItemPedido(int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {
-        ItemPedido qt = new ItemPedido(qtdHamb, qtdXburguer, qtdOreo, qtdRuffles, qtdCoca, qtdPepsi, qtdDelValle, qtdChampanhe, extras, pedidosq, item);
-        genDao.inserir(qt);
-        return qt.getIdItemPedido();
-
-    }
+  
 
     public int inserirProduto(String nome, double valor) {
         Item it = new Item(nome, valor);

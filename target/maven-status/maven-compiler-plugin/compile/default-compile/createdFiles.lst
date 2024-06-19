@@ -89,7 +89,7 @@ model\PedidoSQ.class
 control\FuncoesUteis.class
 viewer\GerenciarItens$7$1.class
 viewer\TelaPrincipal.class
-control\ItemPedidoAbstractTableModel.class
+model\ItemPedidoPK.class
 viewer\GerenciarEstadia$5.class
 viewer\CadastrarClientes$3.class
 viewer\CadastrarQuartos$8.class

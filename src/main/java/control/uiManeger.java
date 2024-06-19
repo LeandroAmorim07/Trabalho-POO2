@@ -169,7 +169,7 @@ public class TableUtilidades{
         cp = (GerenciarItens) abrirJanela(frmPrinc, cp, GerenciarItens.class  );
     }
        public Item abrirPesqItem() {
-        pq = (PesquisarQuarto) abrirJanela(frmPrinc, pi, PesquisarItem.class  );
+        pi = (PesquisarItem) abrirJanela(frmPrinc, pi, PesquisarItem.class  );
         return pi.getItemSelecionado();
 
     } 
