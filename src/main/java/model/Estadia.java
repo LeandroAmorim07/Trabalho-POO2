@@ -5,6 +5,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -34,6 +36,13 @@ public class Estadia {
     @ManyToOne
     @JoinColumn(name="idQuarto")
     private Quarto quarto;
+    
+    
+    @OneToMany
+    @JoinColumn (name="idPedidoSQ")
+    private  List<PedidoSQ> pedido;
+    
+    
 
     public Estadia(Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
         this.checkin = checkin;

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package viewer;
+import control.ItemPedidoAbstractTableModel;
 import control.uiManeger;
 import  control.uiManeger.JPaneLGradient;
 import control.uiManeger.TableUtilidades;
@@ -10,12 +11,20 @@ import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import model.Item;
+import model.ItemPedido;
+
+import model.PedidoSQ;
 import model.Quarto;
 
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
     private Cliente cliSelecionado =null;
     private Quarto quartoSelecionado = null;
+    private PedidoSQ ServicoSelecionado =null;
+    private ItemPedidoAbstractTableModel pedidoTblModel =null;
+    
+    
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -76,6 +85,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel8 = new javax.swing.JPanel();
         btAdd = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
+        btlLimpar = new javax.swing.JButton();
 
         popADD.setText("Adicionar");
         popADD.addActionListener(new java.awt.event.ActionListener() {
@@ -496,6 +506,16 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
+        btlLimpar.setBackground(new java.awt.Color(204, 204, 255));
+        btlLimpar.setForeground(new java.awt.Color(0, 0, 0));
+        btlLimpar.setText("Limpar");
+        btlLimpar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btlLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -503,9 +523,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(btAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btRemover)
-                .addGap(39, 39, 39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(btlLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,7 +535,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAdd)
-                    .addComponent(btRemover))
+                    .addComponent(btRemover)
+                    .addComponent(btlLimpar))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -538,7 +561,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addGap(132, 132, 132))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -608,7 +631,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }//GEN-LAST:event_chkChampanheActionPerformed
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-         DefaultTableModel tblSQ = (DefaultTableModel) tabela.getModel();
+       
+         ItemPedido itempedido = new ItemPedido();
          int hamb  = (int) spnHamb.getValue();
          int xburguer = (int) spnXburguer.getValue();
          int biscoito  = (int) spnBiscoito.getValue();
@@ -624,13 +648,25 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
          if (chkKitHigiene.isSelected()){
              extras+=",";
              extras += chkKitHigiene.getText();
-         }
-          
-         Object[] dados ={
-             txtCliente.getText(),Integer.valueOf(txtNumQuarto.getText()),hamb,xburguer,biscoito,ruffles,coca,pepsi,suco,champ,extras
              
-         };
-         tblSQ.addRow(dados);
+         }
+         itempedido.setQtdHamb(hamb);
+         itempedido.setQtdCoca(coca);
+         itempedido.setExtras(extras);
+         itempedido.setQtdChampanhe(champ);
+         itempedido.setQtdDelValle(champ);
+         itempedido.setQtdOreo(biscoito);
+         itempedido.setQtdPepsi(pepsi);
+         itempedido.setQtdRuffles(ruffles);
+         itempedido.setQtdXburguer(xburguer);
+         PedidoSQ pq = new PedidoSQ();
+         Item it = new Item();
+         int novoid =uiManeger.getInstance().getDomainManeger().inserirItemPedido(hamb, xburguer, biscoito, ruffles, coca, pepsi, champ, champ, extras,pq,it);
+         itempedido.setIdPedido(novoid);
+         pq.setIdPedidoSQ(novoid);
+        
+         pedidoTblModel.adicionar(itempedido);
+       
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
@@ -646,6 +682,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         quartoSelecionado = uiManeger.getInstance().abrirPesqQuarto();
         txtNumQuarto.setText(String.valueOf(quartoSelecionado.getNumQuarto()));
     }//GEN-LAST:event_btPesquisarQuartoActionPerformed
+
+    private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
+      
+    }//GEN-LAST:event_btlLimparActionPerformed
 
     private void habilitarSpinner( JCheckBox chk, JSpinner spn ) {
         if ( chk.isSelected()  ) {
@@ -700,6 +740,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btPesquisarCliente1;
     private javax.swing.JButton btPesquisarQuarto;
     private javax.swing.JButton btRemover;
+    private javax.swing.JButton btlLimpar;
     private javax.swing.JCheckBox chkBiscoito;
     private javax.swing.JCheckBox chkChampanhe;
     private javax.swing.JCheckBox chkCoca;
