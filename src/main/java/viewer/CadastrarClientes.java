@@ -466,6 +466,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
         cliTableModel.remover(index);
         try {
             uiManeger.getInstance().getDomainManeger().excluir(cliSelecionado);
+            
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

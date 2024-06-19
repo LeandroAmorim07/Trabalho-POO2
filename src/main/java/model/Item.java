@@ -23,14 +23,33 @@ public class Item {
     @Id
     @GeneratedValue (strategy =GenerationType.IDENTITY)
     private int idItem;
+   @Column(nullable = false, length = 40)
+   private String NomeItem;
+   
     @Column(nullable = false)
     private double valor;
-  
 
-    public Item(int idItem, double valor) {
+    public Item(int idItem, String NomeItem, double valor) {
         this.idItem = idItem;
+        this.NomeItem = NomeItem;
         this.valor = valor;
     }
+
+    public Item(String NomeItem, double valor) {
+        this.NomeItem = NomeItem;
+        this.valor = valor;
+    }
+
+    public String getNomeItem() {
+        return NomeItem;
+    }
+
+    public void setNomeItem(String NomeItem) {
+        this.NomeItem = NomeItem;
+    }
+  
+
+  
     
 
   

@@ -19,6 +19,7 @@ import viewer.CadastrarClientes;
 
 import viewer.CadastrarQuartos;
 import viewer.GerenciarEstadia;
+import viewer.GerenciarProdutos;
 import viewer.PesquisarClientes;
 import viewer.PesquisarQuarto;
 import viewer.ServicoDeQuartos;
@@ -36,7 +37,7 @@ import viewer.TelaPrincipal;
     private ServicoDeQuartos sq=null;
     private PesquisarClientes pc=null;
     private PesquisarQuarto pq=null;
-   
+    private GerenciarProdutos cp=null;
 
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
@@ -161,7 +162,9 @@ public class TableUtilidades{
        public void abrirServQuartos(){
         sq = (ServicoDeQuartos) abrirJanela(frmPrinc, sq, ServicoDeQuartos.class  );
      }
-      
+      public void abrirGerProd() {
+        cp = (GerenciarProdutos) abrirJanela(frmPrinc, cp, GerenciarProdutos.class  );
+    }
        
        public DomainManeger getDomainManeger() {
         return gerDom;       

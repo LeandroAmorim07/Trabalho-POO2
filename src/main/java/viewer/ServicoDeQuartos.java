@@ -52,36 +52,12 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         txtNumQuarto = new javax.swing.JTextField();
         btPesquisarCliente1 = new javax.swing.JButton();
         btPesquisarQuarto = new javax.swing.JButton();
+        lblNum1 = new javax.swing.JLabel();
+        txtNumQuarto1 = new javax.swing.JTextField();
+        btPesquisarQuarto1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblRoomService = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lblAperitivos = new javax.swing.JLabel();
-        chkHamb = new javax.swing.JCheckBox();
-        spnHamb = new javax.swing.JSpinner();
-        lblQTD = new javax.swing.JLabel();
-        chkXburguer = new javax.swing.JCheckBox();
-        chkBiscoito = new javax.swing.JCheckBox();
-        spnBiscoito = new javax.swing.JSpinner();
-        chkRuffles = new javax.swing.JCheckBox();
-        spnXburguer = new javax.swing.JSpinner();
-        spnRuffles = new javax.swing.JSpinner();
-        jPanel6 = new javax.swing.JPanel();
-        lblBebidas = new javax.swing.JLabel();
-        chkCoca = new javax.swing.JCheckBox();
-        spnCoca = new javax.swing.JSpinner();
-        lblQtdbebida = new javax.swing.JLabel();
-        chkPepsi = new javax.swing.JCheckBox();
-        chkSucoUva = new javax.swing.JCheckBox();
-        spnSucoUva = new javax.swing.JSpinner();
-        chkChampanhe = new javax.swing.JCheckBox();
-        spnPepsi = new javax.swing.JSpinner();
-        spnChampanhe = new javax.swing.JSpinner();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
-        jPanel7 = new javax.swing.JPanel();
-        chkToalha = new javax.swing.JCheckBox();
-        chkKitHigiene = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
         btAdd = new javax.swing.JButton();
         btRemover = new javax.swing.JButton();
@@ -133,6 +109,17 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
+        lblNum1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNum1.setForeground(new java.awt.Color(0, 0, 0));
+        lblNum1.setText("Produto");
+
+        btPesquisarQuarto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btPesquisarQuarto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarQuarto1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -141,16 +128,19 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCliente)
-                    .addComponent(lblNum))
+                    .addComponent(lblNum)
+                    .addComponent(lblNum1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtNumQuarto, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNumQuarto1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(txtNumQuarto)
+                    .addComponent(txtCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btPesquisarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btPesquisarQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                    .addComponent(btPesquisarQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btPesquisarQuarto1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,12 +152,18 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                         .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btPesquisarCliente1))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblNum)
                         .addComponent(txtNumQuarto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisarQuarto1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNum1)
+                        .addComponent(txtNumQuarto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btPesquisarQuarto))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel3.setOpaque(false);
@@ -193,295 +189,17 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addComponent(lblRoomService))
         );
 
-        lblAperitivos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblAperitivos.setForeground(new java.awt.Color(0, 51, 204));
-        lblAperitivos.setText("Aperitivos");
-
-        chkHamb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkHamb.setForeground(new java.awt.Color(0, 0, 0));
-        chkHamb.setText("Hamburguer");
-        chkHamb.setContentAreaFilled(false);
-        chkHamb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkHambActionPerformed(evt);
-            }
-        });
-
-        spnHamb.setEnabled(false);
-
-        lblQTD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQTD.setForeground(new java.awt.Color(0, 51, 204));
-        lblQTD.setText("Qtd.");
-
-        chkXburguer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkXburguer.setForeground(new java.awt.Color(0, 0, 0));
-        chkXburguer.setText("X-Burguer");
-        chkXburguer.setContentAreaFilled(false);
-        chkXburguer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkXburguerActionPerformed(evt);
-            }
-        });
-
-        chkBiscoito.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkBiscoito.setForeground(new java.awt.Color(0, 0, 0));
-        chkBiscoito.setText("Biscoito Oreo");
-        chkBiscoito.setContentAreaFilled(false);
-        chkBiscoito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkBiscoitoActionPerformed(evt);
-            }
-        });
-
-        spnBiscoito.setEnabled(false);
-
-        chkRuffles.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkRuffles.setForeground(new java.awt.Color(0, 0, 0));
-        chkRuffles.setText("Ruffles");
-        chkRuffles.setContentAreaFilled(false);
-        chkRuffles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRufflesActionPerformed(evt);
-            }
-        });
-
-        spnXburguer.setEnabled(false);
-
-        spnRuffles.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkBiscoito)
-                            .addComponent(chkRuffles))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(spnBiscoito, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spnRuffles, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkHamb)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblAperitivos))
-                            .addComponent(chkXburguer))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(lblQTD)
-                                .addGap(0, 25, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(spnHamb, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spnXburguer, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))))
-                .addGap(5, 5, 5))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAperitivos)
-                    .addComponent(lblQTD))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkHamb)
-                    .addComponent(spnHamb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkXburguer)
-                    .addComponent(spnXburguer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkBiscoito)
-                    .addComponent(spnBiscoito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkRuffles)
-                    .addComponent(spnRuffles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-
-        lblBebidas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblBebidas.setForeground(new java.awt.Color(0, 51, 204));
-        lblBebidas.setText("Bebidas");
-
-        chkCoca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkCoca.setForeground(new java.awt.Color(0, 0, 0));
-        chkCoca.setText("Coca-Cola");
-        chkCoca.setContentAreaFilled(false);
-        chkCoca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCocaActionPerformed(evt);
-            }
-        });
-
-        spnCoca.setEnabled(false);
-
-        lblQtdbebida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblQtdbebida.setForeground(new java.awt.Color(0, 51, 204));
-        lblQtdbebida.setText("Qtd.");
-
-        chkPepsi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkPepsi.setForeground(new java.awt.Color(0, 0, 0));
-        chkPepsi.setText("Pepsi  ");
-        chkPepsi.setContentAreaFilled(false);
-        chkPepsi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkPepsiActionPerformed(evt);
-            }
-        });
-
-        chkSucoUva.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkSucoUva.setForeground(new java.awt.Color(0, 0, 0));
-        chkSucoUva.setText("Del Valle Uva");
-        chkSucoUva.setContentAreaFilled(false);
-        chkSucoUva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkSucoUvaActionPerformed(evt);
-            }
-        });
-
-        spnSucoUva.setEnabled(false);
-
-        chkChampanhe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        chkChampanhe.setForeground(new java.awt.Color(0, 0, 0));
-        chkChampanhe.setText("Champanhe");
-        chkChampanhe.setContentAreaFilled(false);
-        chkChampanhe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkChampanheActionPerformed(evt);
-            }
-        });
-
-        spnPepsi.setEnabled(false);
-
-        spnChampanhe.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkCoca)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblBebidas)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblQtdbebida)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(spnCoca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkSucoUva)
-                    .addComponent(chkChampanhe)
-                    .addComponent(chkPepsi))
-                .addGap(76, 76, 76)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnChampanhe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(spnSucoUva, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                        .addComponent(spnPepsi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBebidas)
-                    .addComponent(lblQtdbebida))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkCoca)
-                    .addComponent(spnCoca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkPepsi)
-                    .addComponent(spnPepsi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkSucoUva)
-                    .addComponent(spnSucoUva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkChampanhe)
-                    .addComponent(spnChampanhe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
         jPanel4.setOpaque(false);
-
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cliente", "Quarto", "Hamburguer", "X-Burguer", "Oreo", "Ruffles", "Coca-Cola", "Pepsi", "Suco", "Champanhe", "Extras"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tabela.setComponentPopupMenu(popMenuRS);
-        jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Extras"));
-        jPanel7.setForeground(new java.awt.Color(0, 0, 0));
-
-        chkToalha.setForeground(new java.awt.Color(0, 0, 0));
-        chkToalha.setText("Toalha");
-
-        chkKitHigiene.setForeground(new java.awt.Color(0, 0, 0));
-        chkKitHigiene.setText("Kit Higiene");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(chkToalha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(chkKitHigiene)
-                .addGap(18, 18, 18))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkToalha)
-                    .addComponent(chkKitHigiene))
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addGap(0, 177, Short.MAX_VALUE)
         );
 
         jPanel8.setOpaque(false);
@@ -544,24 +262,18 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(132, 132, 132))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,17 +281,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -591,86 +297,22 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void chkXburguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkXburguerActionPerformed
-        habilitarSpinner(chkXburguer,spnXburguer);
-    }//GEN-LAST:event_chkXburguerActionPerformed
-
-    private void chkPepsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPepsiActionPerformed
-       habilitarSpinner(chkPepsi,spnPepsi);
-    }//GEN-LAST:event_chkPepsiActionPerformed
-
-    private void chkCocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCocaActionPerformed
-       habilitarSpinner(chkCoca,spnCoca);
-    }//GEN-LAST:event_chkCocaActionPerformed
-
-    private void chkSucoUvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSucoUvaActionPerformed
-        habilitarSpinner(chkSucoUva,spnSucoUva);
-    }//GEN-LAST:event_chkSucoUvaActionPerformed
-
-    private void chkHambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHambActionPerformed
-        habilitarSpinner(chkHamb,spnHamb);
-        
-    }//GEN-LAST:event_chkHambActionPerformed
-
-    private void chkBiscoitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBiscoitoActionPerformed
-       habilitarSpinner(chkBiscoito,spnBiscoito );
-    }//GEN-LAST:event_chkBiscoitoActionPerformed
-
-    private void chkRufflesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRufflesActionPerformed
-        habilitarSpinner(chkRuffles,spnRuffles);
-    }//GEN-LAST:event_chkRufflesActionPerformed
-
-    private void chkChampanheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkChampanheActionPerformed
-        habilitarSpinner(chkChampanhe,spnChampanhe);
-    }//GEN-LAST:event_chkChampanheActionPerformed
-
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
        
-         ItemPedido itempedido = new ItemPedido();
-         int hamb  = (int) spnHamb.getValue();
-         int xburguer = (int) spnXburguer.getValue();
-         int biscoito  = (int) spnBiscoito.getValue();
-         int ruffles  = (int) spnRuffles.getValue();
-         int coca  = (int) spnCoca.getValue();
-         int pepsi  = (int) spnPepsi.getValue();
-         int suco  = (int) spnSucoUva.getValue();
-         int champ  = (int) spnChampanhe.getValue();
-         String extras = "";
-         if (chkToalha.isSelected()){
-              extras += chkToalha.getText();
-         }
-         if (chkKitHigiene.isSelected()){
-             extras+=",";
-             extras += chkKitHigiene.getText();
-             
-         }
-         itempedido.setQtdHamb(hamb);
-         itempedido.setQtdCoca(coca);
-         itempedido.setExtras(extras);
-         itempedido.setQtdChampanhe(champ);
-         itempedido.setQtdDelValle(champ);
-         itempedido.setQtdOreo(biscoito);
-         itempedido.setQtdPepsi(pepsi);
-         itempedido.setQtdRuffles(ruffles);
-         itempedido.setQtdXburguer(xburguer);
-         PedidoSQ pq = new PedidoSQ();
-         Item it = new Item();
-         int novoid =uiManeger.getInstance().getDomainManeger().inserirItemPedido(hamb, xburguer, biscoito, ruffles, coca, pepsi, champ, champ, extras,pq,it);
-         itempedido.setIdPedido(novoid);
-         pq.setIdPedidoSQ(novoid);
         
-         pedidoTblModel.adicionar(itempedido);
        
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-       TableUtilidades.removerLinhaSelecionada((DefaultTableModel) tabela.getModel(), tabela);
+       
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed
@@ -686,6 +328,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
       
     }//GEN-LAST:event_btlLimparActionPerformed
+
+    private void btPesquisarQuarto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarQuarto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btPesquisarQuarto1ActionPerformed
 
     private void habilitarSpinner( JCheckBox chk, JSpinner spn ) {
         if ( chk.isSelected()  ) {
@@ -739,47 +385,23 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btPesquisarCliente1;
     private javax.swing.JButton btPesquisarQuarto;
+    private javax.swing.JButton btPesquisarQuarto1;
     private javax.swing.JButton btRemover;
     private javax.swing.JButton btlLimpar;
-    private javax.swing.JCheckBox chkBiscoito;
-    private javax.swing.JCheckBox chkChampanhe;
-    private javax.swing.JCheckBox chkCoca;
-    private javax.swing.JCheckBox chkHamb;
-    private javax.swing.JCheckBox chkKitHigiene;
-    private javax.swing.JCheckBox chkPepsi;
-    private javax.swing.JCheckBox chkRuffles;
-    private javax.swing.JCheckBox chkSucoUva;
-    private javax.swing.JCheckBox chkToalha;
-    private javax.swing.JCheckBox chkXburguer;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblAperitivos;
-    private javax.swing.JLabel lblBebidas;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblNum;
-    private javax.swing.JLabel lblQTD;
-    private javax.swing.JLabel lblQtdbebida;
+    private javax.swing.JLabel lblNum1;
     private javax.swing.JLabel lblRoomService;
     private javax.swing.JMenuItem popADD;
     private javax.swing.JPopupMenu popMenuRS;
     private javax.swing.JMenuItem popRemover;
-    private javax.swing.JSpinner spnBiscoito;
-    private javax.swing.JSpinner spnChampanhe;
-    private javax.swing.JSpinner spnCoca;
-    private javax.swing.JSpinner spnHamb;
-    private javax.swing.JSpinner spnPepsi;
-    private javax.swing.JSpinner spnRuffles;
-    private javax.swing.JSpinner spnSucoUva;
-    private javax.swing.JSpinner spnXburguer;
-    private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtNumQuarto;
+    private javax.swing.JTextField txtNumQuarto1;
     // End of variables declaration//GEN-END:variables
 }

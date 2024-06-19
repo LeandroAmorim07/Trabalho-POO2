@@ -35,11 +35,17 @@ public class DomainManeger {
     public List<Quarto> ListarQuarto() {
         return genDao.listar(Quarto.class);
     }
-       public List<Estadia> ListarEstadia() {
+
+    public List<Estadia> ListarEstadia() {
         return genDao.listar(Estadia.class);
     }
-     public List<ItemPedido> ListarPedido() {
+
+    public List<ItemPedido> ListarPedido() {
         return genDao.listar(ItemPedido.class);
+    }
+
+    public List<Item> ListarItem() {
+        return genDao.listar(Item.class);
     }
 
     public int inserirCliente(String nome, String telefone, String email, String cpf) {
@@ -48,6 +54,7 @@ public class DomainManeger {
         return cli.getIdCliente();
 
     }
+
     public void alterarCliente(int idCliente, String nome, String telefone, String email, String cpf) throws ClassNotFoundException, SQLException {
 
         Cliente cli = new Cliente(idCliente, nome, telefone, email, cpf);
@@ -57,7 +64,6 @@ public class DomainManeger {
     public void inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
         Quarto qt = new Quarto(numQuarto, tipoQuarto, cama, valorDiaria);
         genDao.inserir(qt);
-       
 
     }
 
@@ -65,34 +71,47 @@ public class DomainManeger {
         Quarto qt = new Quarto(numQuarto, tipoQuarto, cama, valorDiaria);
         genDao.alterar(qt);
     }
-    
-    
-    
-    public int inserirEstadia (Cliente cli, Quarto qt, Date checkin, Date checkout){
+
+    public int inserirEstadia(Cliente cli, Quarto qt, Date checkin, Date checkout) {
         Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
-        
+
         genDao.inserir(es);
-       
+
         return es.getIdEstadia();
     }
-     public void alterarEstadia(int idEstadia,Cliente cli, Quarto qt, Date checkin, Date checkout) {
-       Estadia es = new Estadia(idEstadia,checkin, checkout, 0, 0, cli, qt);
+
+    public void alterarEstadia(int idEstadia, Cliente cli, Quarto qt, Date checkin, Date checkout) {
+        Estadia es = new Estadia(idEstadia, checkin, checkout, 0, 0, cli, qt);
         genDao.alterar(es);
     }
-    public int inserirItemPedido( int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {
-        ItemPedido qt = new ItemPedido(qtdHamb,qtdXburguer,qtdOreo,qtdRuffles,qtdCoca,qtdPepsi,qtdDelValle,qtdChampanhe,extras,pedidosq,item);
-        genDao.inserir(qt);
-       return qt.getIdItemPedido();
 
+    public int inserirItemPedido(int qtdHamb, int qtdXburguer, int qtdOreo, int qtdRuffles, int qtdCoca, int qtdPepsi, int qtdDelValle, int qtdChampanhe, String extras, PedidoSQ pedidosq, Item item) {
+        ItemPedido qt = new ItemPedido(qtdHamb, qtdXburguer, qtdOreo, qtdRuffles, qtdCoca, qtdPepsi, qtdDelValle, qtdChampanhe, extras, pedidosq, item);
+        genDao.inserir(qt);
+        return qt.getIdItemPedido();
+
+    }
+
+    public int inserirProduto(String nome, double valor) {
+        Item it = new Item(nome, valor);
+        genDao.inserir(it);
+        return it.getIdItem();
+
+    }
+
+    public void alterarProduto(int idProduto, String nomeProduto, double valor) {
+        Item it = new Item(idProduto, nomeProduto, valor);
+        genDao.alterar(it);
     }
 
     // buscas 
     public Cliente buscarClientePorId(int idCliente) {
-    return (Cliente) genDao.buscarPorId(Cliente.class, idCliente);
-}
+        return (Cliente) genDao.buscarPorId(Cliente.class, idCliente);
+    }
+
     public Quarto buscarQuartoPorId(int numQuarto) {
-    return (Quarto) genDao.buscarPorId(Quarto.class,numQuarto );
-}
+        return (Quarto) genDao.buscarPorId(Quarto.class, numQuarto);
+    }
 
     public void excluir(Object cli) throws SQLException, ClassNotFoundException {
         genDao.excluir(cli);
