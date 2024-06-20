@@ -35,7 +35,9 @@ public class ItemPedido {
     public PedidoSQ getPedido(){
         return chComposta.getPedido();
     }
-    
+    public void setPedido(PedidoSQ ped){
+        chComposta.setPedido(ped);
+    }
    
 
     public ItemPedido() {

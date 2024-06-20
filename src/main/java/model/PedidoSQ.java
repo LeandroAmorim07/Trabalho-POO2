@@ -89,6 +89,17 @@ public class PedidoSQ {
         this.estadia = estadia;
     }
    
-   
+   public double calcularValor() {
+        valorTotal = (double) 0.0;
+        
+        for( ItemPedido item : itemPedidos ) {
+            double preco = item.getItem().getValor();
+            int qtde = item.getQtd();
+            valorTotal = valorTotal + qtde * preco;
+            
+            item.setPedido(this);
+        }
+        return valorTotal;
+    }
     
 }

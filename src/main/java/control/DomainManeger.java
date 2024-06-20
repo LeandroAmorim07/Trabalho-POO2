@@ -111,4 +111,11 @@ public class DomainManeger {
     public void excluir(Object cli) throws SQLException, ClassNotFoundException {
         genDao.excluir(cli);
     }
+    
+     public int inserirPedido(Estadia es, List listaItens) {
+        PedidoSQ ped = new PedidoSQ((double) 0.0,es,listaItens);
+        ped.calcularValor();
+        genDao.inserir(ped);
+        return ped.getIdPedidoSQ();             
+    }
 }

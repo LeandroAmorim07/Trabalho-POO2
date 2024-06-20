@@ -4,7 +4,6 @@
  */
 package viewer;
 
-
 import control.ItemPedidoAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
@@ -14,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
 import model.Cliente;
@@ -21,14 +21,11 @@ import model.Estadia;
 import model.Item;
 import model.ItemPedido;
 
-
-
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
     private ItemPedidoAbstractTableModel itemPedidoTM;
     private Item itemSelecionado = null;
-    private Estadia estadiaSelecionado =null;
-   
+    private Estadia estadiaSelecionado = null;
 
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -36,8 +33,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         itemPedidoTM = new ItemPedidoAbstractTableModel();
         tblPedidos.setModel(itemPedidoTM);
         setLocation(500, 100);
-         String output = DecimalFormat.getCurrencyInstance().format( 0.0 );
-        lblValor.setText( output );
+        String output = DecimalFormat.getCurrencyInstance().format(0.0);
+        lblValor.setText(output);
     }
 
     /**
@@ -74,7 +71,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         btlLimpar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btNovoPedido = new javax.swing.JButton();
 
         popADD.setText("Adicionar");
         popADD.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +117,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
         setTitle("Serviço de Quarto");
         setMinimumSize(new java.awt.Dimension(450, 365));
-        setPreferredSize(new java.awt.Dimension(668, 525));
+        setPreferredSize(new java.awt.Dimension(668, 580));
         setResizable(false);
         setSize(new java.awt.Dimension(765, 469));
 
@@ -289,13 +286,13 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         ));
         jScrollPane3.setViewportView(tblPedidos);
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 153));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Novo");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btNovoPedido.setBackground(new java.awt.Color(153, 255, 153));
+        btNovoPedido.setForeground(new java.awt.Color(0, 0, 0));
+        btNovoPedido.setText("Novo");
+        btNovoPedido.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btNovoPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btNovoPedidoActionPerformed(evt);
             }
         });
 
@@ -316,7 +313,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btNovoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -331,7 +328,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btNovoPedido)
                 .addContainerGap())
         );
 
@@ -345,20 +342,19 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-         int qtde = (int) spnQtde.getValue();
-         double preco = itemSelecionado.getValor();
-         ItemPedido item = new ItemPedido(itemSelecionado,null,qtde);
-         itemPedidoTM.adicionar(item);
-         atualizarTotal(preco, qtde,1);
-         
-         
+        int qtde = (int) spnQtde.getValue();
+        double preco = itemSelecionado.getValor();
+        ItemPedido item = new ItemPedido(itemSelecionado, null, qtde);
+        itemPedidoTM.adicionar(item);
+        atualizarTotal(preco, qtde, 1);
+
 
     }//GEN-LAST:event_btAddActionPerformed
 
@@ -367,45 +363,67 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btPesquisarEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarEstadiaActionPerformed
-        estadiaSelecionado= uiManeger.getInstance().abrirPesqEstadia();
+        estadiaSelecionado = uiManeger.getInstance().abrirPesqEstadia();
         txtEstadia.setText(String.valueOf(estadiaSelecionado.getIdEstadia()));
     }//GEN-LAST:event_btPesquisarEstadiaActionPerformed
 
     private void btPesquisarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarItemActionPerformed
-         
-            itemSelecionado = uiManeger.getInstance().abrirPesqItem();
-            txtItem.setText(String.valueOf(itemSelecionado.getNomeItem()));
-        
+
+        itemSelecionado = uiManeger.getInstance().abrirPesqItem();
+        txtItem.setText(String.valueOf(itemSelecionado.getNomeItem()));
+
 
     }//GEN-LAST:event_btPesquisarItemActionPerformed
 
+    private void limparCampos(){
+        itemSelecionado=null;
+        estadiaSelecionado=null;
+        txtEstadia.setText("");
+        txtItem.setText("");
+        itemPedidoTM.setLista(null);
+        
+        String output = DecimalFormat.getCurrencyInstance().format( 0.0 );
+        lblValor.setText( output );
+    }
     private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
 
     }//GEN-LAST:event_btlLimparActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-private void atualizarTotal (double preco, int qtde, int sinal) {
+    private void btNovoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoPedidoActionPerformed
+        if (estadiaSelecionado != null && itemSelecionado != null) {
+            if (itemPedidoTM.getRowCount() > 0) {
+                int id = uiManeger.getInstance().getDomainManeger().inserirPedido(estadiaSelecionado, itemPedidoTM.getLista());
+                JOptionPane.showMessageDialog(this, "Pedido " + id + " inserido com sucesso.", "Cadastro Pedido", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Mensagem de erro            
+                JOptionPane.showMessageDialog(this, "Adicione pelo menos um lanche.", "Cadastro pedido", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // Mensagem de erro            
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.", "Cadastro pedido", JOptionPane.ERROR_MESSAGE);
+        }
+        limparCampos();
+
+    }//GEN-LAST:event_btNovoPedidoActionPerformed
+    private void atualizarTotal(double preco, int qtde, int sinal) {
         // sinal 1 : somar
         // sinal -1 : subtrair
-        
+
         double total;
         try {
-            total = DecimalFormat.getCurrencyInstance().parse( lblValor.getText() ).doubleValue();
+            total = DecimalFormat.getCurrencyInstance().parse(lblValor.getText()).doubleValue();
             // float total = Float.valueOf( lblValor.getText() );
 
             total = total + sinal * preco * qtde;
 
             // Formatar saída para dinheiro
-            String output = DecimalFormat.getCurrencyInstance().format( total );
-            lblValor.setText( output );
+            String output = DecimalFormat.getCurrencyInstance().format(total);
+            lblValor.setText(output);
 
         } catch (ParseException ex) {
             Logger.getLogger(ServicoDeQuartos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-  
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -449,10 +467,10 @@ private void atualizarTotal (double preco, int qtde, int sinal) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
+    private javax.swing.JButton btNovoPedido;
     private javax.swing.JButton btPesquisarEstadia;
     private javax.swing.JButton btPesquisarItem;
     private javax.swing.JButton btlLimpar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

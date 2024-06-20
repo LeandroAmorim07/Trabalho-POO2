@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,8 +39,7 @@ public class Estadia {
     private Quarto quarto;
     
     
-    @OneToMany
-    @JoinColumn (name="idPedidoSQ")
+    @OneToMany ( mappedBy = "estadia" , fetch = FetchType.LAZY)
     private  List<PedidoSQ> pedido;
     
     
