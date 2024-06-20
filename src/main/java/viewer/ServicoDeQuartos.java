@@ -5,8 +5,13 @@
 package viewer;
 
 
+import control.ItemPedidoAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
@@ -16,13 +21,11 @@ import model.Estadia;
 import model.Item;
 import model.ItemPedido;
 
-import model.PedidoSQ;
-import model.Quarto;
+
 
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
-    private Cliente cliSelecionado = null;
-    private Quarto quartoSelecionado = null;
+    private ItemPedidoAbstractTableModel itemPedidoTM;
     private Item itemSelecionado = null;
     private Estadia estadiaSelecionado =null;
    
@@ -30,8 +33,11 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     public ServicoDeQuartos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        itemPedidoTM = new ItemPedidoAbstractTableModel();
+        tblPedidos.setModel(itemPedidoTM);
         setLocation(500, 100);
+         String output = DecimalFormat.getCurrencyInstance().format( 0.0 );
+        lblValor.setText( output );
     }
 
     /**
@@ -53,21 +59,21 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel1 = JPaneLGradient.criarPainelDegrade();
         jPanel2 = new javax.swing.JPanel();
         lblCliente = new javax.swing.JLabel();
-        txtCliente = new javax.swing.JTextField();
-        btPesquisarCliente1 = new javax.swing.JButton();
+        txtEstadia = new javax.swing.JTextField();
+        btPesquisarEstadia = new javax.swing.JButton();
         btPesquisarItem = new javax.swing.JButton();
         txtItem = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblQtde = new javax.swing.JLabel();
         spnQtde = new javax.swing.JSpinner();
-        lblNum1 = new javax.swing.JLabel();
+        lblItem = new javax.swing.JLabel();
+        lblValor = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblRoomService = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         btAdd = new javax.swing.JButton();
         btlLimpar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblPedidos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         popADD.setText("Adicionar");
@@ -113,9 +119,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTable2);
 
         setTitle("Serviço de Quarto");
-        setMaximumSize(new java.awt.Dimension(450, 365));
         setMinimumSize(new java.awt.Dimension(450, 365));
-        setPreferredSize(new java.awt.Dimension(450, 365));
+        setPreferredSize(new java.awt.Dimension(668, 525));
         setResizable(false);
         setSize(new java.awt.Dimension(765, 469));
 
@@ -125,10 +130,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         lblCliente.setForeground(new java.awt.Color(0, 0, 0));
         lblCliente.setText("Estadia");
 
-        btPesquisarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        btPesquisarCliente1.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisarEstadia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btPesquisarEstadia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btPesquisarCliente1ActionPerformed(evt);
+                btPesquisarEstadiaActionPerformed(evt);
             }
         });
 
@@ -139,39 +144,47 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Qtde");
+        lblQtde.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblQtde.setForeground(new java.awt.Color(0, 0, 0));
+        lblQtde.setText("Qtde");
 
         spnQtde.setModel(new javax.swing.SpinnerNumberModel(1, 0, 10, 1));
 
-        lblNum1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblNum1.setForeground(new java.awt.Color(0, 0, 0));
-        lblNum1.setText("Item");
+        lblItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblItem.setForeground(new java.awt.Color(0, 0, 0));
+        lblItem.setText("Item");
+
+        lblValor.setBackground(new java.awt.Color(51, 51, 255));
+        lblValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblValor.setForeground(new java.awt.Color(51, 51, 255));
+        lblValor.setText("R$ 0,0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lblCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtEstadia, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btPesquisarEstadia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNum1)
-                .addGap(18, 18, 18)
-                .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btPesquisarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblItem)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btPesquisarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(lblQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lblCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btPesquisarCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,19 +193,21 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCliente)
-                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btPesquisarCliente1))
+                        .addComponent(txtEstadia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btPesquisarEstadia))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNum1))
+                        .addComponent(lblItem))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(lblQtde)
                             .addComponent(spnQtde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btPesquisarItem)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValor)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jPanel3.setOpaque(false);
@@ -216,19 +231,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblRoomService))
-        );
-
-        jPanel4.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 177, Short.MAX_VALUE)
         );
 
         jPanel8.setOpaque(false);
@@ -274,7 +276,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -285,7 +287,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblPedidos);
 
         jButton1.setBackground(new java.awt.Color(153, 255, 153));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -301,7 +303,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,8 +332,6 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(93, 93, 93)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -353,7 +352,13 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-
+         int qtde = (int) spnQtde.getValue();
+         double preco = itemSelecionado.getValor();
+         ItemPedido item = new ItemPedido(itemSelecionado,null,qtde);
+         itemPedidoTM.adicionar(item);
+         atualizarTotal(preco, qtde,1);
+         
+         
 
     }//GEN-LAST:event_btAddActionPerformed
 
@@ -361,10 +366,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btRemoverActionPerformed
 
-    private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed
+    private void btPesquisarEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarEstadiaActionPerformed
         estadiaSelecionado= uiManeger.getInstance().abrirPesqEstadia();
-        txtCliente.setText(String.valueOf(estadiaSelecionado.getIdEstadia()));
-    }//GEN-LAST:event_btPesquisarCliente1ActionPerformed
+        txtEstadia.setText(String.valueOf(estadiaSelecionado.getIdEstadia()));
+    }//GEN-LAST:event_btPesquisarEstadiaActionPerformed
 
     private void btPesquisarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarItemActionPerformed
          
@@ -381,7 +386,25 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+private void atualizarTotal (double preco, int qtde, int sinal) {
+        // sinal 1 : somar
+        // sinal -1 : subtrair
+        
+        double total;
+        try {
+            total = DecimalFormat.getCurrencyInstance().parse( lblValor.getText() ).doubleValue();
+            // float total = Float.valueOf( lblValor.getText() );
 
+            total = total + sinal * preco * qtde;
+
+            // Formatar saída para dinheiro
+            String output = DecimalFormat.getCurrencyInstance().format( total );
+            lblValor.setText( output );
+
+        } catch (ParseException ex) {
+            Logger.getLogger(ServicoDeQuartos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
   
 
     public static void main(String args[]) {
@@ -426,30 +449,30 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
-    private javax.swing.JButton btPesquisarCliente1;
+    private javax.swing.JButton btPesquisarEstadia;
     private javax.swing.JButton btPesquisarItem;
     private javax.swing.JButton btlLimpar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JLabel lblNum1;
+    private javax.swing.JLabel lblItem;
+    private javax.swing.JLabel lblQtde;
     private javax.swing.JLabel lblRoomService;
+    private javax.swing.JLabel lblValor;
     private javax.swing.JMenuItem popADD;
     private javax.swing.JPopupMenu popMenuRS;
     private javax.swing.JMenuItem popRemover;
     private javax.swing.JSpinner spnQtde;
-    private javax.swing.JTextField txtCliente;
+    private javax.swing.JTable tblPedidos;
+    private javax.swing.JTextField txtEstadia;
     private javax.swing.JTextField txtItem;
     // End of variables declaration//GEN-END:variables
 }
