@@ -41,6 +41,14 @@ public class Estadia {
     
     @OneToMany ( mappedBy = "estadia" , fetch = FetchType.LAZY)
     private  List<PedidoSQ> pedido;
+
+    public List<PedidoSQ> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<PedidoSQ> pedido) {
+        this.pedido = pedido;
+    }
     
     
 
@@ -132,6 +140,18 @@ public class Estadia {
         this.quarto = quarto;
     }
     
+     public double calcularValor() {
+        valortotalSQ = (double) 0.0;
+        
+        for( PedidoSQ item : pedido ) {
+            double preco = item.getValorTotal();
+           
+            valortotalSQ = valortotalSQ +preco;
+            
+           
+        }
+        return valortotalSQ;
+    }
     
     
 }

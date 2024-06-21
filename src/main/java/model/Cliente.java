@@ -5,8 +5,10 @@
 package model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,28 +16,24 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Cliente {
+
     @Id
-    @GeneratedValue (strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCliente;
-    
+
     @Column(nullable = false, length = 40)
     private String nomeCliente;
-     @Column(nullable = false, length =15)
+    @Column(nullable = false, length = 15)
     private String telefoneCliente;
-     @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 60)
     private String email;
-     @Column(nullable = false, unique=true, length=60)
+    @Column(nullable = false, unique = true, length = 60)
     private String cpf;
-     @OneToMany
-     @JoinColumn(name="idEstadia")
+    @OneToMany(mappedBy = "cliente",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Estadia> estadia;
 //com id
-
- 
-   
 
     public Cliente(int idCliente, String nomeCliente, String telefoneCliente, String email, String cpf) {
         this.idCliente = idCliente;
@@ -44,12 +42,8 @@ public class Cliente {
         this.email = email;
         this.cpf = cpf;
     }
-    
-    
-    
-//sem id
-   
 
+//sem id
     public Cliente(String nomeCliente, String telefoneCliente, String email, String cpf) {
         this.nomeCliente = nomeCliente;
         this.telefoneCliente = telefoneCliente;
@@ -60,14 +54,7 @@ public class Cliente {
     public List<Estadia> getEstadia() {
         return estadia;
     }
-    
-     
-     
-     
-     
-     
-     
-     
+
     //hibernate
     public Cliente() {
     }
@@ -96,10 +83,6 @@ public class Cliente {
         this.telefoneCliente = telefoneCliente;
     }
 
-   
-
-    
-
     public String getEmail() {
         return email;
     }
@@ -115,6 +98,5 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
-    
+
 }
