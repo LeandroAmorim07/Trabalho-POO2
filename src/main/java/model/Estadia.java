@@ -39,7 +39,7 @@ public class Estadia {
     private Quarto quarto;
     
     
-    @OneToMany ( mappedBy = "estadia" , fetch = FetchType.LAZY)
+    @OneToMany ( mappedBy = "estadia" , fetch = FetchType.EAGER)
     private  List<PedidoSQ> pedido;
 
     public List<PedidoSQ> getPedido() {
@@ -150,6 +150,7 @@ public class Estadia {
             
            
         }
+         setValortotalSQ(valortotalSQ);
         return valortotalSQ;
     }
     
