@@ -66,6 +66,7 @@ public class GerenciarItens extends javax.swing.JDialog {
         btSelecionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar Produtos");
 
         pnlCadastrarQuartos.setOpaque(false);
 
@@ -91,9 +92,11 @@ public class GerenciarItens extends javax.swing.JDialog {
         jPanel2.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome Produto:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Valor:");
 
         txtValor.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +320,7 @@ public class GerenciarItens extends javax.swing.JDialog {
             int novoid = uiManeger.getInstance().getDomainManeger().inserirProduto(nome, valor);
             produto.setIdItem(novoid);
             itemTblModel.adicionar(produto);
+             JOptionPane.showMessageDialog(this, "Item " + itemSelecionado.getIdItem() + " adicionado com sucesso.", "Cadastro Produto", JOptionPane.INFORMATION_MESSAGE);
            
             limparCampos();
         }
