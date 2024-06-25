@@ -3,6 +3,7 @@ package dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -70,28 +71,29 @@ public class GenericDao {
     }
     
     
-    public List listar(Class classe) throws HibernateException {
+     public List listar(Class classe ) throws HibernateException {
         Session sessao = null;
         List lista = null;
+        
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
-            sessao.getTransaction().begin();
-            Criteria consulta = sessao.createCriteria(classe);
-           
-            lista = consulta.list();
+            sessao.beginTransaction();
 
-            sessao.getTransaction().commit();
+            //OPERAÇÕES
+            CriteriaQuery consulta = sessao.getCriteriaBuilder().createQuery(classe);
+            consulta.from(classe);
+            lista = sessao.createQuery(consulta).getResultList();            
+
+            sessao.getTransaction().commit();              
             sessao.close();
-        } catch (HibernateException ex) {
-            if (sessao != null) {
+        } catch( HibernateException erro) {
+            if ( sessao != null ){
                 sessao.getTransaction().rollback();
                 sessao.close();
             }
-            throw new HibernateException(ex);
         }
         return lista;
     }
-
     
     public Object buscarPorId(Class<?> classe, Serializable id) {
         Session sessao = null;
