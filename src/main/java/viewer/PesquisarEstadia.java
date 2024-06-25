@@ -8,8 +8,12 @@ import control.ClienteAbstractTableModel;
 import control.EstadiaAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
+import static control.uiManeger.removerDuplicatas;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,7 +37,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         setSize(500, 520);
         setLocation(500, 100);
         estadiaTblModell = new EstadiaAbstractTableModel();
-        tblClientes.setModel(estadiaTblModell);
+        tblEstadia.setModel(estadiaTblModell);
         
          
     }
@@ -49,7 +53,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
+        tblEstadia = new javax.swing.JTable();
         lblClientesCad = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btSelecionar = new javax.swing.JButton();
@@ -107,7 +111,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
 
         jPanel3.setOpaque(false);
 
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstadia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -123,7 +127,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblClientes);
+        jScrollPane1.setViewportView(tblEstadia);
 
         lblClientesCad.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblClientesCad.setForeground(new java.awt.Color(0, 51, 204));
@@ -270,7 +274,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesqActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
-         int linha = tblClientes.getSelectedRow();
+         int linha = tblEstadia.getSelectedRow();
         if ( linha >= 0 ) {
             
             estadiaSelecionado = estadiaTblModell.getEstadia(linha);
@@ -295,7 +299,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
-        int index = tblClientes.getSelectedRow();
+        int index = tblEstadia.getSelectedRow();
         estadiaSelecionado=estadiaTblModell.getEstadia(index);
 
         estadiaTblModell.remover(index);
@@ -308,10 +312,17 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
+    
+   
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
-
-        EstadiaAbstractTableModel  estadiaTableModel = (EstadiaAbstractTableModel) tblClientes.getModel();
+        lista = removerDuplicatas(lista); 
+    for (Estadia estadia : lista) {
+        System.out.println(estadia); // Assegure-se de que o método toString() esteja implementado na classe Estadia
+    }
+        EstadiaAbstractTableModel  estadiaTableModel = (EstadiaAbstractTableModel) tblEstadia.getModel();
+        
         estadiaTableModel.setLista(lista);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -320,6 +331,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+   
     /**
      * @param args the command line arguments
      */
@@ -337,7 +349,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClientesCad;
-    private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblEstadia;
     private javax.swing.JTextField txtPesq;
     // End of variables declaration//GEN-END:variables
 }

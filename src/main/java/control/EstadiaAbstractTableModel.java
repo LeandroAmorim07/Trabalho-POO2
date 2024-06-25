@@ -6,10 +6,12 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.Estadia;
 
+
 public class EstadiaAbstractTableModel extends AbstractTableModel {
 
     private List<Estadia> listaEstadias = new ArrayList<>();
 
+    
     @Override
     public int getRowCount() {
         return listaEstadias.size();

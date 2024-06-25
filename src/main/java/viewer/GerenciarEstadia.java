@@ -40,8 +40,9 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         estadiaTblModel = new EstadiaAbstractTableModel();
         tabelaReserva.setModel(estadiaTblModel);
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
-        EstadiaAbstractTableModel clienteTableModel = (EstadiaAbstractTableModel) tabelaReserva.getModel();
-        clienteTableModel.setLista(lista);
+        EstadiaAbstractTableModel estadiaTableModel = (EstadiaAbstractTableModel) tabelaReserva.getModel();
+        lista = uiManeger.removerDuplicatas(lista);
+        estadiaTableModel.setLista(lista);
     }
 
     /**
@@ -542,8 +543,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
                 Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            // tenho que arranjar um jeito de pegar esse id e falar que o cliente selecionado 
-            // recebe o cliente com esse ID
+            
             cliSelecionado = cliente;
             quartoSelecionado = quarto;
             preencherCampos(cliente, quarto, checkInDate, checkOutDate);
@@ -552,6 +552,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha primeiro.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+    
     private void preencherCampos(Cliente cliente, Quarto quarto, Date checkIn, Date checkOut) {
         txtCliente.setText(String.valueOf(cliente.getIdCliente()));
         txtNumQuarto.setText(String.valueOf(quarto.getNumQuarto()));

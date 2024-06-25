@@ -46,6 +46,11 @@ public class Estadia {
         return pedido;
     }
 
+    @Override
+    public String toString() {
+        return "Estadia{" + "idEstadia=" + idEstadia + ", checkin=" + checkin + ", checkOut=" + checkOut + ", valortotalSQ=" + valortotalSQ + ", valorTotalEstadia=" + valorTotalEstadia + ", cliente=" + cliente + ", quarto=" + quarto + ", pedido=" + pedido + '}';
+    }
+
     public void setPedido(List<PedidoSQ> pedido) {
         this.pedido = pedido;
     }
@@ -150,8 +155,9 @@ public class Estadia {
             
            
         }
-         setValortotalSQ(valortotalSQ);
+        this.setValortotalSQ(valortotalSQ);
         return valortotalSQ;
+        
     }
     
     

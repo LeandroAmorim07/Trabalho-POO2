@@ -386,7 +386,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         lblValor.setText( output );
     }
     private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
-
+       limparCampos();
     }//GEN-LAST:event_btlLimparActionPerformed
 
     private void btNovoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoPedidoActionPerformed
@@ -403,6 +403,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.", "Cadastro pedido", JOptionPane.ERROR_MESSAGE);
         }
         limparCampos();
+       
 
     }//GEN-LAST:event_btNovoPedidoActionPerformed
     private void atualizarTotal(double preco, int qtde, int sinal) {
