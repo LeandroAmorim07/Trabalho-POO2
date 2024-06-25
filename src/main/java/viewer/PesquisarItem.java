@@ -31,6 +31,7 @@ public class PesquisarItem extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setSize(550,500);
+         setLocation(500, 100);
         itemTblModel = new ItemAbstractTableModel();
         tblitens.setModel(itemTblModel);
     }

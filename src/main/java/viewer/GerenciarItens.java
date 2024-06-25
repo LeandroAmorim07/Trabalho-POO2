@@ -31,6 +31,7 @@ public class GerenciarItens extends javax.swing.JDialog {
     public GerenciarItens(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocation(500, 100);
         itemTblModel = new ItemAbstractTableModel();
         tblItens.setModel(itemTblModel);
         List<Item> lista = uiManeger.getInstance().getDomainManeger().ListarItem();
