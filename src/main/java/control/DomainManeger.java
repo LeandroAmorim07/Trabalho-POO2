@@ -40,8 +40,11 @@ public class DomainManeger {
         return genDao.listar(Estadia.class);
     }
 
-    public List<ItemPedido> ListarPedido() {
+    public List<ItemPedido> ListarItemPedido() {
         return genDao.listar(ItemPedido.class);
+    }
+    public List<PedidoSQ> ListarPedido() {
+        return genDao.listar(PedidoSQ.class);
     }
 
     public List<Item> ListarItem() {

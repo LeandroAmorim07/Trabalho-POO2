@@ -33,7 +33,7 @@ public class Item {
     private double valor;
     
     
-    @OneToMany ( mappedBy = "chComposta.item" , fetch = FetchType.LAZY )
+    @OneToMany ( mappedBy = "chComposta.item" , fetch = FetchType.EAGER )
     private List<ItemPedido> itens;
 
     public Item(int idItem, String NomeItem, double valor) {

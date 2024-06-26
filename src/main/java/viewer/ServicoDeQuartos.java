@@ -5,25 +5,25 @@
 package viewer;
 
 import control.ItemPedidoAbstractTableModel;
+import control.PedidoSQAbstractTableModel;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-
-import model.Cliente;
 import model.Estadia;
 import model.Item;
 import model.ItemPedido;
+import model.PedidoSQ;
 
 public class ServicoDeQuartos extends javax.swing.JDialog {
 
     private ItemPedidoAbstractTableModel itemPedidoTM;
+    private PedidoSQAbstractTableModel pedidoSQTM;
     private Item itemSelecionado = null;
     private Estadia estadiaSelecionado = null;
 
@@ -31,6 +31,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         itemPedidoTM = new ItemPedidoAbstractTableModel();
+        pedidoSQTM = new PedidoSQAbstractTableModel();
         tblPedidos.setModel(itemPedidoTM);
         setLocation(500, 100);
         String output = DecimalFormat.getCurrencyInstance().format(0.0);
@@ -72,6 +73,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
         btNovoPedido = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         popADD.setText("Adicionar");
         popADD.addActionListener(new java.awt.event.ActionListener() {
@@ -290,11 +292,21 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
         btNovoPedido.setBackground(new java.awt.Color(153, 255, 153));
         btNovoPedido.setForeground(new java.awt.Color(0, 0, 0));
-        btNovoPedido.setText("Novo");
+        btNovoPedido.setText("Novo Pedido");
         btNovoPedido.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btNovoPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNovoPedidoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(51, 255, 204));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Listar Pedidos");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -310,8 +322,10 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(btNovoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66)
+                        .addComponent(btNovoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +347,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btNovoPedido)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btNovoPedido)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -354,6 +370,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+        tblPedidos.setModel(itemPedidoTM);
         int qtde = (int) spnQtde.getValue();
         double preco = itemSelecionado.getValor();
         ItemPedido item = new ItemPedido(itemSelecionado, null, qtde);
@@ -411,6 +428,13 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
        
 
     }//GEN-LAST:event_btNovoPedidoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          List<PedidoSQ> lista = uiManeger.getInstance().getDomainManeger().ListarPedido();
+        pedidoSQTM.setLista(lista);
+        tblPedidos.setModel(pedidoSQTM);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void atualizarTotal(double preco, int qtde, int sinal) {
         // sinal 1 : somar
         // sinal -1 : subtrair
@@ -477,6 +501,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btPesquisarEstadia;
     private javax.swing.JButton btPesquisarItem;
     private javax.swing.JButton btlLimpar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

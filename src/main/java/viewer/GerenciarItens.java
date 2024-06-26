@@ -321,7 +321,7 @@ public class GerenciarItens extends javax.swing.JDialog {
             int novoid = uiManeger.getInstance().getDomainManeger().inserirProduto(nome, valor);
             produto.setIdItem(novoid);
             itemTblModel.adicionar(produto);
-             JOptionPane.showMessageDialog(this, "Item " + itemSelecionado.getIdItem() + " adicionado com sucesso.", "Cadastro Produto", JOptionPane.INFORMATION_MESSAGE);
+             JOptionPane.showMessageDialog(this, "Item " + produto.getIdItem() + " adicionado com sucesso.", "Cadastro Produto", JOptionPane.INFORMATION_MESSAGE);
            
             limparCampos();
         }
