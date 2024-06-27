@@ -4,12 +4,10 @@
  */
 package viewer;
 
-import com.toedter.calendar.JDateChooser;
 import control.EstadiaAbstractTableModel;
-import control.QuartoAbstractTableModel;
+import control.FuncoesUteis;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
-import control.uiManeger.TableUtilidades;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +17,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Estadia;
 import model.Quarto;
@@ -41,7 +38,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         tabelaReserva.setModel(estadiaTblModel);
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
         EstadiaAbstractTableModel estadiaTableModel = (EstadiaAbstractTableModel) tabelaReserva.getModel();
-        lista = uiManeger.removerDuplicatas(lista);
+        lista = FuncoesUteis.removerDuplicatas(lista);
         estadiaTableModel.setLista(lista);
     }
 

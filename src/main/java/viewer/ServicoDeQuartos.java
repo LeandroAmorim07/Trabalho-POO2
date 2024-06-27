@@ -74,6 +74,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         tblPedidos = new javax.swing.JTable();
         btNovoPedido = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btlLimpar1 = new javax.swing.JButton();
 
         popADD.setText("Adicionar");
         popADD.addActionListener(new java.awt.event.ActionListener() {
@@ -310,6 +311,16 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             }
         });
 
+        btlLimpar1.setBackground(new java.awt.Color(204, 204, 255));
+        btlLimpar1.setForeground(new java.awt.Color(0, 0, 0));
+        btlLimpar1.setText("Limpar Tabela");
+        btlLimpar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btlLimpar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btlLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -325,7 +336,9 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                         .addGap(66, 66, 66)
                         .addComponent(btNovoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btlLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +362,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovoPedido)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(btlLimpar1))
                 .addContainerGap())
         );
 
@@ -403,6 +417,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         txtEstadia.setText("");
         txtItem.setText("");
         itemPedidoTM.setLista(null);
+        tblPedidos.setModel(itemPedidoTM);
         
         String output = DecimalFormat.getCurrencyInstance().format( 0.0 );
         lblValor.setText( output );
@@ -501,6 +516,7 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     private javax.swing.JButton btPesquisarEstadia;
     private javax.swing.JButton btPesquisarItem;
     private javax.swing.JButton btlLimpar;
+    private javax.swing.JButton btlLimpar1;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

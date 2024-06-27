@@ -6,9 +6,9 @@ package viewer;
 
 import control.ClienteAbstractTableModel;
 import control.EstadiaAbstractTableModel;
+import control.FuncoesUteis;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
-import static control.uiManeger.removerDuplicatas;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -317,7 +317,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
-        lista = removerDuplicatas(lista); 
+        lista = FuncoesUteis.removerDuplicatas(lista); 
     for (Estadia estadia : lista) {
         System.out.println(estadia); // Assegure-se de que o método toString() esteja implementado na classe Estadia
     }

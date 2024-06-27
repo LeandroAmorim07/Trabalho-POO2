@@ -84,27 +84,6 @@ public class uiManeger {
         }
     }
 
-    public static List<Estadia> removerDuplicatas(List<Estadia> lista) {
-       // foi preciso adicionar essa funcao pois quando coloca 2 pedido com mesma estadia
-       // a lista atualiza com duas estadias apesar de no banco nao atualizar assim
-       // entao foi feito essa funcao para tirar todas duplicatas possiveis da mesma estadia
-    List<Estadia> listaSemDuplicatas = new ArrayList<>();
-
-    for (Estadia estadia : lista) {
-        boolean duplicado = false;
-        for (Estadia existente : listaSemDuplicatas) {
-            if (estadia.getIdEstadia() == existente.getIdEstadia()) {
-                duplicado = true;
-                break;
-            }
-        }
-        if (!duplicado) {
-            listaSemDuplicatas.add(estadia);
-        }
-    }
-
-    return listaSemDuplicatas;
-}
     public class JPaneLGradient extends JPanel {
 
         public static JPanel criarPainelDegrade() {
