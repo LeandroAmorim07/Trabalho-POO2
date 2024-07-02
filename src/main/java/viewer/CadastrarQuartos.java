@@ -28,7 +28,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     public CadastrarQuartos(java.awt.Frame parent, boolean modal) {
         super(parent,true);
         initComponents();
-        setSize(770,400);
+        setSize(775,400);
         setLocation(500,100);
         quartoTblModel = new QuartoAbstractTableModel();
         tabelaQuartos.setModel(quartoTblModel);
