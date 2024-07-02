@@ -47,16 +47,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btProduto" pref="198" max="32767" attributes="0"/>
-                          <Component id="btGerenciarQuartos" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btGerenciarCliente" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btReserva" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="btServicoQuarto" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="btProduto" max="32767" attributes="0"/>
+                      <Component id="btGerenciarQuartos" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btGerenciarCliente" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btReserva" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btServicoQuarto" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -90,7 +88,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Color(71, 111, 85)" type="code"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pedir Servi&#xe7;o de Quarto"/>
+            <Property name="text" type="java.lang.String" value="Gerenciar Servi&#xe7;o de Quarto"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btServicoQuartoActionPerformed"/>
