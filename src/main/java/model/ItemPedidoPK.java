@@ -17,7 +17,7 @@ public class ItemPedidoPK implements Serializable {
     
     @ManyToOne
     @JoinColumn ( name = "idItem" )
-    private Item item;  // Vai mudar
+    private Item item;  
 
     public ItemPedidoPK() {
     }

@@ -6,12 +6,9 @@ package viewer;
 
 import control.ClienteAbstractTableModel;
 import control.uiManeger;
-import javax.swing.table.DefaultTableModel;
 import control.uiManeger.JPaneLGradient;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

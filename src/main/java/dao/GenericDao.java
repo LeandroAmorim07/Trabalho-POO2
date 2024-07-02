@@ -4,7 +4,6 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -95,7 +94,7 @@ public class GenericDao {
         return lista;
     }
     
-    public Object buscarPorId(Class<?> classe, Serializable id) {
+   public Object buscarPorId(Class<?> classe, Serializable id) {
         Session sessao = null;
         Object objeto = null;
         try {

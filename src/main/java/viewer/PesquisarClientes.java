@@ -292,13 +292,19 @@ public class PesquisarClientes extends javax.swing.JDialog {
 
         String pesq = txtPesq.getText();
         int tipo = cmbTipo.getSelectedIndex();
-        List<Cliente> lista;
+        List<Cliente> lista = null;
 
-       // lista = uiManeger.getInstance().getDomainManeger().pesquisarCliente(pesq, tipo);
-       // if ( lista.isEmpty() ) {
-      //      JOptionPane.showMessageDialog(this,"Cliente não encontrado.", "Pesquisar cliente", JOptionPane.INFORMATION_MESSAGE);
-      //  }
-      //  cliTableModel.setLista(lista);
+        try {
+            lista = uiManeger.getInstance().getDomainManeger().pesquisarCliente(pesq, tipo);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PesquisarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if ( lista.isEmpty() ) {
+           JOptionPane.showMessageDialog(this,"Cliente não encontrado.", "Pesquisar cliente", JOptionPane.INFORMATION_MESSAGE);
+       }
+        cliTableModel.setLista(lista);
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
