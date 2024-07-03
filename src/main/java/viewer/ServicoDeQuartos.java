@@ -430,6 +430,8 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
         if (estadiaSelecionado != null && itemSelecionado != null) {
             if (itemPedidoTM.getRowCount() > 0) {
                 int id = uiManeger.getInstance().getDomainManeger().inserirPedido(estadiaSelecionado, itemPedidoTM.getLista());
+               estadiaSelecionado.calcularValor();
+                uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionado.getIdEstadia(), estadiaSelecionado.getCliente(), estadiaSelecionado.getQuarto(), estadiaSelecionado.getCheckin(),estadiaSelecionado.getCheckOut(),estadiaSelecionado.getValorTotalEstadia(),estadiaSelecionado.getValortotalSQ());
                 JOptionPane.showMessageDialog(this, "Pedido " + id + " inserido com sucesso.", "Cadastro Pedido", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // Mensagem de erro            

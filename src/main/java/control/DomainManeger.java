@@ -88,8 +88,8 @@ public class DomainManeger {
         return es.getIdEstadia();
     }
 
-    public void alterarEstadia(int idEstadia, Cliente cli, Quarto qt, Date checkin, Date checkout) {
-        Estadia es = new Estadia(idEstadia, checkin, checkout, 0, 0, cli, qt);
+    public void alterarEstadia(int idEstadia, Cliente cli, Quarto qt, Date checkin, Date checkout, double valorTotalEstadia, double valorTotalSQ) {
+        Estadia es = new Estadia(idEstadia, checkin, checkout, valorTotalSQ, valorTotalEstadia, cli, qt);
         genDao.alterar(es);
     }
 

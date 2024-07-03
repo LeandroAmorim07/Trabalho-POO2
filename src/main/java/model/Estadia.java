@@ -16,43 +16,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 /**
  *
  * @author 2022122760117
  */
 @Entity
 public class Estadia {
+
     @Id
-    @GeneratedValue (strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEstadia;
     private Date checkin;
     private Date checkOut;
     private double valortotalSQ;
     private double valorTotalEstadia;
     @ManyToOne
-    @JoinColumn(name="idCliente")
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
-    
+
     @ManyToOne
-    @JoinColumn(name="idQuarto")
+    @JoinColumn(name = "idQuarto")
     private Quarto quarto;
-    
-    
-    @OneToMany ( mappedBy = "estadia" , fetch = FetchType.EAGER)
-    private  List<PedidoSQ> pedido;
+
+    @OneToMany(mappedBy = "estadia", fetch = FetchType.EAGER)
+    private List<PedidoSQ> pedido;
 
     public List<PedidoSQ> getPedido() {
         return pedido;
     }
 
-   
-
     public void setPedido(List<PedidoSQ> pedido) {
         this.pedido = pedido;
     }
-    
-    
 
     public Estadia(Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
         this.checkin = checkin;
@@ -62,8 +57,6 @@ public class Estadia {
         this.cliente = cliente;
         this.quarto = quarto;
     }
-   
-    
 
     public Estadia(int idEstadia, Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
         this.idEstadia = idEstadia;
@@ -75,17 +68,9 @@ public class Estadia {
         this.quarto = quarto;
     }
 
-    
-    
-    
-    
-
     public Estadia() {
     }
 
-    
-    
-    
     public int getIdEstadia() {
         return idEstadia;
     }
@@ -141,21 +126,23 @@ public class Estadia {
     public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
     }
-    
-     public double calcularValor() {
-        valortotalSQ = (double) 0.0;
-        
-        for( PedidoSQ item : pedido ) {
-            double preco = item.getValorTotal();
-           
-            valortotalSQ = valortotalSQ +preco;
-            
-           
+
+    public void calcularValor() {
+
+        valortotalSQ = 0.0;
+
+        if (pedido != null) {
+
+            for (PedidoSQ item : pedido) {
+                double preco = item.getValorTotal();
+                valortotalSQ += preco;
+            }
+        } else {
+            System.out.println("A lista de pedidos está vazia ou não inicializada.");
         }
-        this.setValortotalSQ(valortotalSQ);
-        return valortotalSQ;
-        
+
+        // Exibindo o valor total calculado
+        System.out.println("======================valortotal eh " + valortotalSQ);
     }
-    
-    
+
 }

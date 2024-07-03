@@ -4,20 +4,15 @@
  */
 package viewer;
 
-import control.ClienteAbstractTableModel;
 import control.EstadiaAbstractTableModel;
 import control.FuncoesUteis;
 import control.uiManeger;
 import control.uiManeger.JPaneLGradient;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.Cliente;
 import model.Estadia;
 
 /**
