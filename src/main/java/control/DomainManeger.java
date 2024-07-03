@@ -7,6 +7,7 @@ package control;
 import dao.ClienteDAO;
 import dao.ConexaoHibernate;
 import dao.GenericDao;
+import dao.QuartoDAO;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -21,13 +22,13 @@ public class DomainManeger {
 
     private GenericDao genDao;
     private ClienteDAO cliDao;
+    private QuartoDAO quartoDao;
 
     public DomainManeger() throws ClassNotFoundException, SQLException {
         genDao = new GenericDao();
         cliDao = new ClienteDAO();
-
+        quartoDao = new QuartoDAO();
         ConexaoHibernate.getSessionFactory().openSession();
-   
 
     }
 
@@ -46,6 +47,7 @@ public class DomainManeger {
     public List<ItemPedido> ListarItemPedido() {
         return genDao.listar(ItemPedido.class);
     }
+
     public List<PedidoSQ> ListarPedido() {
         return genDao.listar(PedidoSQ.class);
     }
@@ -91,8 +93,6 @@ public class DomainManeger {
         genDao.alterar(es);
     }
 
-  
-
     public int inserirProduto(String nome, double valor) {
         Item it = new Item(nome, valor);
         genDao.inserir(it);
@@ -117,29 +117,35 @@ public class DomainManeger {
     public void excluir(Object cli) throws SQLException, ClassNotFoundException {
         genDao.excluir(cli);
     }
-    
-     public int inserirPedido(Estadia es, List listaItens) {
-        PedidoSQ ped = new PedidoSQ((double) 0.0,es,listaItens);
+
+    public int inserirPedido(Estadia es, List listaItens) {
+        PedidoSQ ped = new PedidoSQ((double) 0.0, es, listaItens);
         ped.calcularValor();
-        
+
         es.calcularValor();
         genDao.inserir(ped);
-       
-        return ped.getIdPedidoSQ();             
+
+        return ped.getIdPedidoSQ();
     }
-     
-      public List<Cliente> pesquisarCliente(String pesq, int tipo) throws SQLException, ClassNotFoundException {
-        
-       
+
+    public List<Cliente> pesquisarCliente(String pesq, int tipo) throws SQLException, ClassNotFoundException {
+
         switch (tipo) {
-            case 0: return cliDao.pesquisarPorNome(pesq);
-            case 1: return cliDao.pesquisarPorCPF(pesq);
-            case 2: return cliDao.pesquisarPorEmail(pesq);
-            case 3: return cliDao.pesquisarPorTelefone(pesq);
-            default : return null;
+            case 0:
+                return cliDao.pesquisarPorNome(pesq);
+            case 1:
+                return cliDao.pesquisarPorCPF(pesq);
+            case 2:
+                return cliDao.pesquisarPorEmail(pesq);
+            case 3:
+                return cliDao.pesquisarPorTelefone(pesq);
+            default:
+                return null;
         }
         
-       
-        
+}
+    public List<Quarto> pesquisarQuarto(String pesq) {
+        return quartoDao.pesquisar(pesq);
     }
+
 }

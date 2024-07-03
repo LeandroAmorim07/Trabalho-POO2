@@ -272,16 +272,11 @@ public class PesquisarQuarto extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesqActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        int linha = tabelaQuartos.getSelectedRow();
-        if (linha >= 0) {
-
-            quartoSelecionado = quartoTblModel.getQuarto(linha);
-            this.setVisible(false);
-        } else {
-            // Mensagem de erro
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.", "Pesquisar cliente", JOptionPane.ERROR_MESSAGE);
-
-        }
+        String  numero = txtPesq.getText();
+        List <Quarto> lista=null;
+        lista = uiManeger.getInstance().getDomainManeger().pesquisarQuarto(numero);
+        
+        quartoTblModel.setLista(lista);
 
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
