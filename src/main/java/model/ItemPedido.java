@@ -38,6 +38,13 @@ public class ItemPedido {
     public void setPedido(PedidoSQ ped){
         chComposta.setPedido(ped);
     }
+
+    @Override
+    public String toString() {
+        return getItem().getNomeItem() ;
+    }
+
+  
    
 
     public ItemPedido() {

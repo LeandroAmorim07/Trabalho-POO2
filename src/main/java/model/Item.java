@@ -54,7 +54,13 @@ public class Item {
     public void setNomeItem(String NomeItem) {
         this.NomeItem = NomeItem;
     }
+
+    @Override
+    public String toString() {
+        return NomeItem ;
+    }
   
+    
 
   
     

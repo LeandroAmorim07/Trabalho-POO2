@@ -22,14 +22,14 @@ public class PedidoSQAbstractTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
         
 
     // Títulos das colunas
     @Override
     public String getColumnName(int column) {
-        String nomesColunas[] = {"IdPedido","Valor Total"};        
+        String nomesColunas[] = {"IdPedido","Produtos","Valor Total"};        
         return nomesColunas[column];        
     }
     
@@ -40,7 +40,9 @@ public class PedidoSQAbstractTableModel extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0: return item.getIdPedidoSQ();
-            case 1: return item.getValorTotal();
+            case 1: return  item.getItemPedido();
+            case 2: return item.getValorTotal();
+            
            
          
             

@@ -27,8 +27,10 @@ public class PedidoSQ {
    @ManyToOne
    @JoinColumn (name="idEstadia")
    private Estadia estadia;
-  @OneToMany ( mappedBy = "chComposta.pedido" , fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+  @OneToMany ( mappedBy = "chComposta.pedido" , fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     private List<ItemPedido> itemPedidos;
+
+   
    
   
    
@@ -51,6 +53,14 @@ public class PedidoSQ {
         return itemPedidos;
     }
 
+    @Override
+    public String toString() {
+        return "PedidoSQ{" + "itemPedidos=" + itemPedidos + '}';
+    }
+
+
+
+    
     public double getValorTotal() {
         return valorTotal;
     }
