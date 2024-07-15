@@ -282,14 +282,9 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-
+        
         
 
-       // lista = uiManeger.getInstance().getDomainManeger().pesquisarCliente(pesq, tipo);
-       // if ( lista.isEmpty() ) {
-      //      JOptionPane.showMessageDialog(this,"Cliente não encontrado.", "Pesquisar cliente", JOptionPane.INFORMATION_MESSAGE);
-      //  }
-      //  cliTableModel.setLista(lista);
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 

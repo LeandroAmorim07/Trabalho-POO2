@@ -260,7 +260,11 @@ public class PesquisarItem extends javax.swing.JDialog {
     }//GEN-LAST:event_txtPesqActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-
+        String  numero = txtPesq.getText();
+        List <Item> lista=null;
+        lista = uiManeger.getInstance().getDomainManeger().pesquisarItem(numero);
+        
+        itemTblModel.setLista(lista);
       
 
     }//GEN-LAST:event_btnPesquisarActionPerformed

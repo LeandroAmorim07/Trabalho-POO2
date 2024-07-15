@@ -1,6 +1,7 @@
-
-
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dao;
 
 import java.util.ArrayList;
@@ -9,17 +10,17 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import model.Cliente;
-import model.Quarto;
+import model.Item;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-
-public class QuartoDAO {
-    
-    
-     public List<Quarto> pesquisar(String pesq) {
-        List<Quarto> lista = new ArrayList<>();
+/**
+ *
+ * @author leandro
+ */
+public class ItemDAO {
+      public List<Item> pesquisar(String pesq) {
+        List<Item> lista = new ArrayList<>();
         Session sessao = null;
         
         try {
@@ -27,14 +28,14 @@ public class QuartoDAO {
             sessao.beginTransaction();
            
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
-            CriteriaQuery<Quarto> consulta = builder.createQuery(Quarto.class);
-            Root<Quarto> tabela = consulta.from(Quarto.class);
+            CriteriaQuery<Item> consulta = builder.createQuery(Item.class);
+            Root<Item> tabela = consulta.from(Item.class);
             
           
-            int numeroQuarto = Integer.parseInt(pesq);
+            String Item= pesq;
             
          
-            Predicate restricoes = builder.equal(tabela.get("numQuarto"), numeroQuarto);
+            Predicate restricoes = builder.like(tabela.get("NomeItem"), Item+"%");
             
             consulta.where(restricoes);
             
@@ -54,5 +55,4 @@ public class QuartoDAO {
         
         return lista;
     }
-    
 }

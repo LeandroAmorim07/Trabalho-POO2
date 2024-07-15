@@ -7,6 +7,7 @@ package control;
 import dao.ClienteDAO;
 import dao.ConexaoHibernate;
 import dao.GenericDao;
+import dao.ItemDAO;
 import dao.QuartoDAO;
 import java.sql.SQLException;
 import java.util.Date;
@@ -23,11 +24,13 @@ public class DomainManeger {
     private GenericDao genDao;
     private ClienteDAO cliDao;
     private QuartoDAO quartoDao;
+    private ItemDAO itemDao;
 
     public DomainManeger() throws ClassNotFoundException, SQLException {
         genDao = new GenericDao();
         cliDao = new ClienteDAO();
         quartoDao = new QuartoDAO();
+        itemDao=new ItemDAO();
         ConexaoHibernate.getSessionFactory().openSession();
 
     }
@@ -155,6 +158,10 @@ public class DomainManeger {
 }
     public List<Quarto> pesquisarQuarto(String pesq) {
         return quartoDao.pesquisar(pesq);
+    }
+    
+   public List<Item> pesquisarItem(String pesq) {
+        return itemDao.pesquisar(pesq);
     }
 
 }

@@ -11,7 +11,7 @@
     <property name="hibernate.format_sql">true</property>
     <mapping class="model.Cliente"></mapping>
     <mapping class="model.Item"></mapping>
-      <mapping class="model.PedidoSQ"></mapping>
+    <mapping class="model.PedidoSQ"></mapping>
     <mapping class="model.ItemPedido"></mapping>
     <mapping class="model.Estadia"></mapping>
      <mapping class="model.Quarto"></mapping>
