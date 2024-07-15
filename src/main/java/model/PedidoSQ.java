@@ -36,7 +36,7 @@ public class PedidoSQ {
    
    
 
-    public PedidoSQ(int idPedidoSQ, int valorTotal, Estadia estadia, List<ItemPedido> itemPedido) {
+    public PedidoSQ(int idPedidoSQ, double valorTotal, Estadia estadia, List<ItemPedido> itemPedido) {
         this.idPedidoSQ = idPedidoSQ;
         this.valorTotal = valorTotal;
         this.estadia = estadia;

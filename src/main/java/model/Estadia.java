@@ -6,6 +6,7 @@ package model;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,16 +39,22 @@ public class Estadia {
     @JoinColumn(name = "idQuarto")
     private Quarto quarto;
 
-    @OneToMany(mappedBy = "estadia", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "estadia", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<PedidoSQ> pedido;
 
     public List<PedidoSQ> getPedido() {
         return pedido;
     }
 
+    public Estadia(List<PedidoSQ> pedido) {
+        this.pedido = pedido;
+    }
+
     public void setPedido(List<PedidoSQ> pedido) {
         this.pedido = pedido;
     }
+    
+    
 
     public Estadia(Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {
         this.checkin = checkin;
@@ -56,6 +63,7 @@ public class Estadia {
         this.valorTotalEstadia = valorTotalEstadia;
         this.cliente = cliente;
         this.quarto = quarto;
+        this.pedido=pedido;
     }
 
     public Estadia(int idEstadia, Date checkin, Date checkOut, double valortotalSQ, double valorTotalEstadia, Cliente cliente, Quarto quarto) {

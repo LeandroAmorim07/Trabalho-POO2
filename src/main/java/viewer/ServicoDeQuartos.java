@@ -411,28 +411,31 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btPesquisarItemActionPerformed
 
-    private void limparCampos(){
-        itemSelecionado=null;
-        estadiaSelecionado=null;
+    private void limparCampos() {
+        itemSelecionado = null;
+        estadiaSelecionado = null;
         txtEstadia.setText("");
         txtItem.setText("");
         itemPedidoTM.setLista(null);
         tblPedidos.setModel(itemPedidoTM);
-        
-        String output = DecimalFormat.getCurrencyInstance().format( 0.0 );
-        lblValor.setText( output );
+
+        String output = DecimalFormat.getCurrencyInstance().format(0.0);
+        lblValor.setText(output);
     }
     private void btlLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlLimparActionPerformed
-       limparCampos();
+        limparCampos();
     }//GEN-LAST:event_btlLimparActionPerformed
 
     private void btNovoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoPedidoActionPerformed
         if (estadiaSelecionado != null && itemSelecionado != null) {
             if (itemPedidoTM.getRowCount() > 0) {
-                int id = uiManeger.getInstance().getDomainManeger().inserirPedido(estadiaSelecionado, itemPedidoTM.getLista());
-               estadiaSelecionado.calcularValor();
-                uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionado.getIdEstadia(), estadiaSelecionado.getCliente(), estadiaSelecionado.getQuarto(), estadiaSelecionado.getCheckin(),estadiaSelecionado.getCheckOut(),estadiaSelecionado.getValorTotalEstadia(),estadiaSelecionado.getValortotalSQ());
-                JOptionPane.showMessageDialog(this, "Pedido " + id + " inserido com sucesso.", "Cadastro Pedido", JOptionPane.INFORMATION_MESSAGE);
+                PedidoSQ novoPedido = uiManeger.getInstance().getDomainManeger().inserirPedidosq(estadiaSelecionado, itemPedidoTM.getLista());           
+                List<PedidoSQ> pedidosExistentes = estadiaSelecionado.getPedido();
+                 pedidosExistentes.add(novoPedido);
+                estadiaSelecionado.setPedido(pedidosExistentes);
+                estadiaSelecionado.calcularValor();
+                uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionado.getIdEstadia(), estadiaSelecionado.getCliente(), estadiaSelecionado.getQuarto(), estadiaSelecionado.getCheckin(), estadiaSelecionado.getCheckOut(), estadiaSelecionado.getValorTotalEstadia(), estadiaSelecionado.getValortotalSQ());
+                JOptionPane.showMessageDialog(this, "Pedido inserido com sucesso.", "Cadastro Pedido", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // Mensagem de erro            
                 JOptionPane.showMessageDialog(this, "Adicione pelo menos um lanche.", "Cadastro pedido", JOptionPane.ERROR_MESSAGE);
@@ -442,15 +445,15 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Selecione um cliente.", "Cadastro pedido", JOptionPane.ERROR_MESSAGE);
         }
         limparCampos();
-       
+
 
     }//GEN-LAST:event_btNovoPedidoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          List<PedidoSQ> lista = uiManeger.getInstance().getDomainManeger().ListarPedido();
+        List<PedidoSQ> lista = uiManeger.getInstance().getDomainManeger().ListarPedido();
         pedidoSQTM.setLista(lista);
         tblPedidos.setModel(pedidoSQTM);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
     private void atualizarTotal(double preco, int qtde, int sinal) {
         // sinal 1 : somar

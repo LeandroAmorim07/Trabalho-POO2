@@ -121,11 +121,20 @@ public class DomainManeger {
     public int inserirPedido(Estadia es, List listaItens) {
         PedidoSQ ped = new PedidoSQ((double) 0.0, es, listaItens);
         ped.calcularValor();
-
+        
         es.calcularValor();
         genDao.inserir(ped);
 
         return ped.getIdPedidoSQ();
+    }
+     public PedidoSQ inserirPedidosq(Estadia es, List listaItens) {
+        PedidoSQ ped = new PedidoSQ((double) 0.0, es, listaItens);
+        ped.calcularValor();
+        
+        es.calcularValor();
+        genDao.inserir(ped);
+
+        return ped;
     }
 
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws SQLException, ClassNotFoundException {

@@ -80,4 +80,9 @@ public class PedidoSQAbstractTableModel extends AbstractTableModel {
         }
                 
     }
+
+    public List<PedidoSQ> getListaItens() {
+        return listaItens;
+    }
+    
 }
