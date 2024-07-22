@@ -19,13 +19,13 @@ public class EstadiaAbstractTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     // Títulos das colunas
     @Override
     public String getColumnName(int column) {
-        String[] nomesColunas = {"IdCliente", "Número do Quarto", "Data Check-in", "Data Check-out"};
+        String[] nomesColunas = {"IdCliente", "Número do Quarto", "Check-in", "Check-out", "Valor Total Diaria"};
         return nomesColunas[column];
     }
 
@@ -43,6 +43,8 @@ public class EstadiaAbstractTableModel extends AbstractTableModel {
                 dateFormat.format(estadia.getCheckin());
             case 3 ->
                 dateFormat.format(estadia.getCheckOut());
+            case 4 ->
+                estadia.getValorTotalEstadia();
             default ->
                 null;
         };

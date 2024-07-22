@@ -36,7 +36,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         initComponents();
 
         setLocation(500, 100);
-        setSize(782, 469);
+        setSize(870, 469);
         estadiaTblModel = new EstadiaAbstractTableModel();
         tabelaReserva.setModel(estadiaTblModel);
         List<Estadia> lista = uiManeger.getInstance().getDomainManeger().ListarEstadia();
@@ -226,8 +226,8 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +383,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(134, 134, 134)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(101, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +412,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,6 +474,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado, quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal);
 
             estadiaTblModel.adicionar(estadia);
+            atualizarTabelaEstadia();
             JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
             
         }
