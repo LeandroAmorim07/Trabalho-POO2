@@ -83,8 +83,8 @@ public class DomainManeger {
         genDao.alterar(qt);
     }
 
-    public int inserirEstadia(Cliente cli, Quarto qt, Date checkin, Date checkout) {
-        Estadia es = new Estadia(checkin, checkout, 0, 0, cli, qt);
+    public int inserirEstadia(Cliente cli, Quarto qt, Date checkin, Date checkout, double valorTotalEstadia) {
+        Estadia es = new Estadia(checkin, checkout, 0, valorTotalEstadia, cli, qt);
 
         genDao.inserir(es);
 

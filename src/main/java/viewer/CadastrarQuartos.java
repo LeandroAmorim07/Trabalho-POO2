@@ -92,6 +92,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         });
         popTblQuartos.add(popRemover);
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerenciar Quartos");
         setMaximumSize(new java.awt.Dimension(765, 400));
         setMinimumSize(new java.awt.Dimension(765, 400));
@@ -406,7 +407,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

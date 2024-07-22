@@ -57,7 +57,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pesquisar Clientes");
+        setTitle("Pesquisar Estadias");
         setResizable(false);
 
         jPanel2.setOpaque(false);
