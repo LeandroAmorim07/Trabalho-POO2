@@ -6,6 +6,7 @@ package control;
 
 import dao.ClienteDAO;
 import dao.ConexaoHibernate;
+import dao.EstadiaDAO;
 import dao.GenericDao;
 import dao.ItemDAO;
 import dao.QuartoDAO;
@@ -25,12 +26,14 @@ public class DomainManeger {
     private ClienteDAO cliDao;
     private QuartoDAO quartoDao;
     private ItemDAO itemDao;
+    private EstadiaDAO estadiaDao;
 
     public DomainManeger() throws ClassNotFoundException, SQLException {
         genDao = new GenericDao();
         cliDao = new ClienteDAO();
         quartoDao = new QuartoDAO();
         itemDao=new ItemDAO();
+        estadiaDao = new EstadiaDAO();
         ConexaoHibernate.getSessionFactory().openSession();
 
     }
@@ -140,6 +143,21 @@ public class DomainManeger {
         return ped;
     }
 
+    public List<Estadia> pesquisarEstadia(String pesq, int tipo) throws SQLException, ClassNotFoundException {
+
+        switch (tipo) {
+            case 0:
+                return estadiaDao.pesquisarPorIdCliente(pesq);
+            case 1:
+                return estadiaDao.pesquisarPorNumQuarto(pesq);
+            default:
+                return null;
+        }
+        
+        
+        
+}
+    
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws SQLException, ClassNotFoundException {
 
         switch (tipo) {
@@ -154,8 +172,7 @@ public class DomainManeger {
             default:
                 return null;
         }
-        
-}
+    }
     public List<Quarto> pesquisarQuarto(String pesq) {
         return quartoDao.pesquisar(pesq);
     }

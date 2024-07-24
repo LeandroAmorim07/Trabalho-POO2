@@ -15,10 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Estadia;
 
-/**
- *
- * @author Programe-SE 07
- */
 public class PesquisarEstadia extends javax.swing.JDialog {
 
     private Estadia estadiaSelecionado = null;
@@ -45,7 +41,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         txtPesq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        cmbTipo = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstadia = new javax.swing.JTable();
@@ -76,31 +72,33 @@ public class PesquisarEstadia extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Nome");
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IdCliente", "Núm. Quarto" }));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
+                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPesquisar)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar)
-                    .addComponent(jLabel1))
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -283,7 +281,17 @@ public class PesquisarEstadia extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         
-        
+        String pesq = txtPesq.getText();
+        int tipo = cmbTipo.getSelectedIndex();
+        List<Estadia> lista = null;
+        try {
+            lista= uiManeger.getInstance().getDomainManeger().pesquisarEstadia(pesq, tipo);
+        } catch (SQLException ex) {
+            Logger.getLogger(PesquisarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PesquisarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        estadiaTblModell.setLista(lista);
 
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -311,6 +319,10 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     for (Estadia estadia : lista) {
         System.out.println(estadia); // Assegure-se de que o método toString() esteja implementado na classe Estadia
     }
+    
+    if ( lista.isEmpty() ) {
+           JOptionPane.showMessageDialog(this,"Estadia não encontrado.", "Pesquisar cliente", JOptionPane.INFORMATION_MESSAGE);
+       }
         EstadiaAbstractTableModel  estadiaTableModel = (EstadiaAbstractTableModel) tblEstadia.getModel();
         
         estadiaTableModel.setLista(lista);
@@ -321,6 +333,10 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -330,9 +346,9 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     private javax.swing.JButton btRemoverClientes;
     private javax.swing.JButton btSelecionar;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

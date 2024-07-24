@@ -45,6 +45,7 @@ public class ClienteDAO {
                     break;
                 case 4:restricoes=builder.like(tabela.get("telefoneCliente"), pesq);
                     break;
+               
                 
             }
             consulta.where(restricoes);
