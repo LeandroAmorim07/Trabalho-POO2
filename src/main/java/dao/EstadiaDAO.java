@@ -22,42 +22,56 @@ import org.hibernate.Session;
  * @author leandro
  */
 public class EstadiaDAO {
-   private List<Estadia>  pesquisar(String pesq, int tipo){
-        List <Estadia> lista = new ArrayList();
-        Session sessao =null;
-        
-        try{
-           sessao = ConexaoHibernate.getSessionFactory().openSession();
-           sessao.beginTransaction();
-           
-           
+    private List<Estadia> pesquisar(String pesq, int tipo) {
+        List<Estadia> lista = new ArrayList<>();
+        Session sessao = null;
+
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            sessao.beginTransaction();
+
             CriteriaBuilder builder = sessao.getCriteriaBuilder();
-            CriteriaQuery consulta = builder.createQuery(Estadia.class);
-            Root tabela= consulta.from(Estadia.class);
-            
-            Predicate restricoes =null;
-            switch(tipo){
-                case 1: restricoes=builder.like((tabela.get("cliente").get("idCliente")), pesq);
+            CriteriaQuery<Estadia> consulta = builder.createQuery(Estadia.class);
+            Root<Estadia> tabela = consulta.from(Estadia.class);
+
+            Predicate restricoes = null;
+            switch (tipo) {
+                case 1:
+                    // Converta a string para inteiro se o tipo for 1
+                    Integer idCliente;
+                    try {
+                        idCliente = Integer.parseInt(pesq);
+                    } catch (NumberFormatException e) {
+                        throw new IllegalArgumentException("O valor fornecido para o idCliente não é um número válido.");
+                    }
+                    restricoes = builder.equal(tabela.get("cliente").get("idCliente"), idCliente);
                     break;
-                case 2:restricoes=builder.like(tabela.get("quarto").get("numQuarto"), pesq);
+                case 2:
+                    
+                    Integer numQuarto;
+                    try {
+                        numQuarto = Integer.parseInt(pesq);
+                    } catch (NumberFormatException e) {
+                        throw new IllegalArgumentException("O valor fornecido para numQuarto não é um número válido.");
+                    }
+                    restricoes = builder.equal(tabela.get("quarto").get("numQuarto"), numQuarto);
                     break;
-               
-               
-                
+                default:
+                    throw new IllegalArgumentException("Tipo de pesquisa inválido.");
             }
             consulta.where(restricoes);
-            
-            
+
             lista = sessao.createQuery(consulta).getResultList();
             sessao.getTransaction().commit();
-            sessao.close();
-        }
-        catch (HibernateException ex) {
+        } catch (HibernateException ex) {
             if (sessao != null) {
                 sessao.getTransaction().rollback();
-                sessao.close();
             }
             throw new HibernateException(ex);
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
         }
         return lista;
     }
