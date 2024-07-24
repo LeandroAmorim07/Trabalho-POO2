@@ -463,7 +463,8 @@ public class GerenciarEstadia extends javax.swing.JDialog {
         estadia.setCheckOut(dateCheckOut.getDate());
 
         if (estadiaSelecionada != null) {
-            uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate(),0,0);
+             double precoTotal =calcularTotalEstadia();
+            uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal,estadia.getValortotalSQ());
             JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " alterada com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
             atualizarTabelaEstadia();
 
