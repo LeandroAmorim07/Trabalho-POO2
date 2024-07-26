@@ -314,9 +314,8 @@ public class GerenciarItens extends javax.swing.JDialog {
         String nome = txtNome.getText();
         double valor = parseDouble(txtValor.getText());
         
-        Item produto = new Item();
-        produto.setNomeItem(nome);
-        produto.setValor(valor);
+       
+      
 
         if (itemSelecionado != null) {
             uiManeger.getInstance().getDomainManeger().alterarProduto(itemSelecionado.getIdItem(), nome, valor);
@@ -325,8 +324,8 @@ public class GerenciarItens extends javax.swing.JDialog {
             limparCampos();
 
         } else {
-            int novoid = uiManeger.getInstance().getDomainManeger().inserirProduto(nome, valor);
-            produto.setIdItem(novoid);
+            Item produto = uiManeger.getInstance().getDomainManeger().inserirProduto(nome, valor);
+            
             itemTblModel.adicionar(produto);
              JOptionPane.showMessageDialog(this, "Item " + produto.getIdItem() + " adicionado com sucesso.", "Cadastro Produto", JOptionPane.INFORMATION_MESSAGE);
            

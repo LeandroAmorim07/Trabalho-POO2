@@ -431,11 +431,7 @@ public class CadastrarClientes extends javax.swing.JDialog {
         String cpf = txtCPF.getText();
         String email = txtEmail.getText();
 
-        Cliente cli = new Cliente();
-        cli.setNomeCliente(nome);
-        cli.setTelefoneCliente(celular);
-        cli.setCpf(cpf);
-        cli.setEmail(email);
+      
 
         if (cliSelecionado != null) {
             try {
@@ -448,8 +444,8 @@ public class CadastrarClientes extends javax.swing.JDialog {
             atualizarTabelaClientes();
             limparCampos();
         } else {
-            int novoId = uiManeger.getInstance().getDomainManeger().inserirCliente(nome, celular, email, cpf);
-            cli.setIdCliente(novoId);
+            Cliente cli = uiManeger.getInstance().getDomainManeger().inserirCliente(nome, celular, email, cpf);
+           
             cliTableModel.adicionar(cli);
             JOptionPane.showMessageDialog(this, "Cliente " + cli.getIdCliente() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
             limparCampos();

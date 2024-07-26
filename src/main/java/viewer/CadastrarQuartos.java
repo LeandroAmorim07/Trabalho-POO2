@@ -96,7 +96,6 @@ public class CadastrarQuartos extends javax.swing.JDialog {
         setTitle("Gerenciar Quartos");
         setMaximumSize(new java.awt.Dimension(765, 400));
         setMinimumSize(new java.awt.Dimension(765, 400));
-        setPreferredSize(new java.awt.Dimension(765, 400));
         setResizable(false);
 
         jPanel6.setMaximumSize(new java.awt.Dimension(765, 400));
@@ -444,11 +443,7 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             throw new IllegalArgumentException("Por favor, preencha todos os campos.");
         }
 
-        Quarto quarto = new Quarto();
-        quarto.setNumQuarto(numQuarto);
-        quarto.setTipoQuarto(tipoQuarto);
-        quarto.setCama(cama);
-        quarto.setValorDiaria(valorDiaria);
+        
 
         if (quartoSelecionado != null) {
             // Verifica se o número do quarto foi alterado
@@ -465,9 +460,9 @@ public class CadastrarQuartos extends javax.swing.JDialog {
             // Atualiza a tabela de quartos
             atualizarTabelaQuartos();
         } else {
-            uiManeger.getInstance().getDomainManeger().inserirQuarto(numQuarto, tipoQuarto, cama, valorDiaria);
-            quartoTblModel.adicionar(quarto);
-            JOptionPane.showMessageDialog(this, "Quarto " + quarto.getNumQuarto() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
+            Quarto qt =uiManeger.getInstance().getDomainManeger().inserirQuarto(numQuarto, tipoQuarto, cama, valorDiaria);
+            quartoTblModel.adicionar(qt);
+            JOptionPane.showMessageDialog(this, "Quarto " + qt.getNumQuarto() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
         }
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(this, "Por favor, insira um número válido para o número do quarto e um valor válido para a diária.", "Erro", JOptionPane.ERROR_MESSAGE);

@@ -62,10 +62,10 @@ public class DomainManeger {
         return genDao.listar(Item.class);
     }
 
-    public int inserirCliente(String nome, String telefone, String email, String cpf) {
+    public Cliente inserirCliente(String nome, String telefone, String email, String cpf) {
         Cliente cli = new Cliente(nome, telefone, email, cpf);
         genDao.inserir(cli);
-        return cli.getIdCliente();
+        return cli;
 
     }
 
@@ -75,9 +75,10 @@ public class DomainManeger {
         genDao.alterar(cli);
     }
 
-    public void inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
+    public Quarto inserirQuarto(int numQuarto, String tipoQuarto, String cama, double valorDiaria) {
         Quarto qt = new Quarto(numQuarto, tipoQuarto, cama, valorDiaria);
         genDao.inserir(qt);
+        return qt;
 
     }
 
@@ -86,12 +87,12 @@ public class DomainManeger {
         genDao.alterar(qt);
     }
 
-    public int inserirEstadia(Cliente cli, Quarto qt, Date checkin, Date checkout, double valorTotalEstadia) {
+    public Estadia inserirEstadia(Cliente cli, Quarto qt, Date checkin, Date checkout, double valorTotalEstadia) {
         Estadia es = new Estadia(checkin, checkout, 0, valorTotalEstadia, cli, qt);
 
         genDao.inserir(es);
 
-        return es.getIdEstadia();
+        return es;
     }
 
     public void alterarEstadia(int idEstadia, Cliente cli, Quarto qt, Date checkin, Date checkout, double valorTotalEstadia, double valorTotalSQ) {
@@ -99,10 +100,10 @@ public class DomainManeger {
         genDao.alterar(es);
     }
 
-    public int inserirProduto(String nome, double valor) {
+    public Item inserirProduto(String nome, double valor) {
         Item it = new Item(nome, valor);
         genDao.inserir(it);
-        return it.getIdItem();
+        return it;
 
     }
 
@@ -124,15 +125,7 @@ public class DomainManeger {
         genDao.excluir(cli);
     }
 
-    public int inserirPedido(Estadia es, List listaItens) {
-        PedidoSQ ped = new PedidoSQ((double) 0.0, es, listaItens);
-        ped.calcularValor();
-        
-        es.calcularValor();
-        genDao.inserir(ped);
-
-        return ped.getIdPedidoSQ();
-    }
+ 
      public PedidoSQ inserirPedidosq(Estadia es, List listaItens) {
         PedidoSQ ped = new PedidoSQ((double) 0.0, es, listaItens);
         ped.calcularValor();

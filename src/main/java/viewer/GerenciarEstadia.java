@@ -456,15 +456,11 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             return;
         }
 
-        Estadia estadia = new Estadia();
-        estadia.setCliente(cliSelecionado);
-        estadia.setQuarto(quartoSelecionado);
-        estadia.setCheckin(dateCheckIn.getDate());
-        estadia.setCheckOut(dateCheckOut.getDate());
+       
 
         if (estadiaSelecionada != null) {
              double precoTotal =calcularTotalEstadia();
-            uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal,estadia.getValortotalSQ());
+            uiManeger.getInstance().getDomainManeger().alterarEstadia(estadiaSelecionada.getIdEstadia(), cliente, quarto, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal,estadiaSelecionada.getValortotalSQ());
             JOptionPane.showMessageDialog(this, "Estadia com num quarto " + quarto.getNumQuarto() + " alterada com sucesso.", "Cadastro Estadia", JOptionPane.INFORMATION_MESSAGE);
             atualizarTabelaEstadia();
 
@@ -472,7 +468,7 @@ public class GerenciarEstadia extends javax.swing.JDialog {
             //adicionar
             
             double precoTotal =calcularTotalEstadia();
-            uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado, quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal);
+            Estadia estadia =uiManeger.getInstance().getDomainManeger().inserirEstadia(cliSelecionado, quartoSelecionado, dateCheckIn.getDate(), dateCheckOut.getDate(),precoTotal);
 
             estadiaTblModel.adicionar(estadia);
             atualizarTabelaEstadia();
