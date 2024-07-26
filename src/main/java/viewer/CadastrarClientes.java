@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import org.postgresql.util.PSQLException;
 
 public class CadastrarClientes extends javax.swing.JDialog {
 
@@ -426,30 +427,32 @@ public class CadastrarClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClientesActionPerformed
-        String nome = txtNome.getText();
-        String celular = txtCelular.getText();
-        String cpf = txtCPF.getText();
-        String email = txtEmail.getText();
+      String nome = txtNome.getText();
+    String celular = txtCelular.getText();
+    String cpf = txtCPF.getText();
+    String email = txtEmail.getText();
 
-      
-
-        if (cliSelecionado != null) {
-            try {
-                uiManeger.getInstance().getDomainManeger().alterarCliente(cliSelecionado.getIdCliente(), nome, celular, email, cpf);
-                JOptionPane.showMessageDialog(this, "Cliente " + cliSelecionado.getIdCliente() + " alterado com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao alterar cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            }
+    if (cliSelecionado != null) {
+        try {
+            uiManeger.getInstance().getDomainManeger().alterarCliente(cliSelecionado.getIdCliente(), nome, celular, email, cpf);
+            JOptionPane.showMessageDialog(this, "Cliente " + cliSelecionado.getIdCliente() + " alterado com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
             atualizarTabelaClientes();
             limparCampos();
-        } else {
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao alterar cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        try {
             Cliente cli = uiManeger.getInstance().getDomainManeger().inserirCliente(nome, celular, email, cpf);
-           
             cliTableModel.adicionar(cli);
             JOptionPane.showMessageDialog(this, "Cliente " + cli.getIdCliente() + " inserido com sucesso.", "Cadastro Cliente", JOptionPane.INFORMATION_MESSAGE);
             limparCampos();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao inserir cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
+    }
     }//GEN-LAST:event_btAdicionarClientesActionPerformed
 
     private void btRemoverClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverClientesActionPerformed
