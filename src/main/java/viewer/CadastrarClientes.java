@@ -11,9 +11,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import org.postgresql.util.PSQLException;
 
 public class CadastrarClientes extends javax.swing.JDialog {
 
@@ -459,16 +459,20 @@ public class CadastrarClientes extends javax.swing.JDialog {
         int index = tblClientes.getSelectedRow();
         cliSelecionado = cliTableModel.getCliente(index);
 
-        cliTableModel.remover(index);
+        
         try {
             uiManeger.getInstance().getDomainManeger().excluir(cliSelecionado);
+            cliTableModel.remover(index);
             
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+           catch (PersistenceException ex) {
+        Logger.getLogger(CadastrarClientes.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, "Erro ao remover cliente: Violação de restrição.", "Erro", JOptionPane.ERROR_MESSAGE);
+           }
     }//GEN-LAST:event_btRemoverClientesActionPerformed
 
 

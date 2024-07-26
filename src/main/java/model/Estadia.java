@@ -39,7 +39,7 @@ public class Estadia {
     @JoinColumn(name = "idQuarto")
     private Quarto quarto;
 
-    @OneToMany(mappedBy = "estadia", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "estadia", fetch = FetchType.EAGER)
     private List<PedidoSQ> pedido;
 
     public List<PedidoSQ> getPedido() {

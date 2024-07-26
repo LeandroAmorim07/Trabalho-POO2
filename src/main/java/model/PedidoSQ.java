@@ -27,7 +27,7 @@ public class PedidoSQ {
    @ManyToOne
    @JoinColumn (name="idEstadia")
    private Estadia estadia;
-  @OneToMany ( mappedBy = "chComposta.pedido" , fetch = FetchType.EAGER, cascade = CascadeType.ALL )
+  @OneToMany ( mappedBy = "chComposta.pedido" , fetch = FetchType.EAGER )
     private List<ItemPedido> itemPedidos;
 
    

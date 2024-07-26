@@ -16,10 +16,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.PersistenceException;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Estadia;
 import model.Quarto;
+import org.hibernate.exception.ConstraintViolationException;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
@@ -481,14 +483,20 @@ public class GerenciarEstadia extends javax.swing.JDialog {
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
         int index = tabelaReserva.getSelectedRow();
-        estadiaSelecionada = estadiaTblModel.getEstadia(index);
+    estadiaSelecionada = estadiaTblModel.getEstadia(index);
+
+    try {
+        uiManeger.getInstance().getDomainManeger().excluir(estadiaSelecionada);
         estadiaTblModel.remover(index);
-        try {
-            uiManeger.getInstance().getDomainManeger().excluir(estadiaSelecionada);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarQuartos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        limparCampos();
+        JOptionPane.showMessageDialog(this, "Estadia removida com sucesso.", "Remoção de Estadia", JOptionPane.INFORMATION_MESSAGE);
+    } catch (PersistenceException ex) {
+        Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, "Erro ao remover estadia: Violação de restrição.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        Logger.getLogger(GerenciarEstadia.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, "Erro ao remover estadia: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    limparCampos();
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btPesquisarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCliente1ActionPerformed

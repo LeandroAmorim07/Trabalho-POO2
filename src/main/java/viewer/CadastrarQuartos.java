@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.PersistenceException;
 
 import model.Quarto;
 
@@ -415,12 +416,17 @@ public class CadastrarQuartos extends javax.swing.JDialog {
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
         int index = tabelaQuartos.getSelectedRow();
         quartoSelecionado= quartoTblModel.getQuarto(index);
-        quartoTblModel.remover(index);
+        
        try {
            uiManeger.getInstance().getDomainManeger().excluir(quartoSelecionado);
+           quartoTblModel.remover(index);
        } catch (SQLException | ClassNotFoundException ex) {
            Logger.getLogger(CadastrarQuartos.class.getName()).log(Level.SEVERE, null, ex);
        }
+       catch (PersistenceException ex) {
+        Logger.getLogger(CadastrarQuartos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        JOptionPane.showMessageDialog(this, "Erro ao remover quarto: Violação de restrição.", "Erro", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
