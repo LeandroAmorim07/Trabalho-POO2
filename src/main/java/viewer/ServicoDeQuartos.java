@@ -384,13 +384,28 @@ public class ServicoDeQuartos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        tblPedidos.setModel(itemPedidoTM);
-        int qtde = (int) spnQtde.getValue();
-        double preco = itemSelecionado.getValor();
+          tblPedidos.setModel(itemPedidoTM);
+    int qtde = (int) spnQtde.getValue();
+    double preco = itemSelecionado.getValor();
+
+    // Verifica se o item já está na lista
+    boolean itemJaExiste = false;
+    for (ItemPedido pedido : itemPedidoTM.getLista()) {
+        if (pedido.getItem().equals(itemSelecionado)) {
+            itemJaExiste = true;
+            break;
+        }
+    }
+
+    if (itemJaExiste) {
+        // Exibe uma mensagem de erro se o item já estiver na lista
+        JOptionPane.showMessageDialog(this, "Este item já está na lista de pedidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+    } else {
+        // Adiciona o item se ele não estiver na lista
         ItemPedido item = new ItemPedido(itemSelecionado, null, qtde);
         itemPedidoTM.adicionar(item);
         atualizarTotal(preco, qtde, 1);
-
+    }
 
     }//GEN-LAST:event_btAddActionPerformed
 
