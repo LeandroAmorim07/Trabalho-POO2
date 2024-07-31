@@ -1,0 +1,1 @@
+crie no banco de dados postgreesql um banco chamado HotelLotus 

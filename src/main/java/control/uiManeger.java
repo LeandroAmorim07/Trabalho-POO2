@@ -27,6 +27,7 @@ import viewer.PesquisarClientes;
 import viewer.PesquisarEstadia;
 import viewer.PesquisarItem;
 import viewer.PesquisarQuarto;
+import viewer.RelatorioEstadia;
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
@@ -42,10 +43,12 @@ public class uiManeger {
     private GerenciarItens cp = null;
     private PesquisarItem pi = null;
     private PesquisarEstadia pe = null;
+    private RelatorioEstadia re = null;
 
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
     private DomainManeger gerDom;
+    private ReportManeger gerRel;
 
     public static uiManeger getInstance() {
         return myInstance;
@@ -56,6 +59,8 @@ public class uiManeger {
 
         try {
             gerDom = new DomainManeger();
+            gerRel = new ReportManeger();
+            
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(frmPrinc, "Erro de classe. " + ex.getMessage());
             System.exit(0);
@@ -165,7 +170,14 @@ public class uiManeger {
         return pi.getItemSelecionado();
 
     }
+    public ReportManeger getGerRelatorios(){
+        return gerRel;
+    }
+    
 
+     public void abrirRelatorioEstadia() {
+        re = (RelatorioEstadia) abrirJanela(frmPrinc, re, RelatorioEstadia.class);
+    }
     public Estadia abrirPesqEstadia() {
         pe = (PesquisarEstadia) abrirJanela(frmPrinc, pe, PesquisarEstadia.class);
         return pe.getEstadiaSelecionado();

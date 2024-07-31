@@ -11,8 +11,11 @@ import dao.GenericDao;
 import dao.ItemDAO;
 import dao.QuartoDAO;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Estadia;
 import model.Item;
@@ -27,6 +30,7 @@ public class DomainManeger {
     private QuartoDAO quartoDao;
     private ItemDAO itemDao;
     private EstadiaDAO estadiaDao;
+    
 
     public DomainManeger() throws ClassNotFoundException, SQLException {
         genDao = new GenericDao();
@@ -146,10 +150,45 @@ public class DomainManeger {
             default:
                 return null;
         }
+    }
+        public void relGroupBy(JTable tabela, String pesq, int tipo) throws Exception {
+    List<Estadia> lista = null;
+
+    // Limpa a tabela
+    ((DefaultTableModel) tabela.getModel()).setRowCount(0);
+
+    switch (tipo) {
+        case 0:
+            lista = estadiaDao.pesquisarPorIdCliente(pesq);
+            break;
+        case 1:
+            lista = estadiaDao.pesquisarPorNumQuarto(pesq);
+            break;
+    }
+
+    NumberFormat formato = NumberFormat.getCurrencyInstance();
+
+        if (lista != null) {
+        for (Estadia estadia : lista) {
+            Object[] rowData = {
+                              // exemplo de campo
+                estadia.getCliente().getIdCliente(), // exemplo de campo
+                estadia.getQuarto().getNumQuarto(), // exemplo de campo
+                
+                formato.format(estadia.getValortotalSQ()),
+                formato.format(estadia.getValorTotalEstadia())// exemplo de campo formatado
+                // Adicione outros campos conforme necessário
+            };
+
+            ((DefaultTableModel) tabela.getModel()).addRow(rowData);
+        }
+
+        }
+    }
         
         
-        
-}
+       
+
     
     public List<Cliente> pesquisarCliente(String pesq, int tipo) throws SQLException, ClassNotFoundException {
 

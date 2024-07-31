@@ -51,6 +51,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         btRemoverClientes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Estadias");
@@ -168,6 +169,13 @@ public class PesquisarEstadia extends javax.swing.JDialog {
             }
         });
 
+        jButton3.setText("Relatorio");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -181,7 +189,9 @@ public class PesquisarEstadia extends javax.swing.JDialog {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(35, 35, 35))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +201,8 @@ public class PesquisarEstadia extends javax.swing.JDialog {
                     .addComponent(btSelecionar)
                     .addComponent(btRemoverClientes)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -337,6 +348,18 @@ public class PesquisarEstadia extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbTipoActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String pesq = txtPesq.getText();
+        int tipo = cmbTipo.getSelectedIndex();   
+        try {
+            List<Estadia> lista = uiManeger.getInstance().getDomainManeger().pesquisarEstadia(pesq,tipo);
+            uiManeger.getInstance().getGerRelatorios().relComLista(lista,"relEstadia.jasper");
+        } catch (Exception ex) {
+            Logger.getLogger(RelatorioEstadia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -349,6 +372,7 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
