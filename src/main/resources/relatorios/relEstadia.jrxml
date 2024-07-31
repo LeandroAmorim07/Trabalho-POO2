@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32195639-27e1-4eca-840c-05d8decf51ba">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="40"/>
 	<property name="ireport.y" value="0"/>
+	<style name="style1"/>
+	<style name="style2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style forecolor="#000000" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -36,7 +43,7 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="96" y="10" width="377" height="69" uuid="576cb1e8-c63e-4aaf-92a5-3eeb9c5dc14c"/>
+				<reportElement x="96" y="10" width="377" height="69" forecolor="#00CC00" uuid="576cb1e8-c63e-4aaf-92a5-3eeb9c5dc14c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="36" isBold="true"/>
 				</textElement>
@@ -50,27 +57,42 @@
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="0" width="100" height="20" uuid="3d892150-7eea-4a76-97f9-9ad41c65505f"/>
+				<reportElement x="10" y="0" width="60" height="20" uuid="3d892150-7eea-4a76-97f9-9ad41c65505f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[IdEstadia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="126" y="0" width="78" height="20" uuid="26152eaf-4026-4c00-bb30-b3c80b70ab28"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[valorTotalSQ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="237" y="0" width="100" height="20" uuid="e945f5f9-9efa-4358-8079-224307ac6503"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[ValorTotalDiarias]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="412" y="0" width="100" height="20" uuid="53cc0d64-7fac-433b-a3f4-e5e41f492a04"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<text><![CDATA[SubTotal]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="65" splitType="Stretch">
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement style="style2" x="10" y="0" width="527" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="601fe26e-deff-4101-b5f6-55d2a103151e"/>
+			</rectangle>
 			<textField>
-				<reportElement x="10" y="0" width="100" height="20" uuid="add5fb31-fc33-42dd-941c-df2c5ef936d1"/>
+				<reportElement x="26" y="0" width="70" height="20" uuid="add5fb31-fc33-42dd-941c-df2c5ef936d1"/>
 				<textFieldExpression><![CDATA[$F{idEstadia}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
