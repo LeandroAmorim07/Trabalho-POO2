@@ -6,15 +6,8 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.Cliente;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author 1547816
- */
+
 public class ClienteAbstractTableModel extends AbstractTableModel {
 
     private List<Cliente> listaItens = new ArrayList();
