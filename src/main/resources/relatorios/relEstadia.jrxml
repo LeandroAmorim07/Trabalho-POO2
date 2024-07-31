@@ -54,20 +54,16 @@
 				<text><![CDATA[IdEstadia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="125" y="0" width="100" height="20" uuid="08c02847-d1e0-43d2-b45b-793cac09f94f"/>
-				<text><![CDATA[IdCliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="238" y="0" width="100" height="20" uuid="36da0d08-5b08-495f-a096-65192467814d"/>
-				<text><![CDATA[NumQuarto]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="355" y="0" width="78" height="20" uuid="26152eaf-4026-4c00-bb30-b3c80b70ab28"/>
+				<reportElement x="126" y="0" width="78" height="20" uuid="26152eaf-4026-4c00-bb30-b3c80b70ab28"/>
 				<text><![CDATA[valorTotalSQ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="0" width="100" height="20" uuid="e945f5f9-9efa-4358-8079-224307ac6503"/>
-				<text><![CDATA[ValorTotalEstadia]]></text>
+				<reportElement x="237" y="0" width="100" height="20" uuid="e945f5f9-9efa-4358-8079-224307ac6503"/>
+				<text><![CDATA[ValorTotalDiarias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="0" width="100" height="20" uuid="53cc0d64-7fac-433b-a3f4-e5e41f492a04"/>
+				<text><![CDATA[SubTotal]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -77,21 +73,17 @@
 				<reportElement x="10" y="0" width="100" height="20" uuid="add5fb31-fc33-42dd-941c-df2c5ef936d1"/>
 				<textFieldExpression><![CDATA[$F{idEstadia}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="125" y="0" width="100" height="20" uuid="136382a2-bde0-42c5-94be-5431bd4c71b5"/>
-				<textFieldExpression><![CDATA[""+$F{cliente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="238" y="0" width="100" height="20" uuid="159c9fcd-97e4-43ea-9d85-89d70a8627e2"/>
-				<textFieldExpression><![CDATA[""+$F{quarto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="355" y="0" width="78" height="20" uuid="84eeedd2-6f95-4d24-9636-d09cc48ba798"/>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="126" y="0" width="78" height="20" uuid="84eeedd2-6f95-4d24-9636-d09cc48ba798"/>
 				<textFieldExpression><![CDATA[$F{valortotalSQ}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="455" y="0" width="100" height="20" uuid="5112dd4e-0e75-4cbc-994e-ac4bcf37c06b"/>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="237" y="0" width="100" height="20" uuid="5112dd4e-0e75-4cbc-994e-ac4bcf37c06b"/>
 				<textFieldExpression><![CDATA[$F{valorTotalEstadia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="412" y="0" width="100" height="20" uuid="e1b3ad5c-e695-4351-83b9-aaeb14c2aeb1"/>
+				<textFieldExpression><![CDATA[$F{valorTotalEstadia}+$F{valortotalSQ}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
