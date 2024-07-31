@@ -30,54 +30,6 @@
 	<field name="idEstadia" class="java.lang.Integer">
 		<fieldDescription><![CDATA[idEstadia]]></fieldDescription>
 	</field>
-	<field name="cpf" class="java.lang.String">
-		<fieldDescription><![CDATA[cpf]]></fieldDescription>
-	</field>
-	<field name="email" class="java.lang.String">
-		<fieldDescription><![CDATA[email]]></fieldDescription>
-	</field>
-	<field name="idCliente" class="java.lang.Integer">
-		<fieldDescription><![CDATA[idCliente]]></fieldDescription>
-	</field>
-	<field name="nomeCliente" class="java.lang.String">
-		<fieldDescription><![CDATA[nomeCliente]]></fieldDescription>
-	</field>
-	<field name="telefoneCliente" class="java.lang.String">
-		<fieldDescription><![CDATA[telefoneCliente]]></fieldDescription>
-	</field>
-	<field name="estadia" class="java.util.List">
-		<fieldDescription><![CDATA[estadia]]></fieldDescription>
-	</field>
-	<field name="cpf_1" class="java.lang.String">
-		<fieldDescription><![CDATA[cpf]]></fieldDescription>
-	</field>
-	<field name="email_1" class="java.lang.String">
-		<fieldDescription><![CDATA[email]]></fieldDescription>
-	</field>
-	<field name="idCliente_1" class="java.lang.Integer">
-		<fieldDescription><![CDATA[idCliente]]></fieldDescription>
-	</field>
-	<field name="nomeCliente_1" class="java.lang.String">
-		<fieldDescription><![CDATA[nomeCliente]]></fieldDescription>
-	</field>
-	<field name="telefoneCliente_1" class="java.lang.String">
-		<fieldDescription><![CDATA[telefoneCliente]]></fieldDescription>
-	</field>
-	<field name="estadia_1" class="java.util.List">
-		<fieldDescription><![CDATA[estadia]]></fieldDescription>
-	</field>
-	<field name="valorDiaria" class="java.lang.Double">
-		<fieldDescription><![CDATA[valorDiaria]]></fieldDescription>
-	</field>
-	<field name="tipoQuarto" class="java.lang.String">
-		<fieldDescription><![CDATA[tipoQuarto]]></fieldDescription>
-	</field>
-	<field name="numQuarto" class="java.lang.Integer">
-		<fieldDescription><![CDATA[numQuarto]]></fieldDescription>
-	</field>
-	<field name="cama" class="java.lang.String">
-		<fieldDescription><![CDATA[cama]]></fieldDescription>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -127,7 +79,7 @@
 			</textField>
 			<textField>
 				<reportElement x="125" y="0" width="100" height="20" uuid="136382a2-bde0-42c5-94be-5431bd4c71b5"/>
-				<textFieldExpression><![CDATA[$F{cliente}$F{cliente}.getIdCliente()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""+$F{cliente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="238" y="0" width="100" height="20" uuid="159c9fcd-97e4-43ea-9d85-89d70a8627e2"/>
