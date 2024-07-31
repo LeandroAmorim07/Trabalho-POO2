@@ -37,7 +37,6 @@ public class EstadiaDAO {
             Predicate restricoes = null;
             switch (tipo) {
                 case 1:
-                    // Converta a string para inteiro se o tipo for 1
                     Integer idCliente;
                     try {
                         idCliente = Integer.parseInt(pesq);

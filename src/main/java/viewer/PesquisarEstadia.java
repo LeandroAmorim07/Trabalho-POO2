@@ -349,13 +349,13 @@ public class PesquisarEstadia extends javax.swing.JDialog {
     }//GEN-LAST:event_cmbTipoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String pesq = txtPesq.getText();
-        int tipo = cmbTipo.getSelectedIndex();   
+         
         try {
-            List<Estadia> lista = uiManeger.getInstance().getDomainManeger().pesquisarEstadia(pesq,tipo);
+            EstadiaAbstractTableModel model = (EstadiaAbstractTableModel) tblEstadia.getModel();
+        List<Estadia> lista = model.getListaEstadias();
             uiManeger.getInstance().getGerRelatorios().relComLista(lista,"relEstadia.jasper");
         } catch (Exception ex) {
-            Logger.getLogger(RelatorioEstadia.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed

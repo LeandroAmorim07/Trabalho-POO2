@@ -67,7 +67,7 @@ public class ReportManeger {
         
         }
         catch(JRException erro){
-            JOptionPane.showMessageDialog(null, "ERRO ao abrir relatório de clientes. " + erro.getMessage() );
+            JOptionPane.showMessageDialog(null, "ERRO ao abrir relatório de estadias. " + erro.getMessage() );
             
         }
         
@@ -98,7 +98,7 @@ public class ReportManeger {
                                                 
                 // Cria o JasperViewer
                 JasperViewer jrViewer = new JasperViewer(print, true);
-                jrViewer.setVisible(true);
+               
                 
                 
                 // Criar uma janela MODAL e colocar o JasperView dentro dela

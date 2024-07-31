@@ -64,6 +64,12 @@ public class EstadiaAbstractTableModel extends AbstractTableModel {
         return listaEstadias.get(linha);
     }
 
+    public List<Estadia> getListaEstadias() {
+        return listaEstadias;
+    }
+    
+    
+
     public void setLista(List<Estadia> novaLista) {
 
         if (novaLista.isEmpty()) {

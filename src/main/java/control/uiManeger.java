@@ -27,7 +27,7 @@ import viewer.PesquisarClientes;
 import viewer.PesquisarEstadia;
 import viewer.PesquisarItem;
 import viewer.PesquisarQuarto;
-import viewer.RelatorioEstadia;
+
 import viewer.ServicoDeQuartos;
 import viewer.TelaPrincipal;
 
@@ -43,8 +43,7 @@ public class uiManeger {
     private GerenciarItens cp = null;
     private PesquisarItem pi = null;
     private PesquisarEstadia pe = null;
-    private RelatorioEstadia re = null;
-
+    
     // ########  SINGLETON  ####
     private static uiManeger myInstance = new uiManeger();
     private DomainManeger gerDom;
@@ -175,9 +174,7 @@ public class uiManeger {
     }
     
 
-     public void abrirRelatorioEstadia() {
-        re = (RelatorioEstadia) abrirJanela(frmPrinc, re, RelatorioEstadia.class);
-    }
+    
     public Estadia abrirPesqEstadia() {
         pe = (PesquisarEstadia) abrirJanela(frmPrinc, pe, PesquisarEstadia.class);
         return pe.getEstadiaSelecionado();
