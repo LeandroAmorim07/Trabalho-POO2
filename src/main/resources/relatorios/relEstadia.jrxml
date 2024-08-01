@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="32195639-27e1-4eca-840c-05d8decf51ba">
-	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="style1"/>
@@ -43,16 +43,29 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="126" y="0" width="347" height="79" forecolor="#00CC00" uuid="576cb1e8-c63e-4aaf-92a5-3eeb9c5dc14c"/>
+				<reportElement x="173" y="0" width="218" height="79" forecolor="#00CC00" uuid="576cb1e8-c63e-4aaf-92a5-3eeb9c5dc14c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="36" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hotel Lotus]]></text>
 			</staticText>
+			<image>
+				<reportElement x="30" y="13" width="96" height="66" uuid="799f8f67-bc7e-4be3-b11f-cbc287875f11"/>
+				<imageExpression><![CDATA["C:\\Users\\Programe-SE 11\\Documents\\NetBeansProjects\\HotelLotus\\src\\main\\resources\\images\\logoHotel.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="441" y="13" width="96" height="66" uuid="279a0672-c5e1-4623-8285-26a76abb04ad"/>
+				<imageExpression><![CDATA["C:\\Users\\Programe-SE 11\\Documents\\NetBeansProjects\\HotelLotus\\src\\main\\resources\\images\\logoHotel.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="441" y="9" width="100" height="20" uuid="cd0e990a-0470-4036-9158-000cfa7ae710"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="25" splitType="Stretch">
