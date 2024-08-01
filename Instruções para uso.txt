@@ -1,1 +1,2 @@
 crie no banco de dados postgreesql um banco chamado HotelLotus 
+o relatorio esta dentro da pesquisa de estadia na tela de serviço de quarto 
